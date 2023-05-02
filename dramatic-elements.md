@@ -80,7 +80,7 @@ When the player progresses through the game he will reveal the real damage the a
 4. A group of turtles is trapped in the forest's clearing.
 5. The fire was spreading towards the clearing, burning everything in its path.
 6. The whales reached the land, six small bats flying to the whales and ask for help.
-7. The whales stay with the bats and hope the forest creatures will be ok in the meantime.
+7. The whales stay with the bats and hope the forest creatures will be OK in the meantime.
 8. the whales use their powers to quickly blast away at the cavern's entrance and saved all the bats.
 9. The whales reached the forest's entrance and saw fire was burning strong all around.
 10. Heading towards the fire, They were near the center of the forest and were surrounded by fire.
