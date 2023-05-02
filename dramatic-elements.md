@@ -27,7 +27,7 @@ The game offers multiple powerups for the player, which are going to be spawned 
 
 During the game the player will fight multiple enemies, every one of them with different mechanics. The harder the difficulty the higher the stats of the enemies (For example attack speed, amount of enemies, health point etc).
 
-To increase the difficulty of the game dynamically, we will have to approach the challenges of the game in a different rate. Flying Whales world is split into segments, each segment is a stage by itself. The higher the stage the higher the difficulty will be, as the player will learn the game mechanics and strategy. This is an important part of the game mechanic, that's designed to keep the player challenged.
+To increase the difficulty of the game, we will have to approach the challenges of the game in a different rate. Flying Whales world is split into segments, each segment is a stage by itself. The higher the stage the higher the difficulty will be, as the player will learn the game mechanics and strategy. This is an important part of the game mechanic, that's designed challenge the player.
 
 The higher the stage the difficulty of the enemies rises and the amount of in-game resources that are offered to the player will be lowered.
 
