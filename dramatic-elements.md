@@ -69,6 +69,28 @@ The whales couldn't let that happens so they gathered a group to help restore th
 To convey the story to the player, a short cutscene will show the world in it's peaceful state, then when the aliens land and the destruction they brought.
 When the player progresses through the game he will reveal the real damage the aliens have done until the last stage where they defeat the enemies.
 
+
+### Dramatic arc
+
+![dramatic_arc](images/dramatic_arc.jpg)
+
+1. The whales are roaming around the planet making sure everyone is happy.
+2. Meteorite falling through the planet sky, towards a very distant forest and causing a huge earthquake.
+3. The whales leaped through the water to the air and fly toward the forest.
+4. A group of turtles is trapped in the forest's clearing.
+5. The fire was spreading towards the clearing, burning everything in its path.
+6. The whales reached the land, six small bats flying to the whales and ask for help.
+7. The whales stay with the bats and hope the forest creatures will be ok in the meantime.
+8. the whales use their powers to quickly blast away at the cavern's entrance and saved all the bats.
+9. The whales reached the forest's entrance and saw fire was burning strong all around.
+10. Heading towards the fire, They were near the center of the forest and were surrounded by fire.
+11. The whales used their water magic to slowly save what was left of the trees.
+12. Near the crater, they saw great amount of broken trees, as if something was flying low and hit the trees.
+13. At the center of the forest, the whales saw four gigantic ancient turtles that were trapped.
+14. The whales created heavy rain above the entire forest.
+15. The turtles reassured the worried whales that they can use their ancient magic to restore the life of the forest.
+16.  They are worried about the forming object that caused such trouble.
+
 ## Characters
 
 The protagonists are the pack of whales, where the antagonists are the aliens. The side charcters are the habitants of the world, various creatures who the whales are trying to save.
