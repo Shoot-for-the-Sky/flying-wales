@@ -264,6 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 933557284}
   - component: {fileID: 933557285}
+  - component: {fileID: 933557286}
   m_Layer: 0
   m_Name: WaleBody
   m_TagString: Untagged
@@ -327,7 +328,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 99c4cdcdc79cffa4f9491cd4eef3ad29, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 87ebe958140aca545b130f3e4300a9a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -338,6 +339,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &933557286
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933557283}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33b15162490844d4a95bfb63369031fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1015023428
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,9 +468,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1044001722}
-  - component: {fileID: 1044001723}
   - component: {fileID: 1044001724}
+  - component: {fileID: 1044001727}
+  - component: {fileID: 1044001728}
   - component: {fileID: 1044001725}
+  - component: {fileID: 1044001726}
   m_Layer: 0
   m_Name: Wale
   m_TagString: Player
@@ -466,39 +489,13 @@ Transform:
   m_GameObject: {fileID: 1044001721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.37, y: -0.27, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 933557284}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1044001723
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044001721}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.050391436, y: 0.3712567}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.185762, y: 1.0934589}
-  m_EdgeRadius: 0
 --- !u!114 &1044001724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,3 +530,112 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &1044001726
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044001721}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.037476547, y: 0.017034112}
+  m_Size: {x: 1.7699518, y: 0.5434906}
+  m_Direction: 1
+--- !u!114 &1044001727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044001721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3316a1929cc5d24a92170414d4a2e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1044001728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044001721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4712e6a1cefac4a4080d94d38ec454a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dynamicStateButton:
+    m_Name: Dynamic State Button
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 187479b3-a5f0-4690-ae38-1c3b1ca40a21
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 700f2348-dbf2-49ab-9c75-2259b63ae4ea
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dynamic State Button
+      m_Flags: 0
+    m_Flags: 0
+  groupStateButton:
+    m_Name: Group State Button
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: f4de42ba-c31d-4b6e-b818-570b8e5f2191
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5cbf1e53-6a54-475b-bf97-927e9873dff3
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Group State Button
+      m_Flags: 0
+    m_Flags: 0
+  trackStateButton:
+    m_Name: Track State Button
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 1a135460-ce31-4f1f-a027-90e16ef00b87
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 86573b40-1299-47f3-a947-59b7c0f49ec3
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Track State Button
+      m_Flags: 0
+    m_Flags: 0
+  attackStateButton:
+    m_Name: Attack State Button
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 65d75125-a819-4d1a-a59a-c3bd5d3d3e0b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a5a9756d-5af0-47dc-ad3d-88b0a9794563
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Attack State Button
+      m_Flags: 0
+    m_Flags: 0
+  isWhaleStateControllerDisabled: 0
