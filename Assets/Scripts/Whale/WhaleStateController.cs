@@ -36,20 +36,23 @@ public class WhaleStateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isWhaleStateControllerDisabled)
+        if(isWhaleStateControllerDisabled)
         {
             return;
         }
-        if (dynamicStateButton.WasPressedThisFrame())
+        if(dynamicStateButton.WasPressedThisFrame())
         {
             stateManager.ChangeStateByName(WhaleState.Dynamic);
-        } else if (groupStateButton.WasPressedThisFrame())
+        }
+        else if(groupStateButton.WasPressedThisFrame())
         {
             stateManager.ChangeStateByName(WhaleState.Group);
-        } else if(trackStateButton.WasPressedThisFrame())
+        }
+        else if(trackStateButton.WasPressedThisFrame())
         {
             stateManager.ChangeStateByName(WhaleState.Track);
-        } else if (attackStateButton.WasPressedThisFrame())
+        }
+        else if(attackStateButton.WasPressedThisFrame())
         {
             stateManager.ChangeStateByName(WhaleState.Attack);
         }

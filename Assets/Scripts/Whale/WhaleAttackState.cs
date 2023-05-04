@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class WhaleAttackState : WhaleBaseState
 {
-    public override void EnterState(WhaleStateManager whale) {
+    public override void EnterState(WhaleStateManager whale)
+    {
         Debug.Log("EnterState Attack State");
     }
 
