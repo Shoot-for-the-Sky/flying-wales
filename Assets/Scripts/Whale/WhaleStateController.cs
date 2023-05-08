@@ -5,9 +5,11 @@ using UnityEngine.InputSystem;
 
 public class WhaleStateController : MonoBehaviour
 {
+    /**
+     The purepose if this class is to change the state of an whale using input button (controller)
+     */
     WhaleStateManager stateManager;
     [SerializeField] InputAction dynamicStateButton = new InputAction(type: InputActionType.Button);
-    [SerializeField] InputAction groupStateButton = new InputAction(type: InputActionType.Button);
     [SerializeField] InputAction trackStateButton = new InputAction(type: InputActionType.Button);
     [SerializeField] InputAction attackStateButton = new InputAction(type: InputActionType.Button);
     public bool isWhaleStateControllerDisabled = false;
@@ -15,7 +17,6 @@ public class WhaleStateController : MonoBehaviour
     void OnEnable()
     {
         dynamicStateButton.Enable();
-        groupStateButton.Enable();
         trackStateButton.Enable();
         attackStateButton.Enable();
     }
@@ -23,7 +24,6 @@ public class WhaleStateController : MonoBehaviour
     void OnDisable()
     {
         dynamicStateButton.Disable();
-        groupStateButton.Disable();
         trackStateButton.Disable();
         attackStateButton.Disable();
     }
@@ -43,10 +43,6 @@ public class WhaleStateController : MonoBehaviour
         if (dynamicStateButton.WasPressedThisFrame())
         {
             stateManager.ChangeStateByName(WhaleState.Dynamic);
-        }
-        else if (groupStateButton.WasPressedThisFrame())
-        {
-            stateManager.ChangeStateByName(WhaleState.Group);
         }
         else if (trackStateButton.WasPressedThisFrame())
         {

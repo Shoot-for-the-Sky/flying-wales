@@ -16,4 +16,9 @@ public class WhaleAttackState : WhaleBaseState
     {
 
     }
+
+    public override void OnTriggerEnter2D(WhaleStateManager whale, Collider2D collision)
+    {
+
+    }
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Missle
+  - LevelBoundaries
   layers:
   - Default
   - TransparentFX
