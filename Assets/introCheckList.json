@@ -14,16 +14,8 @@
         "checkid": "CheckIntro3"
       },
       {
-        "text": "Use shield (Z)",
-        "checkid": "CheckIntro4"
-      },
-      {
-        "text": "Call for help (X)",
-        "checkid": "CheckIntro5"
-      },
-      {
         "text": "Destroy 3 Meteros",
-        "checkid": "CheckIntro6"
+        "checkid": "CheckIntro4"
       }
     ]
   }
