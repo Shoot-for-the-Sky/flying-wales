@@ -1322,7 +1322,7 @@ MonoBehaviour:
   - {fileID: 477981722}
   currentCheckText: {fileID: 1857456180}
   nextCheckText: {fileID: 1724227040}
-  jsonFilecheckList: {fileID: 4900000, guid: 8cfcf7c05c7fd914bb048fc2b1a230ac, type: 3}
+  jsonFilecheckList: {fileID: 4900000, guid: 1826cf4b6915b244a8942138cbb29ffa, type: 3}
 --- !u!4 &2053914887
 Transform:
   m_ObjectHideFlags: 0
