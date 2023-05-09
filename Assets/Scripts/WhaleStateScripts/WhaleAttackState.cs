@@ -46,7 +46,8 @@ public class WhaleAttackState : WhaleBaseState
             }
             attackTimeCounter++;
 
-        } else
+        }
+        else
         {
             whaleStepSlice = 10;
             whaleAttackSpeed = 1;
@@ -60,7 +61,6 @@ public class WhaleAttackState : WhaleBaseState
             attackStepX = nextStep.x;
             attackStepY = nextStep.y;
         }
-        
         nextStepPosition = new Vector3(attackStepX, attackStepY, 0);
     }
 

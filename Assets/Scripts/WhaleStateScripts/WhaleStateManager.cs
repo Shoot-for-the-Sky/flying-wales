@@ -88,7 +88,8 @@ public class WhaleStateManager : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, transform.rotation.y, currentState.whaleDegree), Time.deltaTime * whaleRotateSpeed);
     }
 
-    private void FlipWhaleByDirection() {
+    private void FlipWhaleByDirection()
+    {
         // flip the whale Y axis direction if going right or left
         if (currentState.prevStepPosition != currentState.nextStepPosition)
         {

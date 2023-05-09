@@ -44,7 +44,8 @@ public class IntroLeverCheckListManager : MonoBehaviour
         if (checkIndex + 1 < checkListLenth)
         {
             SetCheckText(nextCheckText, checkIndex + 1);
-        } else
+        }
+        else
         {
             nextCheckText.text = "";
         }

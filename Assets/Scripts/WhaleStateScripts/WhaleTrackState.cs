@@ -35,15 +35,18 @@ public class WhaleTrackState : WhaleBaseState
         {
             // track mouse from distance
             destination = new Vector3(mousePosition.x, mousePosition.y, mousePosition.z);
-        } else
+        }
+        else
         {
             // moving around the mouse
             float destinationX;
             float destinationY;
 
-            if (step < (numberOfSteps * 0.5)) {
+            if (step < (numberOfSteps * 0.5))
+            {
                 destinationX = mousePosition.x + rotateDeltaDistance;
-            } else
+            }
+            else
             {
                 destinationX = mousePosition.x - rotateDeltaDistance;
             }

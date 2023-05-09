@@ -11,7 +11,7 @@ public class WhaleDynamicState : WhaleBaseState
     private const float chanceToChangeAxisDirection = 0.5f;
     private float whaleDynamicRotateSpeed = 1f;
     private float whaleDynamicSpeed = 1f;
-    
+
     public override void EnterState(WhaleStateManager whale)
     {
         nextStepPosition = GetRandomPosition();
@@ -67,7 +67,8 @@ public class WhaleDynamicState : WhaleBaseState
             }
             Vector3 nextStepPositionByDirection = GetNextStepPositionByDirection(goingUp, goingRight);
             targetRandomPosition = new Vector3(nextStepPositionByDirection.x, nextStepPositionByDirection.y, 0);
-        } else
+        }
+        else
         {
             // first direction get random next position
             targetRandomPosition = Random.onUnitSphere * 1;

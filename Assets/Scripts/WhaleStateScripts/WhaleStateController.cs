@@ -67,7 +67,8 @@ public class WhaleStateController : MonoBehaviour
         {
             stateManager.ChangeStateByName(WhaleState.Attack);
             ChangeStatesUI(0, 0, 1);
-        } else if (LeftMouseButton.WasPerformedThisFrame())
+        }
+        else if (LeftMouseButton.WasPerformedThisFrame())
         {
             stateManager.LeftMouseButtonClicked();
         }

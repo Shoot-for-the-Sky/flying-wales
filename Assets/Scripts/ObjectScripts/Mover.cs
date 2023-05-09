@@ -32,19 +32,22 @@ public class Mover : MonoBehaviour
             || transform.position.y > maxDeadAxisYZone || transform.position.y < minDeadAxisYZone;
     }
 
-    private Vector3 GetDirection() 
+    private Vector3 GetDirection()
     {
         Vector3 direction;
         if (moveDirection == "right")
         {
             direction = Vector3.right;
-        } else if (moveDirection == "left")
+        }
+        else if (moveDirection == "left")
         {
             direction = Vector3.left;
-        } else if (moveDirection == "up")
+        }
+        else if (moveDirection == "up")
         {
             direction = Vector3.up;
-        } else
+        }
+        else
         {
             direction = Vector3.down;
         }
