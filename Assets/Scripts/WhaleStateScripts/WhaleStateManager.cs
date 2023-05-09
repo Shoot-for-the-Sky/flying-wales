@@ -4,7 +4,7 @@ using UnityEngine;
 public class WhaleStateManager : MonoBehaviour
 {
     [SerializeField] public float whaleSpeed = 1f;
-    [SerializeField] public float whaleRotateSpeed = 1f;
+    [SerializeField] public float whaleRotateSpeed = 5f;
     WhaleBaseState currentState;
     public WhaleDynamicState DynamicState = new WhaleDynamicState();
     public WhaleTrackState TrackState = new WhaleTrackState();
@@ -63,6 +63,11 @@ public class WhaleStateManager : MonoBehaviour
         }
     }
 
+    public void LeftMouseButtonClicked()
+    {
+        currentState.LeftMouseButtonClicked();
+    }
+
     private void UpdateWhalePositions()
     {
         currentState.prevPostion = new Vector3(transform.position.x, transform.position.y, 0.0f);
@@ -79,7 +84,8 @@ public class WhaleStateManager : MonoBehaviour
         double x = currentState.nextPostion.x - currentState.prevPostion.x;
         double radians = Math.Atan2(y, x);
         int degree = (int)(radians * (180 / Math.PI));
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, transform.rotation.y, degree), Time.deltaTime * whaleRotateSpeed);
+        currentState.whaleDegree = degree;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, transform.rotation.y, currentState.whaleDegree), Time.deltaTime * whaleRotateSpeed);
     }
 
     private void FlipWhaleByDirection() {

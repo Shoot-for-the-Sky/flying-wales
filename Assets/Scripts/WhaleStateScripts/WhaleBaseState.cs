@@ -17,6 +17,8 @@ public abstract class WhaleBaseState
 
     public abstract void OnTriggerEnter2D(WhaleStateManager whale, Collider2D collision);
 
+    public abstract void LeftMouseButtonClicked();
+
     public bool IsWhaleGoingUp()
     {
         return prevPostion.y < nextPostion.y;

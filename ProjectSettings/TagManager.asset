@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Missle
   - LevelBoundaries
+  - DynamicStateIcon
+  - TrackStateIcon
+  - AttackStateIcon
   layers:
   - Default
   - TransparentFX

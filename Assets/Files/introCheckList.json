@@ -1,0 +1,23 @@
+{
+    "checkList":
+    [
+      {
+        "text": "Change to track mode (S)"
+      },
+      {
+        "text": "Change to attack mode (D) and attack (left mouse key)"
+      },
+      {
+        "text": "Back to dynamic mode (A)"
+      },
+      {
+        "text": "Use shield (Z)"
+      },
+      {
+        "text": "Call for help (X)"
+      },
+      {
+        "text": "Destroy 3 Meteros"
+      }
+    ]
+  }

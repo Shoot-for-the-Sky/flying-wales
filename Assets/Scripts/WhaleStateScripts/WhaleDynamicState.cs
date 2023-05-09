@@ -9,17 +9,20 @@ public class WhaleDynamicState : WhaleBaseState
     private int stepsCounter = 0;
     private const float chanceToGoSameDirection = 0.9f;
     private const float chanceToChangeAxisDirection = 0.5f;
-
+    private float whaleDynamicRotateSpeed = 1f;
+    private float whaleDynamicSpeed = 1f;
+    
     public override void EnterState(WhaleStateManager whale)
     {
-        Debug.Log("EnterState Dynamic State");
-        nextStepPosition = Vector3.zero;
+        nextStepPosition = GetRandomPosition();
         nextPostion = Vector3.zero;
         prevPostion = Vector3.zero;
     }
 
     public override void UpdateState(WhaleStateManager whale)
     {
+        whale.whaleRotateSpeed = whaleDynamicRotateSpeed;
+        whale.whaleSpeed = whaleDynamicSpeed;
         if (stepsCounter >= directionStepsCounter)
         {
             prevStepPosition = new Vector3(nextStepPosition.x, nextStepPosition.y, nextStepPosition.z);
@@ -39,16 +42,15 @@ public class WhaleDynamicState : WhaleBaseState
             bool goingUp = IsWhaleGoingUp();
 
             // check if whale should change is direction of swimming
-            float directionProbability = GetRandomDoubleInRange(0, 1);
+            float directionProbability = UtilFunctions.GetRandomDoubleInRange(0, 1);
             bool goSameDirection = directionProbability < chanceToGoSameDirection;
 
-            Debug.Log("goSameDirection: " + goSameDirection);
 
             // if we change whale direction
             if (!goSameDirection)
             {
                 // if we change whale X Axis direction
-                float changeAxisXDirectionProbability = GetRandomDoubleInRange(0, 1);
+                float changeAxisXDirectionProbability = UtilFunctions.GetRandomDoubleInRange(0, 1);
                 bool changeAxisXDirection = changeAxisXDirectionProbability > chanceToChangeAxisDirection;
                 if (changeAxisXDirection)
                 {
@@ -56,7 +58,7 @@ public class WhaleDynamicState : WhaleBaseState
                 }
 
                 // if we change whale Y Axis direction
-                float changeAxisYDirectionProbability = GetRandomDoubleInRange(0, 1);
+                float changeAxisYDirectionProbability = UtilFunctions.GetRandomDoubleInRange(0, 1);
                 bool changeAxisYDirection = changeAxisYDirectionProbability > chanceToChangeAxisDirection;
                 if (changeAxisYDirection)
                 {
@@ -81,19 +83,19 @@ public class WhaleDynamicState : WhaleBaseState
 
         if (up)
         {
-            nextY = GetRandomDoubleInRange(0, 1);
+            nextY = UtilFunctions.GetRandomDoubleInRange(0, 1);
         }
         else
         {
-            nextY = GetRandomDoubleInRange(-1, 0);
+            nextY = UtilFunctions.GetRandomDoubleInRange(-1, 0);
         }
         if (right)
         {
-            nextX = GetRandomDoubleInRange(0, 1);
+            nextX = UtilFunctions.GetRandomDoubleInRange(0, 1);
         }
         else
         {
-            nextX = GetRandomDoubleInRange(-1, 0);
+            nextX = UtilFunctions.GetRandomDoubleInRange(-1, 0);
         }
         return new Vector3(nextX, nextY, .0f);
     }
@@ -120,11 +122,8 @@ public class WhaleDynamicState : WhaleBaseState
         }
     }
 
-    // take help from: https://stackoverflow.com/questions/3975290/produce-a-random-number-in-a-range-using-c-sharp
-    private float GetRandomDoubleInRange(float min, float max)
+    public override void LeftMouseButtonClicked()
     {
-        System.Random r = new System.Random();
-        double rDouble = r.NextDouble() * (max - min);
-        return (float)(min + rDouble);
+
     }
 }
