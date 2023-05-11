@@ -38,7 +38,6 @@ public class WhaleAttackState : WhaleBaseState
         {
             whaleStepSlice = 1;
             whaleAttackSpeed = UtilFunctions.GetRandomDoubleInRange(minAttackSpeed, maxAttackSpeed);
-            Debug.Log("Attcking! " + attackTimeCounter);
             if (attackTimeCounter >= attackTime)
             {
                 attackTimeCounter = 0;

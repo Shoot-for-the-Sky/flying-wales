@@ -3,19 +3,22 @@ using UnityEngine;
 
 public class WhaleStateManager : MonoBehaviour
 {
-    [SerializeField] public float whaleSpeed = 1f;
-    [SerializeField] public float whaleRotateSpeed = 5f;
+    // whale states
     WhaleBaseState currentState;
     public WhaleDynamicState DynamicState = new WhaleDynamicState();
     public WhaleTrackState TrackState = new WhaleTrackState();
     public WhaleAttackState AttackState = new WhaleAttackState();
 
+    // whale speed params
+    public float whaleSpeed = 1f;
+    public float whaleRotateSpeed = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
         currentState = DynamicState;
-        currentState.EnterState(this);
         currentState.whaleSpeed = whaleSpeed;
+        currentState.EnterState(this);
     }
 
     void FixedUpdate()
@@ -26,6 +29,16 @@ public class WhaleStateManager : MonoBehaviour
         FlipWhaleByDirection();
         currentState.whaleSpeed = whaleSpeed;
         transform.position += Time.fixedDeltaTime * currentState.whaleSpeed * currentState.nextStepPosition;
+    }
+
+    public void ChangeWhaleSpeed(float speed)
+    {
+        whaleSpeed = speed;
+    }
+
+    public void ChangeWhaleRotateSpeed(float speed)
+    {
+        whaleRotateSpeed = speed;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

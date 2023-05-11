@@ -28,6 +28,13 @@ public class UtilFunctions : MonoBehaviour
         return distance < epsilon;
     }
 
+    public static bool IsPointsClose2D(Vector3 pointA, Vector3 pointB, float epsilonXAxis, float epsilonYAxis)
+    {
+        float distanceX = Mathf.Abs(pointA.x - pointB.x);
+        float distanceY = Mathf.Abs(pointA.y - pointB.y);
+        return distanceX < epsilonXAxis && distanceY < epsilonYAxis;
+    }
+
     // take help from: https://stackoverflow.com/questions/3975290/produce-a-random-number-in-a-range-using-c-sharp
     public static float GetRandomDoubleInRange(float min, float max)
     {

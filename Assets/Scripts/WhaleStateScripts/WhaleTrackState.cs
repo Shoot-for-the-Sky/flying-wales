@@ -3,45 +3,64 @@ using UnityEngine.UIElements;
 
 public class WhaleTrackState : WhaleBaseState
 {
-    private const float epsilon = 4f;
+    // Get mouse position by camera
     private Camera mainCamera;
     private Vector3 mousePosition;
-    private float rotateDeltaDistance = 2f;
+
+    // Determinate if whale is close to mouse by epslions
+    private const float epsilonX = 4f;
+    private const float epsilonY = 2f;
+    
+    // Close to mouse steps of whale for each X axis side
     private int step = 0;
-    private const int numberOfSteps = 200;
-    private float destinationYDelta = 0.02f;
-    private float whaleTrackRotateSpeed = 5f;
-    private float whaleTrackSpeed = 1f;
+    private const int minMumberOfSteps = 180;
+    private const int maxMumberOfSteps = 200;
+    private int numberOfSteps;
+    private bool goToMouse = false;
+
+    // Delta params
+    private readonly float rotateDeltaDistance = 2f;
+    private readonly float destinationYDelta = 0.02f;
+    private readonly float delteaYDistance = 30f;
+
+    // Speed params
+    private readonly float whaleTrackRotateSpeed = 5f;
+    private readonly float whaleTrackSpeed = 1f;
 
     public override void EnterState(WhaleStateManager whale)
     {
         Debug.Log("EnterState Track State");
         mainCamera = Camera.main;
+        numberOfSteps = Random.Range(minMumberOfSteps, maxMumberOfSteps);
     }
 
     public override void UpdateState(WhaleStateManager whale)
     {
+        // Update track speed
         whale.whaleRotateSpeed = whaleTrackRotateSpeed;
         whale.whaleSpeed = whaleTrackSpeed;
+
+        // Positions
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector3 currentPosition = whale.transform.position;
         Vector3 destination;
         float stepX;
         float stepY;
 
-        bool isWhaleCloseToMouse = UtilFunctions.IsPointsClose2D(mousePosition, whale.transform.position, epsilon);
+        bool isWhaleCloseToMouse = UtilFunctions.IsPointsClose2D(mousePosition, whale.transform.position, epsilonX, epsilonY);
 
-        if (!isWhaleCloseToMouse)
+        if (!isWhaleCloseToMouse || goToMouse)
         {
             // track mouse from distance
             destination = new Vector3(mousePosition.x, mousePosition.y, mousePosition.z);
         }
         else
         {
-            // moving around the mouse
+            // Moving around the mouse
             float destinationX;
             float destinationY;
 
+            // Half of steps go to same direction
             if (step < (numberOfSteps * 0.5))
             {
                 destinationX = mousePosition.x + rotateDeltaDistance;
@@ -54,7 +73,7 @@ public class WhaleTrackState : WhaleBaseState
             destination = new Vector3(destinationX, destinationY, 0);
         }
 
-        // track destination
+        // Next step toward the track destination
         Vector3 nextStep = UtilFunctions.GetNextStepByDestinationPoint2D(currentPosition, destination, 1);
         stepX = nextStep.x;
         stepY = nextStep.y;
@@ -63,6 +82,8 @@ public class WhaleTrackState : WhaleBaseState
         if (step >= numberOfSteps)
         {
             step = 0;
+            stepY += UtilFunctions.GetRandomDoubleInRange(-delteaYDistance, delteaYDistance);
+            goToMouse = false;
         }
         step++;
         nextStepPosition = new Vector3(stepX, stepY, 0);
@@ -80,6 +101,11 @@ public class WhaleTrackState : WhaleBaseState
 
     public override void LeftMouseButtonClicked()
     {
-
+        // Make whale go to mouse
+        if (!goToMouse)
+        {
+            goToMouse = true;
+            step = (int)(numberOfSteps * 0.75);
+        }
     }
 }

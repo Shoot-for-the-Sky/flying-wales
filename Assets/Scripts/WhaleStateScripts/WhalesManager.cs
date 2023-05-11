@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WhaleStateController : MonoBehaviour
+public class WhalesManager : MonoBehaviour
 {
-    /**
-     The purepose if this class is to change the state of an whale using input button (controller)
-     */
-    WhaleStateManager stateManager;
+    // Whales
+    [SerializeField] protected GameObject whalePrefab;
+    [SerializeField] protected int numberOfWhales = 3;
+    private List<GameObject> whales;
+
+    // whale speed params
+    [SerializeField] public float whaleSpeed = 1f;
+    [SerializeField] public float whaleRotateSpeed = 5f;
+
+    // Buttons contolling the whales
     [SerializeField] InputAction dynamicStateButton = new InputAction(type: InputActionType.Button);
     [SerializeField] InputAction trackStateButton = new InputAction(type: InputActionType.Button);
     [SerializeField] InputAction attackStateButton = new InputAction(type: InputActionType.Button);
     [SerializeField] InputAction LeftMouseButton = new InputAction(type: InputActionType.Button);
     public bool isWhaleStateControllerDisabled = false;
 
+    // States UI Sprites
     [SerializeField] protected List<Sprite> dynamicSprites;
     [SerializeField] protected SpriteRenderer dynamicSpriteRenderer;
 
@@ -40,9 +47,18 @@ public class WhaleStateController : MonoBehaviour
         LeftMouseButton.Disable();
     }
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        stateManager = GetComponent<WhaleStateManager>();
+        // Create whales
+        whales = new List<GameObject>();
+        for (int i = 0; i < numberOfWhales; i++)
+        {
+            GameObject whale = Instantiate(whalePrefab);
+            whales.Add(whale);
+        }
+
+        ChangeWhalesState(WhaleState.Dynamic);
         ChangeStatesUI(1, 0, 0);
     }
 
@@ -55,22 +71,42 @@ public class WhaleStateController : MonoBehaviour
         }
         if (dynamicStateButton.WasPressedThisFrame())
         {
-            stateManager.ChangeStateByName(WhaleState.Dynamic);
+            ChangeWhalesState(WhaleState.Dynamic);
             ChangeStatesUI(1, 0, 0);
         }
         else if (trackStateButton.WasPressedThisFrame())
         {
-            stateManager.ChangeStateByName(WhaleState.Track);
+            ChangeWhalesState(WhaleState.Track);
             ChangeStatesUI(0, 1, 0);
         }
         else if (attackStateButton.WasPressedThisFrame())
         {
-            stateManager.ChangeStateByName(WhaleState.Attack);
+            ChangeWhalesState(WhaleState.Attack);
             ChangeStatesUI(0, 0, 1);
         }
         else if (LeftMouseButton.WasPerformedThisFrame())
         {
-            stateManager.LeftMouseButtonClicked();
+            foreach (GameObject whale in whales)
+            {
+                whale.GetComponent<WhaleStateManager>().LeftMouseButtonClicked();
+            }
+        }
+    }
+
+    private void ChangeWhalesState(WhaleState whaleState)
+    {
+        foreach (GameObject whale in whales)
+        {
+            whale.GetComponent<WhaleStateManager>().ChangeStateByName(whaleState);
+        }
+    }
+
+    private void ChangeWhalesSpeed()
+    {
+        foreach (GameObject whale in whales)
+        {
+            whale.GetComponent<WhaleStateManager>().ChangeWhaleSpeed(whaleSpeed);
+            whale.GetComponent<WhaleStateManager>().ChangeWhaleRotateSpeed(whaleRotateSpeed);
         }
     }
 
