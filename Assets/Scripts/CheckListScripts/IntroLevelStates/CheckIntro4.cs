@@ -8,14 +8,16 @@ public class CheckIntro4 : CheckListBaseState
     private bool doneState = false;
     private int numberOfMeteorPass = 0;
 
-    public override void EnterState(CheckListManager checkListManager) {
+    public override void EnterState(CheckListManager checkListManager)
+    {
         Debug.Log("Enter State CheckIntro4");
         Debug.Log("numberOfMeteorPass: " + numberOfMeteorPass);
         gameManagerScript.createMeteors = true;
         numberOfMeteorPass = gameManagerScript.numberOfMeteorPass;
     }
 
-    public override void UpdateState(CheckListManager checkListManager) {
+    public override void UpdateState(CheckListManager checkListManager)
+    {
         numberOfMeteorPass = gameManagerScript.numberOfMeteorPass;
         Debug.Log("numberOfMeteorPass: " + numberOfMeteorPass);
         if (numberOfMeteorPass >= 3)

@@ -14,7 +14,7 @@ public class CheckListManager : MonoBehaviour
 
     CheckListBaseState currentState;
     [SerializeField] CheckListBaseState[] checkListStates;
-    
+
     [SerializeField] Text currentCheckText;
     [SerializeField] Text nextCheckText;
     public TextAsset jsonFilecheckList;
@@ -52,7 +52,7 @@ public class CheckListManager : MonoBehaviour
     {
         CheckInput();
         currentState.UpdateState(this);
-        if(currentState.DoneState(this))
+        if (currentState.DoneState(this))
         {
             checkIndex++;
             Debug.Log("Going to next state " + checkIndex);
@@ -62,7 +62,8 @@ public class CheckListManager : MonoBehaviour
         }
     }
 
-    public void CheckInput() {
+    public void CheckInput()
+    {
         if (isWhaleStateControllerDisabled)
         {
             return;
