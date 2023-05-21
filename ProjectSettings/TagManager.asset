@@ -9,6 +9,7 @@ TagManager:
   - DynamicStateIcon
   - TrackStateIcon
   - AttackStateIcon
+  - MeteorBody
   layers:
   - Default
   - TransparentFX

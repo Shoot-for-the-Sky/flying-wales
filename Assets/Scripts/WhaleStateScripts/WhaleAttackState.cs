@@ -2,21 +2,29 @@ using UnityEngine;
 
 public class WhaleAttackState : WhaleBaseState
 {
+    // Mouse
     private Camera mainCamera;
     private Vector3 mousePosition;
 
+    // Whale attack read only params
     private readonly float whaleAttackRotateSpeed = 20f;
     private readonly int attackTime = 30;
 
+    // Whale attack params
     private float whaleAttackSpeed = 1f;
     private float whaleStepSlice = 10f;
     private int attackTimeCounter = 0;
 
     bool whaleAttack = false;
 
-    float attackStepX;
-    float attackStepY;
+    // Whale attacking positions
+    private float attackStepX;
+    private float attackStepY;
+    private float destinationRangeDelta = 1f;
+    private float destinationXDelta = 0f;
+    private float destinationYDelta = 0f;
 
+    // Whale attacking speed conts
     private const float maxAttackSpeed = 22f;
     private const float minAttackSpeed = 18f;
 
@@ -38,13 +46,13 @@ public class WhaleAttackState : WhaleBaseState
         {
             whaleStepSlice = 1;
             whaleAttackSpeed = UtilFunctions.GetRandomDoubleInRange(minAttackSpeed, maxAttackSpeed);
-            if (attackTimeCounter >= attackTime)
+            attackTimeCounter++;
+            bool stopAttacking = attackTimeCounter >= attackTime;
+            if (stopAttacking)
             {
                 attackTimeCounter = 0;
                 whaleAttack = false;
             }
-            attackTimeCounter++;
-
         }
         else
         {
@@ -54,7 +62,7 @@ public class WhaleAttackState : WhaleBaseState
             mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
             Vector3 currentPosition = whale.transform.position;
-            Vector3 destination = new Vector3(mousePosition.x, mousePosition.y, 0);
+            Vector3 destination = new Vector3(mousePosition.x + destinationXDelta, mousePosition.y + destinationYDelta, 0);
             Vector3 nextStep = UtilFunctions.GetNextStepByDestinationPoint2D(currentPosition, destination, whaleStepSlice);
 
             attackStepX = nextStep.x;
@@ -75,6 +83,11 @@ public class WhaleAttackState : WhaleBaseState
 
     public override void LeftMouseButtonClicked()
     {
+        if (!whaleAttack)
+        {
         whaleAttack = true;
+        destinationXDelta = UtilFunctions.GetRandomDoubleInRange(-destinationRangeDelta, destinationRangeDelta);
+        destinationYDelta = UtilFunctions.GetRandomDoubleInRange(-destinationRangeDelta, destinationRangeDelta);
+        }
     }
 }

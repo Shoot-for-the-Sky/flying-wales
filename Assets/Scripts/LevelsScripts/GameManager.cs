@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WhalesManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+    // Enemies
+    [SerializeField] protected GameObject meteorPrefab;
+    [SerializeField] protected bool createMeteors = false;
+
     // Whales
     [SerializeField] protected GameObject whalePrefab;
     [SerializeField] protected int numberOfWhales = 3;
@@ -31,6 +35,12 @@ public class WhalesManager : MonoBehaviour
     [SerializeField] protected List<Sprite> attackSprites;
     [SerializeField] protected SpriteRenderer attackSpriteRenderer;
 
+    // Cursors
+    public Texture2D cursorArrow;
+    public Texture2D cursorDynamic;
+    public Texture2D cursorTrack;
+    public Texture2D cursorAttack;
+
     void OnEnable()
     {
         dynamicStateButton.Enable();
@@ -50,20 +60,52 @@ public class WhalesManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set default cursor
+        Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
+
         // Create whales
+        CreateWhales();
+        ChangeWhalesState(WhaleState.Dynamic);
+        ChangeStatesUI(1, 0, 0);
+
+        StartCoroutine(SpawnMeteorCoroutine());
+    }
+
+    private void CreateWhales()
+    {
         whales = new List<GameObject>();
         for (int i = 0; i < numberOfWhales; i++)
         {
             GameObject whale = Instantiate(whalePrefab);
             whales.Add(whale);
         }
+    }
 
-        ChangeWhalesState(WhaleState.Dynamic);
-        ChangeStatesUI(1, 0, 0);
+    public void CreateMeteor()
+    {
+        GameObject prefabInstance = Instantiate(meteorPrefab);
+        prefabInstance.transform.position = Vector3.zero;
+    }
+
+    private IEnumerator SpawnMeteorCoroutine()
+    {
+        while (true)
+        {
+            if (createMeteors)
+            {
+                GameObject meteorInstance = Instantiate(meteorPrefab, Vector3.zero, Quaternion.identity);
+            }
+            yield return new WaitForSeconds(10f);
+        }
     }
 
     // Update is called once per frame
     void Update()
+    {
+        WhalesControl();
+    }
+
+    private void WhalesControl()
     {
         if (isWhaleStateControllerDisabled)
         {
@@ -71,16 +113,19 @@ public class WhalesManager : MonoBehaviour
         }
         if (dynamicStateButton.WasPressedThisFrame())
         {
+            Cursor.SetCursor(cursorDynamic, Vector2.zero, CursorMode.ForceSoftware);
             ChangeWhalesState(WhaleState.Dynamic);
             ChangeStatesUI(1, 0, 0);
         }
         else if (trackStateButton.WasPressedThisFrame())
         {
+            Cursor.SetCursor(cursorTrack, Vector2.zero, CursorMode.ForceSoftware);
             ChangeWhalesState(WhaleState.Track);
             ChangeStatesUI(0, 1, 0);
         }
         else if (attackStateButton.WasPressedThisFrame())
         {
+            Cursor.SetCursor(cursorAttack, Vector2.zero, CursorMode.ForceSoftware);
             ChangeWhalesState(WhaleState.Attack);
             ChangeStatesUI(0, 0, 1);
         }

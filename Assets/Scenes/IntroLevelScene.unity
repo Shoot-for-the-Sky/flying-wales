@@ -157,7 +157,7 @@ Transform:
   - {fileID: 1583221617}
   - {fileID: 477981721}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &123090813
 GameObject:
@@ -443,142 +443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e71a1eae0bfedf41a902edc6546a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &771039838
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 771039839}
-  - component: {fileID: 771039840}
-  m_Layer: 0
-  m_Name: Meteor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &771039839
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771039838}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 7.63, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 822493801}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &771039840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771039838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b2e7096d1664334cb0b4400bf5c143f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minSpeed: 1
-  maxSpeed: 3
-  minDeadAxisXZone: -30
-  maxDeadAxisXZone: 30
-  minDeadAxisYZone: -10
-  maxDeadAxisYZone: 10
-  moveDirection: down
---- !u!1 &822493800
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 822493801}
-  - component: {fileID: 822493802}
-  m_Layer: 0
-  m_Name: MeteorBody
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &822493801
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822493800}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 771039839}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &822493802
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822493800}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e82291b3cea6054b804503033eb6f56, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 8.33, y: 6.88}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!4 &840306544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3084728645285083813, guid: 2c7e5805dd67c4c46b970b55fc7f3758, type: 3}
@@ -760,7 +624,7 @@ Transform:
   - {fileID: 2092152513}
   - {fileID: 123090814}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1583221616
 GameObject:
@@ -1019,15 +883,30 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2032294468}
-  - component: {fileID: 2032294467}
+  - component: {fileID: 2032294469}
   m_Layer: 0
-  m_Name: WhalesManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2032294467
+--- !u!4 &2032294468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032294466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1808938, y: 0.5355426, z: -1.0483}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2032294469
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1039,6 +918,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c40eba4563c30499d850750f25fc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meteorPrefab: {fileID: 7833430220676884611, guid: 5f7dcbe9438ebfb40ac07e43651fb5fd, type: 3}
+  createMeteors: 0
   whalePrefab: {fileID: 7598388183887269266, guid: bc7b8260156439f4380121a762d47d13, type: 3}
   numberOfWhales: 3
   whaleSpeed: 1
@@ -1047,12 +928,12 @@ MonoBehaviour:
     m_Name: Dynamic State Button
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: 7aeb75f0-0240-4ffb-8b77-ff7befcb072d
+    m_Id: aede8340-88f1-4217-bc7f-a5b232181020
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: a47c8a2e-e559-48e7-8a27-e41d2a3895b0
+      m_Id: 2baa978d-9d7c-44a0-8da2-f65e5df3a9ee
       m_Path: <Keyboard>/a
       m_Interactions: 
       m_Processors: 
@@ -1064,12 +945,12 @@ MonoBehaviour:
     m_Name: Track State Button
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: 3bfd455b-fa1e-4d8f-86c5-37ea165a60fc
+    m_Id: 88f1e4e6-ab7d-4501-b28a-eb37b036ea49
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 87efbb6d-33e8-4d46-9d9e-b28249298808
+      m_Id: 0bff6459-f28b-4fee-bcf4-9eeb423b73e7
       m_Path: <Keyboard>/s
       m_Interactions: 
       m_Processors: 
@@ -1081,12 +962,12 @@ MonoBehaviour:
     m_Name: Attack State Button
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: 9d17341b-48e4-4d02-b786-098c406a574e
+    m_Id: 2ab3a3c7-ae9e-4a8b-872c-7e8f5ec195ad
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 71249ab9-8cae-4f39-ad6b-457755189aac
+      m_Id: 684f8422-f68d-4194-9580-7bcd2a0e2808
       m_Path: <Keyboard>/d
       m_Interactions: 
       m_Processors: 
@@ -1098,12 +979,12 @@ MonoBehaviour:
     m_Name: Left Mouse Button
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: 507b6493-724e-4a22-bf47-bb2db4d2e0d3
+    m_Id: 1e1ed505-3729-48aa-9291-6b07dc321273
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 4917c80d-fabf-48f4-be15-e8e9b296044e
+      m_Id: 8e6935e4-0a6a-4f60-84f1-41819cc3605b
       m_Path: <Mouse>/leftButton
       m_Interactions: 
       m_Processors: 
@@ -1124,21 +1005,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a64d8d410ad747946870ae318ffc62b9, type: 3}
   - {fileID: 21300000, guid: 2752a7de8a5ed8742afa8e4693c6edaa, type: 3}
   attackSpriteRenderer: {fileID: 2092152514}
---- !u!4 &2032294468
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032294466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1808938, y: 0.5355426, z: -1.0483}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  cursorArrow: {fileID: 2800000, guid: 453cb9cc2cd41224389f1d3eca3226ba, type: 3}
+  cursorDynamic: {fileID: 2800000, guid: c7ff66fea8f811f4a8eec0bb83587b2e, type: 3}
+  cursorTrack: {fileID: 2800000, guid: 3380e3c13921ba149bbdea86352f1372, type: 3}
+  cursorAttack: {fileID: 2800000, guid: 6c2a14d0c39570640a73428465f69f60, type: 3}
 --- !u!1 &2053914885
 GameObject:
   m_ObjectHideFlags: 0

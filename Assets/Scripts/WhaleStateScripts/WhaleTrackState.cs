@@ -20,12 +20,17 @@ public class WhaleTrackState : WhaleBaseState
 
     // Delta params
     private readonly float rotateDeltaDistance = 2f;
-    private readonly float destinationYDelta = 0.02f;
+    private readonly float destinationTrackYDelta = 0.02f;
     private readonly float delteaYDistance = 30f;
 
     // Speed params
     private readonly float whaleTrackRotateSpeed = 5f;
     private readonly float whaleTrackSpeed = 1f;
+
+    // The range around the mouse track destination
+    private float destinationRangeDelta = 1f;
+    private float destinationXDelta = 0f;
+    private float destinationYDelta = 0f;
 
     public override void EnterState(WhaleStateManager whale)
     {
@@ -52,7 +57,7 @@ public class WhaleTrackState : WhaleBaseState
         if (!isWhaleCloseToMouse || goToMouse)
         {
             // track mouse from distance
-            destination = new Vector3(mousePosition.x, mousePosition.y, mousePosition.z);
+            destination = new Vector3(mousePosition.x + destinationXDelta, mousePosition.y + destinationYDelta, mousePosition.z);
         }
         else
         {
@@ -69,7 +74,7 @@ public class WhaleTrackState : WhaleBaseState
             {
                 destinationX = mousePosition.x - rotateDeltaDistance;
             }
-            destinationY = currentPosition.y - destinationYDelta;
+            destinationY = currentPosition.y - destinationTrackYDelta;
             destination = new Vector3(destinationX, destinationY, 0);
         }
 
@@ -82,7 +87,7 @@ public class WhaleTrackState : WhaleBaseState
         if (step >= numberOfSteps)
         {
             step = 0;
-            stepY += UtilFunctions.GetRandomDoubleInRange(-delteaYDistance, delteaYDistance);
+            // stepY += UtilFunctions.GetRandomDoubleInRange(-delteaYDistance, delteaYDistance);
             goToMouse = false;
         }
         step++;
@@ -106,6 +111,8 @@ public class WhaleTrackState : WhaleBaseState
         {
             goToMouse = true;
             step = (int)(numberOfSteps * 0.75);
+            destinationXDelta = UtilFunctions.GetRandomDoubleInRange(-destinationRangeDelta, destinationRangeDelta);
+            destinationYDelta = UtilFunctions.GetRandomDoubleInRange(-destinationRangeDelta, destinationRangeDelta);
         }
     }
 }
