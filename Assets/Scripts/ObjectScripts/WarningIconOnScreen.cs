@@ -55,7 +55,6 @@ public class WarningIconOnScreen : MonoBehaviour
         return new Vector3(positionX, positionY, 0);
     }
     
-    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("MeteorBody"))

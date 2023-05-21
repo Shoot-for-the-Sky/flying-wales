@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyObjectMover : MonoBehaviour
 {
+    // Meteor parent game object
+    [SerializeField] protected GameObject meteor;
+
     // Speed
     [SerializeField] protected float minSpeed = 1.0f;
     [SerializeField] protected float maxSpeed = 3.0f;
@@ -33,7 +36,8 @@ public class EnemyObjectMover : MonoBehaviour
         transform.position = transform.position + (direction * speed) * Time.deltaTime;
         if (outOfBorders())
         {
-            Destroy(gameObject);
+            Destroy(meteor);
+            Debug.Log("Destroy");
         }
     }
 

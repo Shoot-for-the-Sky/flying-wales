@@ -443,6 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e71a1eae0bfedf41a902edc6546a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManagerScript: {fileID: 2032294469}
 --- !u!4 &840306544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3084728645285083813, guid: 2c7e5805dd67c4c46b970b55fc7f3758, type: 3}
@@ -920,6 +921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteorPrefab: {fileID: 7833430220676884611, guid: 5f7dcbe9438ebfb40ac07e43651fb5fd, type: 3}
   createMeteors: 0
+  numberOfMeteorPass: 0
   whalePrefab: {fileID: 7598388183887269266, guid: bc7b8260156439f4380121a762d47d13, type: 3}
   numberOfWhales: 3
   whaleSpeed: 1

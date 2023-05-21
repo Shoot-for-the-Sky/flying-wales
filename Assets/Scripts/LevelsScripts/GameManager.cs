@@ -5,9 +5,12 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    // Enemies
+    // Enemiess
     [SerializeField] protected GameObject meteorPrefab;
-    [SerializeField] protected bool createMeteors = false;
+    [SerializeField] public bool createMeteors = false;
+    private bool createdLastMeteor = false;
+    GameObject lastMeteorInstance;
+    public int numberOfMeteorPass = 0;
 
     // Whales
     [SerializeField] protected GameObject whalePrefab;
@@ -93,7 +96,9 @@ public class GameManager : MonoBehaviour
         {
             if (createMeteors)
             {
-                GameObject meteorInstance = Instantiate(meteorPrefab, Vector3.zero, Quaternion.identity);
+                Debug.Log("Create Meteor");
+                lastMeteorInstance = Instantiate(meteorPrefab, Vector3.zero, Quaternion.identity);
+                createdLastMeteor = true;
             }
             yield return new WaitForSeconds(10f);
         }
@@ -103,6 +108,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         WhalesControl();
+        if (createdLastMeteor && lastMeteorInstance == null)
+        {
+            Debug.Log("Meteor Destroy");
+            numberOfMeteorPass++;
+            createdLastMeteor = false;
+        }
     }
 
     private void WhalesControl()

@@ -58,6 +58,7 @@ public class CheckListManager : MonoBehaviour
             Debug.Log("Going to next state " + checkIndex);
             currentState = checkListStates[checkIndex];
             NextCheck();
+            currentState.EnterState(this);
         }
     }
 
