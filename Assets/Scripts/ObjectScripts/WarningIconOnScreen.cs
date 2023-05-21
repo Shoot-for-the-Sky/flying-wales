@@ -25,7 +25,8 @@ public class WarningIconOnScreen : MonoBehaviour
         transform.position = new Vector3(warningPosition.x, warningPosition.y, transform.position.z);
     }
 
-    private Vector3 GetWarningBorderPosition() {
+    private Vector3 GetWarningBorderPosition()
+    {
         float positionX;
         float positionY;
         switch (trackObjectDirection)
@@ -51,9 +52,9 @@ public class WarningIconOnScreen : MonoBehaviour
                 positionY = transform.position.y;
                 break;
         }
-        Debug.Log(positionX + " : " + positionY);
         return new Vector3(positionX, positionY, 0);
     }
+    
     
     private void OnTriggerEnter2D(Collider2D other)
     {

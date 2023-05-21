@@ -10,7 +10,7 @@ public class WhaleTrackState : WhaleBaseState
     // Determinate if whale is close to mouse by epslions
     private const float epsilonX = 4f;
     private const float epsilonY = 2f;
-    
+
     // Close to mouse steps of whale for each X axis side
     private int step = 0;
     private const int minMumberOfSteps = 180;

@@ -19,7 +19,8 @@ public class EnemyObjectMover : MonoBehaviour
     [SerializeField] protected float rangeRandomDirectionDelta = 0.5f;
     private float randomDirectionInNotMovingAxis;
 
-    void Start() {
+    void Start()
+    {
         moveDirection = GetRandomDirection();
         ChangePositionByDirection();
         randomDirectionInNotMovingAxis = UtilFunctions.GetRandomDoubleInRange(-rangeRandomDirectionDelta, rangeRandomDirectionDelta);
