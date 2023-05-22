@@ -12,7 +12,7 @@ The numerical value in the game are:
 
 4. `Number Of Whales` Increasing during game - The number of whales is changing overtime in the game and the player have the ability to choose if to call to a new whale or not by "paying" scores, the number of whales in the beginning will be `3` and can be maximum `20`, this is because when we play with over `20` whales it become very difficult to control them.
 
-##  Object Positions
+## Object Positions
 
 1. `Whales` - the position of the whales it by the player control.
 2. `Enemies` - we have two different types of enemies and each has its own positioning:
