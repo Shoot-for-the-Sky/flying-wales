@@ -18,7 +18,7 @@ public class Task
     WhaleState wantedState;
 
     // Constructor
-        public Task(Check check)
+    public Task(Check check)
     {
         currentCheck = check;
         level = currentCheck.level;
