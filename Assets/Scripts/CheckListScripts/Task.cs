@@ -16,9 +16,9 @@ public class Task
     public string text;
     private Check currentCheck;
     WhaleState wantedState;
-    
+
     // Constructor
-    public Task(Check check)
+        public Task(Check check)
     {
         currentCheck = check;
         level = currentCheck.level;
@@ -78,9 +78,10 @@ public class Task
         {
             isPassWantedTime = time >= currentCheck.time;
         }
-        
+
         // Pass time not required
-        else {
+        else
+        {
             isPassWantedTime = true;
         }
         return isPassWantedTime;
