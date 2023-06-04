@@ -1,116 +1,126 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class CheckListManager : MonoBehaviour
 {
-    [SerializeField] InputAction dynamicStateButton = new InputAction(type: InputActionType.Button);
-    [SerializeField] InputAction trackStateButton = new InputAction(type: InputActionType.Button);
-    [SerializeField] InputAction attackStateButton = new InputAction(type: InputActionType.Button);
-    [SerializeField] InputAction LeftMouseButton = new InputAction(type: InputActionType.Button);
-    public bool isWhaleStateControllerDisabled = false;
+    // Game Manager
+    [SerializeField] public GameManager gameManagerScript;
 
-    CheckListBaseState currentState;
-    [SerializeField] CheckListBaseState[] checkListStates;
-
+    // User interface
     [SerializeField] Text currentCheckText;
     [SerializeField] Text nextCheckText;
+
+    // Json file
     public TextAsset jsonFilecheckList;
     private CheckList checkListJson;
+
+    // Checklist
     private int checkIndex = 0;
     private int checkListLenth;
 
-    void OnEnable()
-    {
-        dynamicStateButton.Enable();
-        trackStateButton.Enable();
-        attackStateButton.Enable();
-        LeftMouseButton.Enable();
-    }
+    // Task
+    private List<Task> tasks = new List<Task>();
+    private List<Task> currentLevelTasks = new List<Task>();
+    private int taskLevel = 0;
 
-    void OnDisable()
+    // Task Timer
+    private const string timerStringFormat = "#.0#";
+    private float levelTime;
+    private float timer = .0f;
+    private bool activeTimer = true;
+
+    private IEnumerator RunTimer()
     {
-        dynamicStateButton.Disable();
-        trackStateButton.Disable();
-        attackStateButton.Disable();
-        LeftMouseButton.Disable();
+        while (activeTimer)
+        {
+            yield return new WaitForSeconds(0.10f);
+            timer += 0.10f;
+            nextCheckText.text = "Task Time: " + timer.ToString(timerStringFormat);
+            levelTime = timer;
+        }
     }
 
     void Start()
     {
         checkListJson = JsonUtility.FromJson<CheckList>(jsonFilecheckList.text);
         checkListLenth = checkListJson.checkList.Length;
-        SetCheckText(currentCheckText, 0);
-        SetCheckText(nextCheckText, 1);
-        currentState = checkListStates[checkIndex];
-        currentState.EnterState(this);
+        Debug.Log("checkListLenth: " + checkListLenth);
+
+        // Tasks
+        for (int taskIndex = 0; taskIndex < checkListLenth; taskIndex++)
+        {        
+            Task task = new Task(checkListJson.checkList[taskIndex]);
+            tasks.Add(task);
+        }
+        SetCurrentLevelTasks();
+        StartCoroutine(RunTimer());
+        SetLevelTask();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        CheckInput();
-        currentState.UpdateState(this);
-        if (currentState.DoneState(this))
+        foreach (Task task in currentLevelTasks)
+            task.FixedUpdate();
+
+        bool doneLevelTasks = IsDoneLevelTasks();
+        if (doneLevelTasks)
         {
-            checkIndex++;
-            Debug.Log("Going to next state " + checkIndex);
-            currentState = checkListStates[checkIndex];
-            NextCheck();
-            currentState.EnterState(this);
+            Debug.Log("Done level task: " + taskLevel);
+            taskLevel++;
+            SetCurrentLevelTasks();
+            timer = .0f;
+            StartCoroutine(RunTimer());
+            SetLevelTask();
+        }
+
+        SetCurrentLevelTasksData();
+    }
+
+    private void SetCurrentLevelTasksData()
+    {
+        foreach (Task task in currentLevelTasks)
+        {
+            task.time = levelTime;
+            task.currentState = gameManagerScript.currentWhalesState;
+            task.currentPoints = gameManagerScript.points;
         }
     }
 
-    public void CheckInput()
+    private void SetCurrentLevelTasks()
     {
-        if (isWhaleStateControllerDisabled)
+        currentLevelTasks.Clear();
+        foreach (Task task in tasks)
         {
-            return;
-        }
-        if (dynamicStateButton.WasPressedThisFrame())
-        {
-            currentState.ChangeWhaleState(WhaleState.Dynamic);
-        }
-        else if (trackStateButton.WasPressedThisFrame())
-        {
-            currentState.ChangeWhaleState(WhaleState.Track);
-        }
-        else if (attackStateButton.WasPressedThisFrame())
-        {
-            currentState.ChangeWhaleState(WhaleState.Attack);
-        }
-        else if (LeftMouseButton.WasPerformedThisFrame())
-        {
-            currentState.LeftMouseButtonClicked();
+            if (task.level == taskLevel)
+            {
+                currentLevelTasks.Add(task);
+            }
         }
     }
 
-    private void SetCheckText(Text check, int index)
+    private bool IsDoneLevelTasks()
     {
-        check.text = checkListJson.checkList[index].text;
+        foreach (Task task in currentLevelTasks)
+        {
+            if (!task.IsDoneTask())
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
-    private void NextCheck()
-    {
-        // current check
-        if (checkIndex < checkListLenth)
+    private void SetLevelTask() {
+        // set level to new UI
+        string text = "";
+        foreach (Task task in tasks)
         {
-            SetCheckText(currentCheckText, checkIndex);
+            if (task.level == taskLevel) {
+                text += task.text;
+            }
         }
-        else
-        {
-            Debug.Log("Done Check List");
-        }
-
-        // next check
-        if (checkIndex + 1 < checkListLenth)
-        {
-            SetCheckText(nextCheckText, checkIndex + 1);
-        }
-        else
-        {
-            nextCheckText.text = "";
-        }
+        currentCheckText.text = text;
     }
 }

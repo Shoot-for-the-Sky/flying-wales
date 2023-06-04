@@ -152,10 +152,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2053914887}
-  - {fileID: 1824389433}
-  - {fileID: 1355023939}
-  - {fileID: 1583221617}
-  - {fileID: 477981721}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -399,51 +395,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d7a192a3237ff47b20835f8e340919, type: 3}
---- !u!1 &477981720
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 477981721}
-  - component: {fileID: 477981722}
-  m_Layer: 0
-  m_Name: CheckIntro4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &477981721
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477981720}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 88551491}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &477981722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477981720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e71a1eae0bfedf41a902edc6546a6c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManagerScript: {fileID: 2032294469}
 --- !u!4 &840306544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3084728645285083813, guid: 2c7e5805dd67c4c46b970b55fc7f3758, type: 3}
@@ -548,50 +499,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1355023938
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1355023939}
-  - component: {fileID: 1355023940}
-  m_Layer: 0
-  m_Name: CheckIntro2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1355023939
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355023938}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 88551491}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1355023940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355023938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eb836b95d2eb5f49aae14b0ec946640, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1570473381
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,50 +534,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1583221616
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1583221617}
-  - component: {fileID: 1583221618}
-  m_Layer: 0
-  m_Name: CheckIntro3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1583221617
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583221616}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 88551491}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1583221618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583221616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd1638db5a48f3f4399c9918290d6d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1724227038
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,50 +614,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724227038}
   m_CullTransparentMesh: 1
---- !u!1 &1824389432
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1824389433}
-  - component: {fileID: 1824389434}
-  m_Layer: 0
-  m_Name: CheckIntro1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1824389433
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824389432}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 88551491}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1824389434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824389432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f977955237eacd4bbbdc32a8e42b17e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1857456178
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,8 +741,10 @@ MonoBehaviour:
   meteorPrefab: {fileID: 7833430220676884611, guid: 5f7dcbe9438ebfb40ac07e43651fb5fd, type: 3}
   createMeteors: 0
   numberOfMeteorPass: 0
+  points: 0
   whalePrefab: {fileID: 7598388183887269266, guid: bc7b8260156439f4380121a762d47d13, type: 3}
   numberOfWhales: 3
+  currentWhalesState: 0
   whaleSpeed: 1
   whaleRotateSpeed: 5
   dynamicStateButton:
@@ -1040,80 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae81b4933936d634497be99b76099fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dynamicStateButton:
-    m_Name: Dynamic State Button
-    m_Type: 1
-    m_ExpectedControlType: 
-    m_Id: 7b30c1a0-f821-4ada-93de-dfcadb8e1a59
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 0dd4077c-0400-4d97-83d3-c7018fba3db8
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Dynamic State Button
-      m_Flags: 0
-    m_Flags: 0
-  trackStateButton:
-    m_Name: Track State Button
-    m_Type: 1
-    m_ExpectedControlType: 
-    m_Id: 753308d5-78dd-4a3c-aba9-d17193bafd0f
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 3b070653-1b91-4fef-a193-606507f76704
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Track State Button
-      m_Flags: 0
-    m_Flags: 0
-  attackStateButton:
-    m_Name: Attack State Button
-    m_Type: 1
-    m_ExpectedControlType: 
-    m_Id: 390b6d1f-05e8-4643-b01c-f6d19e5be163
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: e7ebb9e7-70f4-4880-bedb-9ff4dcb11e3f
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Attack State Button
-      m_Flags: 0
-    m_Flags: 0
-  LeftMouseButton:
-    m_Name: Left Mouse Button
-    m_Type: 1
-    m_ExpectedControlType: 
-    m_Id: a4964ac2-4411-4b5e-a3ec-c3e0b75a2cf3
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: b0c5969f-8a21-4616-a6ea-05e6cc89cc24
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Left Mouse Button
-      m_Flags: 0
-    m_Flags: 0
-  isWhaleStateControllerDisabled: 0
-  checkListStates:
-  - {fileID: 1824389434}
-  - {fileID: 1355023940}
-  - {fileID: 1583221618}
-  - {fileID: 477981722}
+  gameManagerScript: {fileID: 2032294469}
   currentCheckText: {fileID: 1857456180}
   nextCheckText: {fileID: 1724227040}
   jsonFilecheckList: {fileID: 4900000, guid: 1826cf4b6915b244a8942138cbb29ffa, type: 3}

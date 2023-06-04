@@ -12,12 +12,16 @@ public class GameManager : MonoBehaviour
     GameObject lastMeteorInstance;
     public int numberOfMeteorPass = 0;
 
+    // Values
+    public int points;
+
     // Whales
     [SerializeField] protected GameObject whalePrefab;
     [SerializeField] protected int numberOfWhales = 3;
     private List<GameObject> whales;
+    public WhaleState currentWhalesState;
 
-    // whale speed params
+    // Whales speed params
     [SerializeField] public float whaleSpeed = 1f;
     [SerializeField] public float whaleRotateSpeed = 5f;
 
@@ -68,7 +72,8 @@ public class GameManager : MonoBehaviour
 
         // Create whales
         CreateWhales();
-        ChangeWhalesState(WhaleState.Dynamic);
+        currentWhalesState = WhaleState.Dynamic;
+        ChangeWhalesState();
         ChangeStatesUI(1, 0, 0);
 
         StartCoroutine(SpawnMeteorCoroutine());
@@ -125,19 +130,22 @@ public class GameManager : MonoBehaviour
         if (dynamicStateButton.WasPressedThisFrame())
         {
             Cursor.SetCursor(cursorDynamic, Vector2.zero, CursorMode.ForceSoftware);
-            ChangeWhalesState(WhaleState.Dynamic);
+            currentWhalesState = WhaleState.Dynamic;
+            ChangeWhalesState();
             ChangeStatesUI(1, 0, 0);
         }
         else if (trackStateButton.WasPressedThisFrame())
         {
             Cursor.SetCursor(cursorTrack, Vector2.zero, CursorMode.ForceSoftware);
-            ChangeWhalesState(WhaleState.Track);
+            currentWhalesState = WhaleState.Track;
+            ChangeWhalesState();
             ChangeStatesUI(0, 1, 0);
         }
         else if (attackStateButton.WasPressedThisFrame())
         {
             Cursor.SetCursor(cursorAttack, Vector2.zero, CursorMode.ForceSoftware);
-            ChangeWhalesState(WhaleState.Attack);
+            currentWhalesState = WhaleState.Attack;
+            ChangeWhalesState();
             ChangeStatesUI(0, 0, 1);
         }
         else if (LeftMouseButton.WasPerformedThisFrame())
@@ -149,11 +157,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void ChangeWhalesState(WhaleState whaleState)
+    private void ChangeWhalesState()
     {
         foreach (GameObject whale in whales)
         {
-            whale.GetComponent<WhaleStateManager>().ChangeStateByName(whaleState);
+            whale.GetComponent<WhaleStateManager>().ChangeStateByName(currentWhalesState);
         }
     }
 
