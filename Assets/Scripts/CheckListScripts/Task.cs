@@ -5,11 +5,15 @@ using UnityEngine;
 // This class represent the behaviour of a check task in a checklist and check if the current task is executed
 public class Task
 {
+    // Game Manager
+    GameManager gameManagerScript;
+
     // General
     private bool doneTask = false;
     public float time;
     public WhaleState currentState;
     public int currentPoints;
+    public bool createMeteors;
 
     // Data
     public int level;
@@ -23,15 +27,44 @@ public class Task
         currentCheck = check;
         level = currentCheck.level;
         text = currentCheck.text;
+        createMeteors = check.createMeteors;
+        time = check.time;
         wantedState = GetWhaleStateByName(currentCheck.state);
+        GameObject gameManager = GameObject.FindWithTag("GameManager");
+        gameManagerScript = gameManager.GetComponent<GameManager>();
     }
 
     public void FixedUpdate()
     {
         bool inWantedState = IsWhalesInWantedState();
-        bool inWantedPoints = IsCollectedWantedPoints();
-        bool inWantedTime = IsPassWantedTime();
-        doneTask = inWantedState && inWantedPoints && inWantedTime;
+        bool isCollectedPoints = IsCollectedWantedPoints();
+        bool isPassTime = IsPassWantedTime();
+        bool isSurvive = IsSurviveIfNeeded();
+        bool isDestroy = IsDestroyIfNeeded();
+        bool isShieldPowers = IsShieldPowersIfNeeded();
+        bool isCallPowers = IsCallPowersIfNeeded();
+        if (!inWantedState) {
+            Debug.Log("Unfilled: inWantedState");
+        }
+        if (!isCollectedPoints) {
+            Debug.Log("Unfilled: isCollectedPoints");
+        }
+        if (!isPassTime) {
+            Debug.Log("Unfilled: isPassTime");
+        }
+        if (!isSurvive) {
+            Debug.Log("Unfilled: isSurvive");
+        }
+        if (!isDestroy) {
+            Debug.Log("Unfilled: isDestroy");
+        }
+        if (!isShieldPowers) {
+            Debug.Log("Unfilled: isShieldPowers");
+        }
+        if (!isCallPowers) {
+            Debug.Log("Unfilled: isCallPowers");
+        }
+        doneTask = inWantedState && isCollectedPoints && isPassTime && isSurvive && isDestroy && isShieldPowers && isCallPowers;
     }
 
     public bool IsDoneTask()
@@ -44,6 +77,8 @@ public class Task
         bool inWantedState = false;
         if (currentCheck.state != null)
         {
+            Debug.Log("wantedState: " + wantedState);
+            Debug.Log("currentState: " + currentState);
             inWantedState = wantedState == currentState;
         }
 
@@ -58,7 +93,7 @@ public class Task
     private bool IsCollectedWantedPoints()
     {
         bool isCollectedWantedPoints = false;
-        if (currentCheck.points != -1)
+        if (currentCheck.points != 0)
         {
             isCollectedWantedPoints = currentCheck.points >= currentPoints;
         }
@@ -74,7 +109,7 @@ public class Task
     private bool IsPassWantedTime()
     {
         bool isPassWantedTime = false;
-        if (currentCheck.time != -1)
+        if (currentCheck.time != 0)
         {
             isPassWantedTime = time >= currentCheck.time;
         }
@@ -85,6 +120,83 @@ public class Task
             isPassWantedTime = true;
         }
         return isPassWantedTime;
+    }
+
+    private bool IsSurviveIfNeeded()
+    {
+        bool isSurviveIfNeeded = false;
+        if (currentCheck.surviveMeteorsCount != 0)
+        {
+            if (gameManagerScript.IsFilledSurvivedEnemies("Meteor", currentCheck.surviveMeteorsCount))
+            {
+                isSurviveIfNeeded = true;
+            }
+        }
+
+        // Survive enemies not required
+        else
+        {
+            isSurviveIfNeeded = true;
+        }
+        // Debug.Log("isSurviveIfNeeded: " + isSurviveIfNeeded);
+        return isSurviveIfNeeded;
+    }
+
+    private bool IsDestroyIfNeeded()
+    {
+        bool isDestroyIfNeeded = false;
+        if (currentCheck.destroyMeteorsCount != 0)
+        {
+            if (gameManagerScript.IsFilledDestroyedEnemies("Meteor", currentCheck.destroyMeteorsCount))
+            {
+                isDestroyIfNeeded = true;
+            }
+        }
+        // Destroy enemies not required
+        else
+        {
+            isDestroyIfNeeded = true;
+        }
+        // Debug.Log("isDestroyIfNeeded: " + isDestroyIfNeeded);
+        return isDestroyIfNeeded;
+    }
+
+    private bool IsShieldPowersIfNeeded()
+    {
+        bool isShieldPowersIfNeeded = false;
+        if (currentCheck.shieldPowersCount != 0)
+        {
+            if (gameManagerScript.IsFilledPlayerPowers("Shield", currentCheck.shieldPowersCount))
+            {
+                isShieldPowersIfNeeded = true;
+            }
+        }
+        // Player powers not required
+        else
+        {
+            isShieldPowersIfNeeded = true;
+        }
+        // Debug.Log("isUsedPowersIfNeeded: " + isShieldPowersIfNeeded);
+        return isShieldPowersIfNeeded;
+    }
+
+    private bool IsCallPowersIfNeeded()
+    {
+        bool isCallPowersIfNeeded = false;
+        if (currentCheck.callPowersCount != 0)
+        {
+            if (gameManagerScript.IsFilledPlayerPowers("Shield", currentCheck.shieldPowersCount))
+            {
+                isCallPowersIfNeeded = true;
+            }
+        }
+        // Player powers not required
+        else
+        {
+            isCallPowersIfNeeded = true;
+        }
+        // Debug.Log("isUsedPowersIfNeeded: " + isCallPowersIfNeeded);
+        return isCallPowersIfNeeded;
     }
 
     private WhaleState GetWhaleStateByName(string stateName)

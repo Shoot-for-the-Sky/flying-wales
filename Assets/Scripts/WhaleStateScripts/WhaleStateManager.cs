@@ -3,15 +3,18 @@ using UnityEngine;
 
 public class WhaleStateManager : MonoBehaviour
 {
-    // whale states
+    // Whale states
     WhaleBaseState currentState;
     public WhaleDynamicState DynamicState = new WhaleDynamicState();
     public WhaleTrackState TrackState = new WhaleTrackState();
     public WhaleAttackState AttackState = new WhaleAttackState();
 
-    // whale speed params
+    // Whale speed params
     public float whaleSpeed = 1f;
     public float whaleRotateSpeed = 5f;
+
+    // Whale other params
+    [SerializeField] public float damagePoints;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,11 @@ public class WhaleStateManager : MonoBehaviour
         FlipWhaleByDirection();
         currentState.whaleSpeed = whaleSpeed;
         transform.position += Time.fixedDeltaTime * currentState.whaleSpeed * currentState.nextStepPosition;
+    }
+
+    public void HitByEnemey(float damage)
+    {
+        Debug.Log("Hit By Enemy - damage: " + damage);
     }
 
     public void ChangeWhaleSpeed(float speed)

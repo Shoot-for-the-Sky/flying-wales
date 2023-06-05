@@ -12,7 +12,6 @@ public class WarningIconOnScreen : MonoBehaviour
     {
         EnemyObjectMover moverScript = trackObject.GetComponent<EnemyObjectMover>();
         trackObjectDirection = moverScript.moveDirection;
-        Debug.Log(trackObjectDirection);
         Vector3 warningPosition = GetWarningBorderPosition();
         Vector3 newPosition = new Vector3(warningPosition.x, warningPosition.y, transform.position.z);
         transform.position = newPosition;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyObjectMover : MonoBehaviour
 {
+    // Game Manager
+    GameManager gameManagerScript;
+
     // Meteor parent game object
     [SerializeField] protected GameObject meteor;
 
@@ -23,7 +26,11 @@ public class EnemyObjectMover : MonoBehaviour
     private float randomDirectionInNotMovingAxis;
 
     void Start()
-    {
+    {   
+        // Game Object
+        GameObject gameManager = GameObject.FindWithTag("GameManager");
+        gameManagerScript = gameManager.GetComponent<GameManager>();
+
         moveDirection = GetRandomDirection();
         ChangePositionByDirection();
         randomDirectionInNotMovingAxis = UtilFunctions.GetRandomDoubleInRange(-rangeRandomDirectionDelta, rangeRandomDirectionDelta);
@@ -36,8 +43,8 @@ public class EnemyObjectMover : MonoBehaviour
         transform.position = transform.position + (direction * speed) * Time.deltaTime;
         if (outOfBorders())
         {
+            gameManagerScript.RegisterSurvivedEnemy("Meteor");
             Destroy(meteor);
-            Debug.Log("Destroy");
         }
     }
 

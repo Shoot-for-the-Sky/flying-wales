@@ -37,12 +37,10 @@ public class BackgroundMoverScript : MonoBehaviour
             if (transform.position.x > horizontalRangeLimit || transform.position.x < -horizontalRangeLimit)
             {
                 targetRandomPosition.x = -targetRandomPosition.x;
-                Debug.Log("Handle Horizontal");
             }
             if (transform.position.y > verticalRangeLimit || transform.position.y < -verticalRangeLimit)
             {
                 targetRandomPosition.y = -targetRandomPosition.y;
-                Debug.Log("Handle Verical");
             }
             nextPostion = targetRandomPosition;
         }

@@ -13,12 +13,12 @@ public class CheckListManager : MonoBehaviour
     [SerializeField] Text nextCheckText;
 
     // Json file
-    public TextAsset jsonFilecheckList;
+    public TextAsset jsonFileCheckList;
     private CheckList checkListJson;
 
     // Checklist
     private int checkIndex = 0;
-    private int checkListLenth;
+    private int checkListLength;
 
     // Task
     private List<Task> tasks = new List<Task>();
@@ -33,23 +33,29 @@ public class CheckListManager : MonoBehaviour
 
     private IEnumerator RunTimer()
     {
-        while (activeTimer)
+        while (true)
         {
             yield return new WaitForSeconds(0.10f);
             timer += 0.10f;
-            nextCheckText.text = "Task Time: " + timer.ToString(timerStringFormat);
+            if (activeTimer)
+            {
+                nextCheckText.text = "Task Time: " + timer.ToString(timerStringFormat);
+            }
+            else
+            {
+                nextCheckText.text = "";
+            }
             levelTime = timer;
         }
     }
 
     void Start()
     {
-        checkListJson = JsonUtility.FromJson<CheckList>(jsonFilecheckList.text);
-        checkListLenth = checkListJson.checkList.Length;
-        Debug.Log("checkListLenth: " + checkListLenth);
+        checkListJson = JsonUtility.FromJson<CheckList>(jsonFileCheckList.text);
+        checkListLength = checkListJson.checkList.Length;
 
         // Tasks
-        for (int taskIndex = 0; taskIndex < checkListLenth; taskIndex++)
+        for (int taskIndex = 0; taskIndex < checkListLength; taskIndex++)
         {        
             Task task = new Task(checkListJson.checkList[taskIndex]);
             tasks.Add(task);
@@ -71,7 +77,6 @@ public class CheckListManager : MonoBehaviour
             taskLevel++;
             SetCurrentLevelTasks();
             timer = .0f;
-            StartCoroutine(RunTimer());
             SetLevelTask();
         }
 
@@ -115,12 +120,26 @@ public class CheckListManager : MonoBehaviour
     private void SetLevelTask() {
         // set level to new UI
         string text = "";
+        bool activeTimerNeeded = false;
         foreach (Task task in tasks)
         {
-            if (task.level == taskLevel) {
-                text += task.text;
+            if (task.level == taskLevel)
+            {
+                text += task.text + "\n";
+                // Need timer in task
+                if (task.time != -1)
+                {
+                    activeTimerNeeded = true;
+                }
+
+                // Need to create enemies in task
+                if (task.createMeteors)
+                {
+                    gameManagerScript.createMeteors = true;
+                }
             }
         }
+        activeTimer = activeTimerNeeded;
         currentCheckText.text = text;
     }
 }

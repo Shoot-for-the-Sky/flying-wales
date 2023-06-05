@@ -10,7 +10,9 @@ public class Check
     public string state;
     public int points;
     public int time;
-    public Dictionary<string, int> survive = new Dictionary<string, int>();
-    public Dictionary<string, int> destroy = new Dictionary<string, int>();
-    public Dictionary<string, int> powers = new Dictionary<string, int>();
+    public int surviveMeteorsCount;
+    public int destroyMeteorsCount;
+    public int shieldPowersCount;
+    public int callPowersCount;
+    public bool createMeteors;
 }

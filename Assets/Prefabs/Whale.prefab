@@ -63,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whaleSpeed: 1
   whaleRotateSpeed: 1
+  damagePoints: 15.2
 --- !u!50 &7598388183887269270
 Rigidbody2D:
   serializedVersion: 4

@@ -30,7 +30,6 @@ public class WhaleAttackState : WhaleBaseState
 
     public override void EnterState(WhaleStateManager whale)
     {
-        Debug.Log("EnterState Attack State");
         nextStepPosition = Vector3.zero;
         nextPostion = Vector3.zero;
         prevPostion = Vector3.zero;
@@ -78,7 +77,11 @@ public class WhaleAttackState : WhaleBaseState
 
     public override void OnTriggerEnter2D(WhaleStateManager whale, Collider2D collision)
     {
-
+        if (collision.gameObject.tag == "MeteorBody")
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            enemy.AttackByPlayer(whale.damagePoints);
+        }
     }
 
     public override void LeftMouseButtonClicked()

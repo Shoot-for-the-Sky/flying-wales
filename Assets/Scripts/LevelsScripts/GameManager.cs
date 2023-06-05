@@ -5,12 +5,14 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    // Enemiess
+    // Enemies
     [SerializeField] protected GameObject meteorPrefab;
     [SerializeField] public bool createMeteors = false;
-    private bool createdLastMeteor = false;
-    GameObject lastMeteorInstance;
-    public int numberOfMeteorPass = 0;
+    public int numberOfSurvivedEnemies = 0;
+
+    // Save enemies instance when created them
+    // For checking when destroy and manipulate
+    private List<GameObject> enemies;
 
     // Values
     public int points;
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float whaleSpeed = 1f;
     [SerializeField] public float whaleRotateSpeed = 5f;
 
-    // Buttons contolling the whales
+    // Buttons controlling the whales
     [SerializeField] InputAction dynamicStateButton = new InputAction(type: InputActionType.Button);
     [SerializeField] InputAction trackStateButton = new InputAction(type: InputActionType.Button);
     [SerializeField] InputAction attackStateButton = new InputAction(type: InputActionType.Button);
@@ -47,6 +49,11 @@ public class GameManager : MonoBehaviour
     public Texture2D cursorDynamic;
     public Texture2D cursorTrack;
     public Texture2D cursorAttack;
+
+    // Registers
+    public Dictionary<string, int> destroyedEnemiesCounter;
+    public Dictionary<string, int> survivedEnemiesCounter;
+    public Dictionary<string, int> playerPowersCounter;
 
     void OnEnable()
     {
@@ -77,6 +84,12 @@ public class GameManager : MonoBehaviour
         ChangeStatesUI(1, 0, 0);
 
         StartCoroutine(SpawnMeteorCoroutine());
+
+        // Registers
+        destroyedEnemiesCounter = new Dictionary<string, int>();
+        survivedEnemiesCounter = new Dictionary<string, int>();
+        playerPowersCounter = new Dictionary<string, int>();
+        enemies = new List<GameObject>();
     }
 
     private void CreateWhales()
@@ -89,21 +102,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CreateMeteor()
-    {
-        GameObject prefabInstance = Instantiate(meteorPrefab);
-        prefabInstance.transform.position = Vector3.zero;
-    }
-
     private IEnumerator SpawnMeteorCoroutine()
     {
         while (true)
         {
             if (createMeteors)
             {
-                Debug.Log("Create Meteor");
-                lastMeteorInstance = Instantiate(meteorPrefab, Vector3.zero, Quaternion.identity);
-                createdLastMeteor = true;
+                GameObject meteor = Instantiate(meteorPrefab, Vector3.zero, Quaternion.identity);
+                enemies.Add(meteor);
             }
             yield return new WaitForSeconds(10f);
         }
@@ -113,14 +119,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         WhalesControl();
-        if (createdLastMeteor && lastMeteorInstance == null)
-        {
-            Debug.Log("Meteor Destroy");
-            numberOfMeteorPass++;
-            createdLastMeteor = false;
-        }
     }
 
+    // Controlling the whales by their current state
     private void WhalesControl()
     {
         if (isWhaleStateControllerDisabled)
@@ -157,6 +158,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Change the state of all the current whales
     private void ChangeWhalesState()
     {
         foreach (GameObject whale in whales)
@@ -179,5 +181,78 @@ public class GameManager : MonoBehaviour
         dynamicSpriteRenderer.sprite = dynamicSprites[dynamic];
         trackSpriteRenderer.sprite = trackSprites[track];
         attackSpriteRenderer.sprite = attackSprites[attack];
+    }
+
+    // Register when enemy is destroyed by player (by attacking)
+    public void RegisterDestroyedEnemy(string enemyTagName)
+    {
+        AddCounterToRegister(destroyedEnemiesCounter, enemyTagName);
+        foreach (var kvp in destroyedEnemiesCounter) {
+            Debug.Log("RegisterDestroyedEnemy) Key = " + kvp.Key + ", Value = " + kvp.Value);
+        }
+    }
+
+    // Register when enemy is destroyed by himself (for example - meteor out of borders)
+    public void RegisterSurvivedEnemy(string enemyTagName)
+    {
+        AddCounterToRegister(survivedEnemiesCounter, enemyTagName);
+        foreach (var kvp in survivedEnemiesCounter) {
+            Debug.Log("RegisterSurvivedEnemy [" + enemyTagName + "]) Key = " + kvp.Key + ", Value = " + kvp.Value);
+        }
+    }
+
+    // Register the use of power by player
+    public void RegisterPowerPlayer(string powerName)
+    {
+        AddCounterToRegister(playerPowersCounter, powerName);
+        foreach (var kvp in playerPowersCounter) {
+            Debug.Log("RegisterPowerPlayer) Key = " + kvp.Key + ", Value = " + kvp.Value);
+        }
+    }
+
+    // General function that add count to register dictionary counter
+    private void AddCounterToRegister(Dictionary<string, int> registerCounter, string keyName)
+    {
+        if (registerCounter.ContainsKey(keyName))
+        {
+            registerCounter[keyName]++;
+        }
+        else
+        {
+            registerCounter[keyName] = 1;
+        }
+    }
+
+    // Check if task is filled with required destroyed enemies
+    public bool IsFilledDestroyedEnemies(string enemyTagName, int count)
+    {
+        return IsFilledRegister(destroyedEnemiesCounter, enemyTagName, count);
+    }
+
+    // Check if task is filled with required survived enemies
+    public bool IsFilledSurvivedEnemies(string enemyTagName, int count)
+    {
+        return IsFilledRegister(survivedEnemiesCounter, enemyTagName, count);
+    }
+
+    // Check if task is filled with required player powers
+    public bool IsFilledPlayerPowers(string powerTagName, int count)
+    {
+        return IsFilledRegister(playerPowersCounter, powerTagName, count);
+    }
+
+    // General function for checking if task is filled with register dictionary counter
+    private bool IsFilledRegister(Dictionary<string, int> registerCounter, string tagName, int count)
+    {
+        bool isFilled = false;
+        if (count == 0)
+        {
+            isFilled = true;
+        }
+        else if (registerCounter.ContainsKey(tagName))
+        {
+            isFilled = registerCounter[tagName] >= count;
+        }
+        return isFilled;
     }
 }

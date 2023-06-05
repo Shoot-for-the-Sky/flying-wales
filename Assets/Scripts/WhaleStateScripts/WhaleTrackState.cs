@@ -34,7 +34,6 @@ public class WhaleTrackState : WhaleBaseState
 
     public override void EnterState(WhaleStateManager whale)
     {
-        Debug.Log("EnterState Track State");
         mainCamera = Camera.main;
         numberOfSteps = Random.Range(minMumberOfSteps, maxMumberOfSteps);
     }
@@ -101,7 +100,11 @@ public class WhaleTrackState : WhaleBaseState
 
     public override void OnTriggerEnter2D(WhaleStateManager whale, Collider2D collision)
     {
-
+        if (collision.gameObject.tag == "MeteorBody")
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            whale.HitByEnemey(enemy.hitPoints);
+        }
     }
 
     public override void LeftMouseButtonClicked()
