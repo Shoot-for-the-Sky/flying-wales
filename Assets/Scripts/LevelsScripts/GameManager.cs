@@ -88,7 +88,6 @@ public class GameManager : MonoBehaviour
         ChangeStatesUI(1, 0, 0);
 
         StartCoroutine(SpawnMeteorCoroutine());
-        StartCoroutine(RandomScore());
 
         // Registers
         destroyedEnemiesCounter = new Dictionary<string, int>();
@@ -121,7 +120,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         WhalesControl();
         ScoreText.text = score.ToString();
@@ -265,22 +264,5 @@ public class GameManager : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
-    }
-
-    private IEnumerator RandomScore()
-    {
-        while (true)
-        {
-            if (currentWhalesState == WhaleState.Dynamic)
-            {
-                if (UtilFunctions.RollInPercentage(25))
-                {
-                    int scoreToAdd = UtilFunctions.GetRandomIntInRange(1, 3);
-                    AddScore(scoreToAdd);
-                    // todo: Take random alive whale add make animation of gathering score
-                }
-            }
-            yield return new WaitForSeconds(1f);
-        }
     }
 }

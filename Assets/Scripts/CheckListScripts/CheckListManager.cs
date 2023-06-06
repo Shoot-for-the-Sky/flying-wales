@@ -127,7 +127,7 @@ public class CheckListManager : MonoBehaviour
             {
                 text += task.text + "\n";
                 // Need timer in task
-                if (task.time != -1)
+                if (task.time != 0)
                 {
                     activeTimerNeeded = true;
                 }

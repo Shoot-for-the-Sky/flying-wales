@@ -1,13 +1,18 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class WhaleStateManager : MonoBehaviour
 {
+    // Game Manager
+    GameManager gameManagerScript;
+
     // Whale states
     WhaleBaseState currentState;
     public WhaleDynamicState DynamicState = new WhaleDynamicState();
     public WhaleTrackState TrackState = new WhaleTrackState();
     public WhaleAttackState AttackState = new WhaleAttackState();
+    public WhaleState currentWhaleEnumState;
 
     // Whale speed params
     public float whaleSpeed = 1f;
@@ -19,9 +24,13 @@ public class WhaleStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject gameManager = GameObject.FindWithTag("GameManager");
+        gameManagerScript = gameManager.GetComponent<GameManager>();
         currentState = DynamicState;
+        currentWhaleEnumState = WhaleState.Dynamic;
         currentState.whaleSpeed = whaleSpeed;
         currentState.EnterState(this);
+        StartCoroutine(RandomScore());
     }
 
     void FixedUpdate()
@@ -64,12 +73,15 @@ public class WhaleStateManager : MonoBehaviour
         switch (state)
         {
             case (WhaleState.Dynamic):
+                currentWhaleEnumState = WhaleState.Dynamic;
                 SwitchState(DynamicState);
                 break;
             case (WhaleState.Track):
+                currentWhaleEnumState = WhaleState.Track;
                 SwitchState(TrackState);
                 break;
             case (WhaleState.Attack):
+                currentWhaleEnumState = WhaleState.Attack;
                 SwitchState(AttackState);
                 break;
         }
@@ -124,6 +136,23 @@ public class WhaleStateManager : MonoBehaviour
                 newScaleY = -1;
             }
             transform.localScale = new Vector3(transform.localScale.x, newScaleY, transform.localScale.z);
+        }
+    }
+
+    private IEnumerator RandomScore()
+    {
+        while (true)
+        {
+            if (currentWhaleEnumState == WhaleState.Dynamic)
+            {
+                if (UtilFunctions.RollInPercentage(25))
+                {
+                    int scoreToAdd = UtilFunctions.GetRandomIntInRange(1, 3);
+                    gameManagerScript.AddScore(scoreToAdd);
+                    // todo: Take random alive whale add make animation of gathering score
+                }
+            }
+            yield return new WaitForSeconds(1f);
         }
     }
 }

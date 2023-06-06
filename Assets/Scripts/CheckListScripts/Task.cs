@@ -43,27 +43,27 @@ public class Task
         bool isDestroy = IsDestroyIfNeeded();
         bool isShieldPowers = IsShieldPowersIfNeeded();
         bool isCallPowers = IsCallPowersIfNeeded();
-        if (!inWantedState) {
-            Debug.Log("Unfilled: inWantedState");
-        }
-        if (!isCollectedScore) {
-            Debug.Log("Unfilled: isCollectedScore");
-        }
-        if (!isPassTime) {
-            Debug.Log("Unfilled: isPassTime");
-        }
-        if (!isSurvive) {
-            Debug.Log("Unfilled: isSurvive");
-        }
-        if (!isDestroy) {
-            Debug.Log("Unfilled: isDestroy");
-        }
-        if (!isShieldPowers) {
-            Debug.Log("Unfilled: isShieldPowers");
-        }
-        if (!isCallPowers) {
-            Debug.Log("Unfilled: isCallPowers");
-        }
+        // if (!inWantedState) {
+        //     Debug.Log("Unfilled: inWantedState");
+        // }
+        // if (!isCollectedScore) {
+        //     Debug.Log("Unfilled: isCollectedScore");
+        // }
+        // if (!isPassTime) {
+        //     Debug.Log("Unfilled: isPassTime");
+        // }
+        // if (!isSurvive) {
+        //     Debug.Log("Unfilled: isSurvive");
+        // }
+        // if (!isDestroy) {
+        //     Debug.Log("Unfilled: isDestroy");
+        // }
+        // if (!isShieldPowers) {
+        //     Debug.Log("Unfilled: isShieldPowers");
+        // }
+        // if (!isCallPowers) {
+        //     Debug.Log("Unfilled: isCallPowers");
+        // }
         doneTask = inWantedState && isCollectedScore && isPassTime && isSurvive && isDestroy && isShieldPowers && isCallPowers;
     }
 
@@ -75,10 +75,8 @@ public class Task
     private bool IsWhalesInWantedState()
     {
         bool inWantedState = false;
-        if (currentCheck.state != null)
+        if (currentCheck.state != null && currentCheck.state != "")
         {
-            Debug.Log("wantedState: " + wantedState);
-            Debug.Log("currentState: " + currentState);
             inWantedState = wantedState == currentState;
         }
 
@@ -93,7 +91,6 @@ public class Task
     private bool IsCollectedWantedScore()
     {
         bool isCollectedWantedScore = false;
-        Debug.Log("currentCheck.score: " + currentCheck.score);
         if (currentCheck.score != 0)
         {
             isCollectedWantedScore = currentScore >= currentCheck.score;
