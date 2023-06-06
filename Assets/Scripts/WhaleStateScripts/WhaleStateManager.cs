@@ -34,7 +34,7 @@ public class WhaleStateManager : MonoBehaviour
         transform.position += Time.fixedDeltaTime * currentState.whaleSpeed * currentState.nextStepPosition;
     }
 
-    public void HitByEnemey(float damage)
+    public void HitByEnemy(float damage)
     {
         Debug.Log("Hit By Enemy - damage: " + damage);
     }
@@ -91,18 +91,18 @@ public class WhaleStateManager : MonoBehaviour
 
     private void UpdateWhalePositions()
     {
-        currentState.prevPostion = new Vector3(transform.position.x, transform.position.y, 0.0f);
-        float nextX = currentState.prevPostion.x + currentState.nextStepPosition.x;
-        float nextY = currentState.prevPostion.y + currentState.nextStepPosition.y;
-        currentState.nextPostion = new Vector3(nextX, nextY, 0.0f);
+        currentState.prevPosition = new Vector3(transform.position.x, transform.position.y, 0.0f);
+        float nextX = currentState.prevPosition.x + currentState.nextStepPosition.x;
+        float nextY = currentState.prevPosition.y + currentState.nextStepPosition.y;
+        currentState.nextPosition = new Vector3(nextX, nextY, 0.0f);
     }
 
     private void RotateWhaleByDegree()
     {
         // make the whale to point is body to the direction he goes by degree
         // between prev and next position
-        double y = currentState.nextPostion.y - currentState.prevPostion.y;
-        double x = currentState.nextPostion.x - currentState.prevPostion.x;
+        double y = currentState.nextPosition.y - currentState.prevPosition.y;
+        double x = currentState.nextPosition.x - currentState.prevPosition.x;
         double radians = Math.Atan2(y, x);
         int degree = (int)(radians * (180 / Math.PI));
         currentState.whaleDegree = degree;

@@ -31,8 +31,8 @@ public class WhaleAttackState : WhaleBaseState
     public override void EnterState(WhaleStateManager whale)
     {
         nextStepPosition = Vector3.zero;
-        nextPostion = Vector3.zero;
-        prevPostion = Vector3.zero;
+        nextPosition = Vector3.zero;
+        prevPosition = Vector3.zero;
         mainCamera = Camera.main;
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     private List<GameObject> enemies;
 
     // Values
-    public int points;
+    public int score;
 
     // Whales
     [SerializeField] protected GameObject whalePrefab;
@@ -33,6 +34,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] InputAction attackStateButton = new InputAction(type: InputActionType.Button);
     [SerializeField] InputAction LeftMouseButton = new InputAction(type: InputActionType.Button);
     public bool isWhaleStateControllerDisabled = false;
+
+    // UI
+    [SerializeField] protected Text ScoreText;
 
     // States UI Sprites
     [SerializeField] protected List<Sprite> dynamicSprites;
@@ -84,6 +88,7 @@ public class GameManager : MonoBehaviour
         ChangeStatesUI(1, 0, 0);
 
         StartCoroutine(SpawnMeteorCoroutine());
+        StartCoroutine(RandomScore());
 
         // Registers
         destroyedEnemiesCounter = new Dictionary<string, int>();
@@ -116,9 +121,10 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         WhalesControl();
+        ScoreText.text = score.ToString();
     }
 
     // Controlling the whales by their current state
@@ -254,5 +260,27 @@ public class GameManager : MonoBehaviour
             isFilled = registerCounter[tagName] >= count;
         }
         return isFilled;
+    }
+
+    public void AddScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+    }
+
+    private IEnumerator RandomScore()
+    {
+        while (true)
+        {
+            if (currentWhalesState == WhaleState.Dynamic)
+            {
+                if (UtilFunctions.RollInPercentage(25))
+                {
+                    int scoreToAdd = UtilFunctions.GetRandomIntInRange(1, 3);
+                    AddScore(scoreToAdd);
+                    // todo: Take random alive whale add make animation of gathering score
+                }
+            }
+            yield return new WaitForSeconds(1f);
+        }
     }
 }

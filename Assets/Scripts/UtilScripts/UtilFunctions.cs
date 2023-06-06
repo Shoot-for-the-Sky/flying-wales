@@ -40,4 +40,21 @@ public class UtilFunctions : MonoBehaviour
         double rDouble = r.NextDouble() * (max - min);
         return (float)(min + rDouble);
     }
+
+    public static bool RollInPercentage(int percentage)
+    {
+        int randomInt = UtilFunctions.GetRandomIntInRange(0, 100);
+        if (randomInt < percentage)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public static int GetRandomIntInRange(int min, int max)
+    {
+        System.Random random = new System.Random();
+        int randomInt = random.Next(min, max);
+        return randomInt;
+    }
 }

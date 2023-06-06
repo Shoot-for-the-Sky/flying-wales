@@ -103,7 +103,7 @@ public class WhaleTrackState : WhaleBaseState
         if (collision.gameObject.tag == "MeteorBody")
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            whale.HitByEnemey(enemy.hitPoints);
+            whale.HitByEnemy(enemy.hitPoints);
         }
     }
 

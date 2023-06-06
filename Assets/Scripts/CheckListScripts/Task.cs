@@ -12,7 +12,7 @@ public class Task
     private bool doneTask = false;
     public float time;
     public WhaleState currentState;
-    public int currentPoints;
+    public int currentScore;
     public bool createMeteors;
 
     // Data
@@ -37,7 +37,7 @@ public class Task
     public void FixedUpdate()
     {
         bool inWantedState = IsWhalesInWantedState();
-        bool isCollectedPoints = IsCollectedWantedPoints();
+        bool isCollectedScore = IsCollectedWantedScore();
         bool isPassTime = IsPassWantedTime();
         bool isSurvive = IsSurviveIfNeeded();
         bool isDestroy = IsDestroyIfNeeded();
@@ -46,8 +46,8 @@ public class Task
         if (!inWantedState) {
             Debug.Log("Unfilled: inWantedState");
         }
-        if (!isCollectedPoints) {
-            Debug.Log("Unfilled: isCollectedPoints");
+        if (!isCollectedScore) {
+            Debug.Log("Unfilled: isCollectedScore");
         }
         if (!isPassTime) {
             Debug.Log("Unfilled: isPassTime");
@@ -64,7 +64,7 @@ public class Task
         if (!isCallPowers) {
             Debug.Log("Unfilled: isCallPowers");
         }
-        doneTask = inWantedState && isCollectedPoints && isPassTime && isSurvive && isDestroy && isShieldPowers && isCallPowers;
+        doneTask = inWantedState && isCollectedScore && isPassTime && isSurvive && isDestroy && isShieldPowers && isCallPowers;
     }
 
     public bool IsDoneTask()
@@ -90,20 +90,21 @@ public class Task
         return inWantedState;
     }
 
-    private bool IsCollectedWantedPoints()
+    private bool IsCollectedWantedScore()
     {
-        bool isCollectedWantedPoints = false;
-        if (currentCheck.points != 0)
+        bool isCollectedWantedScore = false;
+        Debug.Log("currentCheck.score: " + currentCheck.score);
+        if (currentCheck.score != 0)
         {
-            isCollectedWantedPoints = currentCheck.points >= currentPoints;
+            isCollectedWantedScore = currentScore >= currentCheck.score;
         }
 
         // Collected points not required
         else
         {
-            isCollectedWantedPoints = true;
+            isCollectedWantedScore = true;
         }
-        return isCollectedWantedPoints;
+        return isCollectedWantedScore;
     }
 
     private bool IsPassWantedTime()

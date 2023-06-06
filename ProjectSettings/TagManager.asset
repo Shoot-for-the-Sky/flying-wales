@@ -11,6 +11,7 @@ TagManager:
   - AttackStateIcon
   - MeteorBody
   - GameManager
+  - ScoreText
   layers:
   - Default
   - TransparentFX

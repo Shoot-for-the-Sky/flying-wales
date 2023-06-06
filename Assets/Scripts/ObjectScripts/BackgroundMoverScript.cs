@@ -10,20 +10,20 @@ public class BackgroundMoverScript : MonoBehaviour
     [SerializeField] protected float verticalRangeLimit = 17.0f;
 
     private int stepsCounter = 0;
-    private Vector3 nextPostion;
+    private Vector3 nextPosition;
 
     private void Start()
     {
-        nextPostion = transform.position;
+        nextPosition = transform.position;
     }
 
     void FixedUpdate()
     {
-        transform.position += nextPostion * speed * Time.fixedDeltaTime;
+        transform.position += nextPosition * speed * Time.fixedDeltaTime;
         stepsCounter++;
         if (stepsCounter >= directionStepsCounter)
         {
-            nextPostion = GetRandomPosition();
+            nextPosition = GetRandomPosition();
             stepsCounter = 0;
         }
     }
@@ -42,7 +42,7 @@ public class BackgroundMoverScript : MonoBehaviour
             {
                 targetRandomPosition.y = -targetRandomPosition.y;
             }
-            nextPostion = targetRandomPosition;
+            nextPosition = targetRandomPosition;
         }
         return targetRandomPosition;
     }

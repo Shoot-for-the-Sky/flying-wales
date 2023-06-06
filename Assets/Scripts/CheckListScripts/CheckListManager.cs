@@ -89,7 +89,7 @@ public class CheckListManager : MonoBehaviour
         {
             task.time = levelTime;
             task.currentState = gameManagerScript.currentWhalesState;
-            task.currentPoints = gameManagerScript.points;
+            task.currentScore = gameManagerScript.score;
         }
     }
 

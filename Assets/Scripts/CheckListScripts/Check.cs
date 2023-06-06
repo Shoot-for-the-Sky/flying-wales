@@ -8,7 +8,7 @@ public class Check
     public int level;
     public string text;
     public string state;
-    public int points;
+    public int score;
     public int time;
     public int surviveMeteorsCount;
     public int destroyMeteorsCount;

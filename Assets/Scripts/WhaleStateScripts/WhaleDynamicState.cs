@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class WhaleDynamicState : WhaleBaseState
@@ -12,8 +13,8 @@ public class WhaleDynamicState : WhaleBaseState
     public override void EnterState(WhaleStateManager whale)
     {
         nextStepPosition = GetRandomPosition();
-        nextPostion = Vector3.zero;
-        prevPostion = Vector3.zero;
+        nextPosition = Vector3.zero;
+        prevPosition = Vector3.zero;
     }
 
     public override void UpdateState(WhaleStateManager whale)
@@ -32,7 +33,7 @@ public class WhaleDynamicState : WhaleBaseState
     private Vector3 GetRandomPosition()
     {
         Vector3 targetRandomPosition;
-        if (prevPostion != Vector3.zero && prevPostion != nextStepPosition)
+        if (prevPosition != Vector3.zero && prevPosition != nextStepPosition)
         {
             // check whale previous directions
             bool goingRight = IsWhaleGoingRight();
@@ -114,15 +115,15 @@ public class WhaleDynamicState : WhaleBaseState
             nextStepPosition.y = -nextStepPosition.y;
 
             // swap positions
-            Vector3 tempPosition = new Vector3(prevPostion.x, prevPostion.y, prevPostion.y);
-            prevPostion = new Vector3(nextPostion.x, prevPostion.y, prevPostion.z);
-            nextPostion = new Vector3(tempPosition.x, tempPosition.y, tempPosition.z);
+            Vector3 tempPosition = new Vector3(prevPosition.x, prevPosition.y, prevPosition.y);
+            prevPosition = new Vector3(nextPosition.x, prevPosition.y, prevPosition.z);
+            nextPosition = new Vector3(tempPosition.x, tempPosition.y, tempPosition.z);
         }
 
         if (collision.gameObject.tag == "MeteorBody")
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            whale.HitByEnemey(enemy.hitPoints);
+            whale.HitByEnemy(enemy.hitPoints);
         }
     }
 

@@ -6,8 +6,8 @@ public abstract class WhaleBaseState
     public float whaleDegree = .0f;
     public Vector3 nextStepPosition;
     public Vector3 prevStepPosition;
-    public Vector3 nextPostion;
-    public Vector3 prevPostion;
+    public Vector3 nextPosition;
+    public Vector3 prevPosition;
 
     public abstract void EnterState(WhaleStateManager whale);
 
@@ -21,11 +21,11 @@ public abstract class WhaleBaseState
 
     public bool IsWhaleGoingUp()
     {
-        return prevPostion.y < nextPostion.y;
+        return prevPosition.y < nextPosition.y;
     }
 
     public bool IsWhaleGoingRight()
     {
-        return prevPostion.x < nextPostion.x;
+        return prevPosition.x < nextPosition.x;
     }
 }
