@@ -11,14 +11,19 @@ public class EnemyObjectMover : MonoBehaviour
     [SerializeField] protected GameObject meteor;
 
     // Speed
-    [SerializeField] protected float minSpeed = 1.0f;
-    [SerializeField] protected float maxSpeed = 3.0f;
+    [SerializeField] protected float minSpeed;
+    [SerializeField] protected float maxSpeed;
+
+    // Rotation
+    [SerializeField] public float minRotationSpeed;
+    [SerializeField] public float maxRotationSpeed;
+    [SerializeField] private float rotationSpeed;
 
     // Dead zones
-    [SerializeField] protected float minDeadAxisXZone = -30.0f;
-    [SerializeField] protected float maxDeadAxisXZone = 30.0f;
-    [SerializeField] protected float minDeadAxisYZone = -10.0f;
-    [SerializeField] protected float maxDeadAxisYZone = 10.0f;
+    [SerializeField] protected float minDeadAxisXZone;
+    [SerializeField] protected float maxDeadAxisXZone;
+    [SerializeField] protected float minDeadAxisYZone;
+    [SerializeField] protected float maxDeadAxisYZone;
 
     // Directions
     public Direction moveDirection;
@@ -31,16 +36,26 @@ public class EnemyObjectMover : MonoBehaviour
         GameObject gameManager = GameObject.FindWithTag("GameManager");
         gameManagerScript = gameManager.GetComponent<GameManager>();
 
+        // Random direction
         moveDirection = GetRandomDirection();
         ChangePositionByDirection();
         randomDirectionInNotMovingAxis = UtilFunctions.GetRandomDoubleInRange(-rangeRandomDirectionDelta, rangeRandomDirectionDelta);
+
+        // Random rotation speed
+        rotationSpeed = UtilFunctions.GetRandomDoubleInRange(minRotationSpeed, maxRotationSpeed);
     }
 
     void Update()
     {
+        // Moving
         float speed = Random.Range(minSpeed, maxSpeed);
         Vector3 direction = GetDirection();
         transform.position = transform.position + (direction * speed) * Time.deltaTime;
+
+        // Rotation
+        transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
+
+        // Out of game borders
         if (outOfBorders())
         {
             gameManagerScript.RegisterSurvivedEnemy("Meteor");

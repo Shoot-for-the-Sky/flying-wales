@@ -268,6 +268,9 @@ MonoBehaviour:
   meteor: {fileID: 7833430220676884611}
   minSpeed: 1
   maxSpeed: 3
+  minRotationSpeed: 5
+  maxRotationSpeed: 20
+  rotationSpeed: 0
   minDeadAxisXZone: -30
   maxDeadAxisXZone: 30
   minDeadAxisYZone: -10
