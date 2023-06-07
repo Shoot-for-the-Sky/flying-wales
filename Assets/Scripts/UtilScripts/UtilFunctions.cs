@@ -41,6 +41,13 @@ public class UtilFunctions : MonoBehaviour
         return (float)(min + rDouble);
     }
 
+    public static int GetRandomIntInRange(int min, int max)
+    {
+        System.Random random = new System.Random();
+        int randomInt = random.Next(min, max);
+        return randomInt;
+    }
+
     public static bool RollInPercentage(int percentage)
     {
         int randomInt = UtilFunctions.GetRandomIntInRange(0, 100);
@@ -49,12 +56,5 @@ public class UtilFunctions : MonoBehaviour
             return true;
         }
         return false;
-    }
-    
-    public static int GetRandomIntInRange(int min, int max)
-    {
-        System.Random random = new System.Random();
-        int randomInt = random.Next(min, max);
-        return randomInt;
     }
 }

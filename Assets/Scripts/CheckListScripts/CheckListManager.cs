@@ -11,6 +11,7 @@ public class CheckListManager : MonoBehaviour
     // User interface
     [SerializeField] Text currentCheckText;
     [SerializeField] Text nextCheckText;
+    [SerializeField] Text taskCounterText;
 
     // Json file
     public TextAsset jsonFileCheckList;
@@ -63,6 +64,7 @@ public class CheckListManager : MonoBehaviour
         SetCurrentLevelTasks();
         StartCoroutine(RunTimer());
         SetLevelTask();
+        SetTaskCounterText();
     }
 
     private void FixedUpdate()
@@ -81,6 +83,7 @@ public class CheckListManager : MonoBehaviour
         }
 
         SetCurrentLevelTasksData();
+        SetTaskCounterText();
     }
 
     private void SetCurrentLevelTasksData()
@@ -141,5 +144,10 @@ public class CheckListManager : MonoBehaviour
         }
         activeTimer = activeTimerNeeded;
         currentCheckText.text = text;
+    }
+
+    private void SetTaskCounterText()
+    {
+        taskCounterText.text = taskLevel.ToString() + "/" + checkListLength.ToString();
     }
 }

@@ -32,8 +32,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] InputAction dynamicStateButton = new InputAction(type: InputActionType.Button);
     [SerializeField] InputAction trackStateButton = new InputAction(type: InputActionType.Button);
     [SerializeField] InputAction attackStateButton = new InputAction(type: InputActionType.Button);
-    [SerializeField] InputAction LeftMouseButton = new InputAction(type: InputActionType.Button);
+    [SerializeField] InputAction leftMouseButton = new InputAction(type: InputActionType.Button);
+    [SerializeField] InputAction callPowerButton = new InputAction(type: InputActionType.Button);
+    [SerializeField] InputAction shieldPowerButton = new InputAction(type: InputActionType.Button);
     public bool isWhaleStateControllerDisabled = false;
+
+    // Powers
+    public bool isShieldPowerActive = false;
+    public bool isCallPowerActive = false;
+    private PowerUIScript shieldPowerUIScript;
+    private PowerUIScript callPowerUIScript;
+    [SerializeField] private GameObject shieldGameObject;
+    private GameObject shieldInstance;
 
     // UI
     [SerializeField] protected Text ScoreText;
@@ -64,7 +74,9 @@ public class GameManager : MonoBehaviour
         dynamicStateButton.Enable();
         trackStateButton.Enable();
         attackStateButton.Enable();
-        LeftMouseButton.Enable();
+        leftMouseButton.Enable();
+        callPowerButton.Enable();
+        shieldPowerButton.Enable();
     }
 
     void OnDisable()
@@ -72,7 +84,9 @@ public class GameManager : MonoBehaviour
         dynamicStateButton.Disable();
         trackStateButton.Disable();
         attackStateButton.Disable();
-        LeftMouseButton.Disable();
+        leftMouseButton.Disable();
+        callPowerButton.Disable();
+        shieldPowerButton.Disable();
     }
 
     // Start is called before the first frame update
@@ -94,6 +108,13 @@ public class GameManager : MonoBehaviour
         survivedEnemiesCounter = new Dictionary<string, int>();
         playerPowersCounter = new Dictionary<string, int>();
         enemies = new List<GameObject>();
+
+        // Powers
+        GameObject shieldGameObject = GameObject.FindWithTag("ShieldPowerIcon");
+        shieldPowerUIScript = shieldGameObject.GetComponent<PowerUIScript>();
+
+        GameObject callGameObject = GameObject.FindWithTag("CallPowerIcon");
+        callPowerUIScript = callGameObject.GetComponent<PowerUIScript>();
     }
 
     private void CreateWhales()
@@ -101,9 +122,14 @@ public class GameManager : MonoBehaviour
         whales = new List<GameObject>();
         for (int i = 0; i < numberOfWhales; i++)
         {
-            GameObject whale = Instantiate(whalePrefab);
-            whales.Add(whale);
+            CreateWhale();
         }
+    }
+
+    private void CreateWhale()
+    {
+        GameObject whale = Instantiate(whalePrefab);
+        whales.Add(whale);
     }
 
     private IEnumerator SpawnMeteorCoroutine()
@@ -123,7 +149,14 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         WhalesControl();
+        CheckPowers();
         ScoreText.text = score.ToString();
+    }
+
+    public void CheckPowers()
+    {
+        shieldPowerUIScript.inUse = isShieldPowerActive;
+        callPowerUIScript.inUse = isCallPowerActive;
     }
 
     // Controlling the whales by their current state
@@ -154,12 +187,20 @@ public class GameManager : MonoBehaviour
             ChangeWhalesState();
             ChangeStatesUI(0, 0, 1);
         }
-        else if (LeftMouseButton.WasPerformedThisFrame())
+        else if (leftMouseButton.WasPressedThisFrame())
         {
             foreach (GameObject whale in whales)
             {
                 whale.GetComponent<WhaleStateManager>().LeftMouseButtonClicked();
             }
+        }
+        else if (callPowerButton.WasPressedThisFrame() && !isCallPowerActive)
+        {
+            UseCallPower();
+        }
+        else if (shieldPowerButton.WasPressedThisFrame() && !isShieldPowerActive)
+        {
+            UseShieldPower();
         }
     }
 
@@ -264,5 +305,37 @@ public class GameManager : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
+    }
+
+    public void UseCallPower()
+    {
+        isCallPowerActive = true;
+        CreateWhale();
+        Debug.Log("UseCallPower");
+        FunctionTimer.Create(DisableUseCallPower, 5f);
+    }
+
+    public void DisableUseCallPower()
+    {
+        isCallPowerActive = false;
+        Debug.Log("DisableUseCallPower");
+    }
+
+    public void UseShieldPower()
+    {
+        isShieldPowerActive = true;
+        shieldInstance = Instantiate(shieldGameObject, Vector3.zero, Quaternion.identity);
+        Debug.Log("UseShieldPower");
+        FunctionTimer.Create(DisableUseShieldPower, 5f);
+    }
+
+    public void DisableUseShieldPower()
+    {
+        isShieldPowerActive = false;
+        if (shieldInstance != null)
+        {
+            Destroy(shieldInstance);
+        }
+        Debug.Log("DisableUseShieldPower");
     }
 }

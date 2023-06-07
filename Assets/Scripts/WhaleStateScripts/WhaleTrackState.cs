@@ -7,21 +7,20 @@ public class WhaleTrackState : WhaleBaseState
     private Camera mainCamera;
     private Vector3 mousePosition;
 
-    // Determinate if whale is close to mouse by epslions
+    // Determinate if whale is close to mouse by epsilon
     private const float epsilonX = 4f;
     private const float epsilonY = 2f;
 
     // Close to mouse steps of whale for each X axis side
     private int step = 0;
-    private const int minMumberOfSteps = 180;
-    private const int maxMumberOfSteps = 200;
+    private const int minNumberOfSteps = 180;
+    private const int maxNumberOfSteps = 200;
     private int numberOfSteps;
     private bool goToMouse = false;
 
     // Delta params
     private readonly float rotateDeltaDistance = 2f;
     private readonly float destinationTrackYDelta = 0.02f;
-    private readonly float delteaYDistance = 30f;
 
     // Speed params
     private readonly float whaleTrackRotateSpeed = 5f;
@@ -35,7 +34,7 @@ public class WhaleTrackState : WhaleBaseState
     public override void EnterState(WhaleStateManager whale)
     {
         mainCamera = Camera.main;
-        numberOfSteps = Random.Range(minMumberOfSteps, maxMumberOfSteps);
+        numberOfSteps = Random.Range(minNumberOfSteps, maxNumberOfSteps);
     }
 
     public override void UpdateState(WhaleStateManager whale)

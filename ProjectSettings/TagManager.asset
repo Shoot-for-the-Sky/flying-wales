@@ -12,6 +12,8 @@ TagManager:
   - MeteorBody
   - GameManager
   - ScoreText
+  - ShieldPowerIcon
+  - CallPowerIcon
   layers:
   - Default
   - TransparentFX
