@@ -13,7 +13,9 @@ public class Task
     public float time;
     public WhaleState currentState;
     public int currentScore;
-    public bool createMeteors;
+    public bool canCreateMeteors;
+    public bool canGatherScore;
+    public bool requiredStateForTime;
 
     // Data
     public int level;
@@ -27,7 +29,9 @@ public class Task
         currentCheck = check;
         level = currentCheck.level;
         text = currentCheck.text;
-        createMeteors = check.createMeteors;
+        canCreateMeteors = check.canCreateMeteors;
+        canGatherScore = check.canGatherScore;
+        requiredStateForTime = check.requiredStateForTime;
         time = check.time;
         wantedState = GetWhaleStateByName(currentCheck.state);
         GameObject gameManager = GameObject.FindWithTag("GameManager");
@@ -208,5 +212,14 @@ public class Task
             default:
                 return WhaleState.Dynamic;
         }
+    }
+
+    public bool inRequiredStateForTimer()
+    {
+        if (requiredStateForTime)
+        {
+            return IsWhalesInWantedState();
+        }
+        return true;
     }
 }

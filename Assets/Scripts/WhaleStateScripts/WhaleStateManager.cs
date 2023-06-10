@@ -145,7 +145,7 @@ public class WhaleStateManager : MonoBehaviour
     {
         while (true)
         {
-            if (currentWhaleEnumState == WhaleState.Dynamic)
+            if (currentWhaleEnumState == WhaleState.Dynamic && gameManagerScript.canGatherScore)
             {
                 if (UtilFunctions.RollInPercentage(whaleChanceToCollectPoint))
                 {

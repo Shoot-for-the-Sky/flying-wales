@@ -37,10 +37,13 @@ public class CheckListManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.10f);
-            timer += 0.10f;
             if (activeTimer)
             {
-                nextCheckText.text = "Task Time: " + timer.ToString(timerStringFormat);
+                if (inRequiredStateForTimer())
+                {
+                    timer += 0.10f;
+                    nextCheckText.text = "Task Time: " + timer.ToString(timerStringFormat);
+                }
             }
             else
             {
@@ -48,6 +51,21 @@ public class CheckListManager : MonoBehaviour
             }
             levelTime = timer;
         }
+    }
+
+    private bool inRequiredStateForTimer()
+    {
+        foreach (Task task in tasks)
+        {
+            if (task.level == taskLevel)
+            {
+                if (task.inRequiredStateForTimer())
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     void Start()
@@ -136,9 +154,18 @@ public class CheckListManager : MonoBehaviour
                 }
 
                 // Need to create enemies in task
-                if (task.createMeteors)
+                if (task.canCreateMeteors)
                 {
-                    gameManagerScript.createMeteors = true;
+                    gameManagerScript.canCreateMeteors = true;
+                }
+
+                if (task.canGatherScore)
+                {
+                    gameManagerScript.canGatherScore = true;
+                }
+                if (task.requiredStateForTime)
+                {
+                    gameManagerScript.requiredStateForTime = true;
                 }
             }
         }

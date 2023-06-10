@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
 {
     // Enemies
     [SerializeField] protected GameObject meteorPrefab;
-    [SerializeField] public bool createMeteors = false;
+    [SerializeField] public bool canCreateMeteors = false;
+    [SerializeField] public bool canGatherScore = false;
+    [SerializeField] public bool requiredStateForTime = false;
     public int numberOfSurvivedEnemies = 0;
 
     // Save enemies instance when created them
@@ -138,7 +140,7 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            if (createMeteors)
+            if (canCreateMeteors)
             {
                 GameObject meteor = Instantiate(meteorPrefab, Vector3.zero, Quaternion.identity);
                 enemies.Add(meteor);
