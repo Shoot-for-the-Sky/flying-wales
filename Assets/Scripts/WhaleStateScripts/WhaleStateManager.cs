@@ -21,6 +21,13 @@ public class WhaleStateManager : MonoBehaviour
     // Whale other params
     [SerializeField] public float damagePoints;
 
+    // Whale score
+    [SerializeField] private int whaleChanceToCollectPoint = 10;
+    [SerializeField] private int minScore = 3;
+    [SerializeField] private int maxScore = 6;
+    [SerializeField] private float rollRandomScoreTime = 1f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -145,14 +152,14 @@ public class WhaleStateManager : MonoBehaviour
         {
             if (currentWhaleEnumState == WhaleState.Dynamic)
             {
-                if (UtilFunctions.RollInPercentage(10))
+                if (UtilFunctions.RollInPercentage(whaleChanceToCollectPoint))
                 {
-                    int scoreToAdd = UtilFunctions.GetRandomIntInRange(3, 6);
+                    int scoreToAdd = UtilFunctions.GetRandomIntInRange(minScore, maxScore);
                     gameManagerScript.RandomWhaleTakeScore(scoreToAdd);
                     gameManagerScript.AddScore(scoreToAdd);
                 }
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(rollRandomScoreTime);
         }
     }
 }

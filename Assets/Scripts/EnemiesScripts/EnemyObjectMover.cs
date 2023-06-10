@@ -31,7 +31,7 @@ public class EnemyObjectMover : MonoBehaviour
     private float randomDirectionInNotMovingAxis;
 
     void Start()
-    {   
+    {
         // Game Object
         GameObject gameManager = GameObject.FindWithTag("GameManager");
         gameManagerScript = gameManager.GetComponent<GameManager>();

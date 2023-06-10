@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UtilFunctions : MonoBehaviour
@@ -56,5 +57,15 @@ public class UtilFunctions : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public static void PrintDictionary(Dictionary<string, int> dict)
+    {
+        int counter = dict.Count + 1;
+        foreach (var item in dict)
+        {
+            Debug.Log(counter + ") Key=" + item.Key + ", Value=" + item.Value.ToString());
+            counter++;
+        }
     }
 }

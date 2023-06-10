@@ -235,27 +235,24 @@ public class GameManager : MonoBehaviour
     public void RegisterDestroyedEnemy(string enemyTagName)
     {
         AddCounterToRegister(destroyedEnemiesCounter, enemyTagName);
-        foreach (var kvp in destroyedEnemiesCounter) {
-            Debug.Log("RegisterDestroyedEnemy) Key = " + kvp.Key + ", Value = " + kvp.Value);
-        }
+        Debug.Log("destroyedEnemiesCounter:");
+        UtilFunctions.PrintDictionary(destroyedEnemiesCounter);
     }
 
     // Register when enemy is destroyed by himself (for example - meteor out of borders)
     public void RegisterSurvivedEnemy(string enemyTagName)
     {
         AddCounterToRegister(survivedEnemiesCounter, enemyTagName);
-        foreach (var kvp in survivedEnemiesCounter) {
-            Debug.Log("RegisterSurvivedEnemy [" + enemyTagName + "]) Key = " + kvp.Key + ", Value = " + kvp.Value);
-        }
+        Debug.Log("RegisterSurvivedEnemy:");
+        UtilFunctions.PrintDictionary(survivedEnemiesCounter);
     }
 
     // Register the use of power by player
     public void RegisterPowerPlayer(string powerName)
     {
         AddCounterToRegister(playerPowersCounter, powerName);
-        foreach (var kvp in playerPowersCounter) {
-            Debug.Log("RegisterPowerPlayer) Key = " + kvp.Key + ", Value = " + kvp.Value);
-        }
+        Debug.Log("survivedEnemiesCounter:");
+        UtilFunctions.PrintDictionary(survivedEnemiesCounter);
     }
 
     // General function that add count to register dictionary counter
