@@ -145,11 +145,11 @@ public class WhaleStateManager : MonoBehaviour
         {
             if (currentWhaleEnumState == WhaleState.Dynamic)
             {
-                if (UtilFunctions.RollInPercentage(25))
+                if (UtilFunctions.RollInPercentage(10))
                 {
-                    int scoreToAdd = UtilFunctions.GetRandomIntInRange(1, 3);
+                    int scoreToAdd = UtilFunctions.GetRandomIntInRange(3, 6);
+                    gameManagerScript.RandomWhaleTakeScore(scoreToAdd);
                     gameManagerScript.AddScore(scoreToAdd);
-                    // todo: Take random alive whale add make animation of gathering score
                 }
             }
             yield return new WaitForSeconds(1f);

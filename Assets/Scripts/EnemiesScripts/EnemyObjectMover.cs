@@ -45,15 +45,15 @@ public class EnemyObjectMover : MonoBehaviour
         rotationSpeed = UtilFunctions.GetRandomDoubleInRange(minRotationSpeed, maxRotationSpeed);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Moving
         float speed = Random.Range(minSpeed, maxSpeed);
         Vector3 direction = GetDirection();
-        transform.position = transform.position + (direction * speed) * Time.deltaTime;
+        transform.position = transform.position + (direction * speed) * Time.fixedDeltaTime;
 
         // Rotation
-        transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.forward * rotationSpeed * Time.fixedDeltaTime);
 
         // Out of game borders
         if (outOfBorders())

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     // UI
     [SerializeField] protected Text ScoreText;
+    [SerializeField] protected GameObject scoreCollectorPrefab;
 
     // States UI Sprites
     [SerializeField] protected List<Sprite> dynamicSprites;
@@ -305,6 +307,27 @@ public class GameManager : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
+    }
+
+    private GameObject GetRandomAliveWhale()
+    {
+        GameObject randomWhale = null;
+        while (randomWhale == null)
+        {
+            int randomWhaleIndex = UtilFunctions.GetRandomIntInRange(0, whales.Count);
+            randomWhale = whales[randomWhaleIndex];
+        }
+        return randomWhale;
+    }
+
+    public void RandomWhaleTakeScore(int scoreToAdd)
+    {
+        GameObject randomWhale = GetRandomAliveWhale();
+        Vector2 randomWhalePosition = new Vector2(randomWhale.transform.position.x, randomWhale.transform.position.y);
+        string scoreText = "+" + scoreToAdd.ToString();
+        GameObject scoreCollector = Instantiate(scoreCollectorPrefab, randomWhale.transform.position, Quaternion.identity);
+        ScoreCollectorScript scoreCollectorScript = scoreCollector.GetComponent<ScoreCollectorScript>();
+        scoreCollectorScript.score = scoreToAdd;
     }
 
     public void UseCallPower()

@@ -4,7 +4,7 @@ public class PowerUIScript : MonoBehaviour
 {
     public bool inUse = false;
     private float useGBColor = 0.3f;
-    private const float colorStep = 0.005f;
+    private const float colorStep = 0.01f;
     private float currentGBColor;
     SpriteRenderer renderer;
 
