@@ -99,11 +99,7 @@ public class WhaleTrackState : WhaleBaseState
 
     public override void OnTriggerEnter2D(WhaleStateManager whale, Collider2D collision)
     {
-        if (collision.gameObject.tag == "MeteorBody")
-        {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            whale.HitByEnemy(enemy.hitPoints);
-        }
+        
     }
 
     public override void LeftMouseButtonClicked()

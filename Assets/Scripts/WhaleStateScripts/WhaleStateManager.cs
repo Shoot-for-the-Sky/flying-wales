@@ -50,11 +50,6 @@ public class WhaleStateManager : MonoBehaviour
         transform.position += Time.fixedDeltaTime * currentState.whaleSpeed * currentState.nextStepPosition;
     }
 
-    public void HitByEnemy(float damage)
-    {
-        Debug.Log("Hit By Enemy - damage: " + damage);
-    }
-
     public void ChangeWhaleSpeed(float speed)
     {
         whaleSpeed = speed;

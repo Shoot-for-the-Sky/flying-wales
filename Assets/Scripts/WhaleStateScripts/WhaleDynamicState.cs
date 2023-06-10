@@ -119,12 +119,6 @@ public class WhaleDynamicState : WhaleBaseState
             prevPosition = new Vector3(nextPosition.x, prevPosition.y, prevPosition.z);
             nextPosition = new Vector3(tempPosition.x, tempPosition.y, tempPosition.z);
         }
-
-        if (collision.gameObject.tag == "MeteorBody")
-        {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            whale.HitByEnemy(enemy.hitPoints);
-        }
     }
 
     public override void LeftMouseButtonClicked()
