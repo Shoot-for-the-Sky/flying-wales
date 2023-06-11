@@ -710,6 +710,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.01
   BackgroundRenderer: {fileID: 1324147547}
+  textureOffset: 0
+  offsetStep: 0.001
+  percentageToChangeOffset: 10
+  changeOffsetEachTime: 5
 --- !u!23 &1324147547
 MeshRenderer:
   m_ObjectHideFlags: 0

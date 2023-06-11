@@ -37,6 +37,9 @@ public class Check
     // Meteors created
     public bool canCreateMeteors;
 
+    // Create meteor each time second given
+    public float createMeteorEachSec;
+
     // Gather score in Dynamic state and other Operations
     public bool canGatherScore;
 

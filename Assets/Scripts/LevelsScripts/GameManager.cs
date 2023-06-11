@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
     // Enemies
     [SerializeField] protected GameObject meteorPrefab;
     [SerializeField] public bool canCreateMeteors = false;
+    [SerializeField] public float createMeteorEachSec = 10;
     [SerializeField] public bool canGatherScore = false;
     [SerializeField] public bool requiredStateForTime = false;
     public int numberOfSurvivedEnemies = 0;
-    [SerializeField] public int waitTimeBetweenCreateMeteors;
 
     // Save enemies instance when created them
     // For checking when destroy and manipulate
@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
                 GameObject meteor = Instantiate(meteorPrefab, Vector3.zero, Quaternion.identity);
                 enemies.Add(meteor);
             }
-            yield return new WaitForSeconds(waitTimeBetweenCreateMeteors);
+            yield return new WaitForSeconds(createMeteorEachSec);
         }
     }
 
@@ -345,11 +345,12 @@ public class GameManager : MonoBehaviour
 
     public void UseCallPower()
     {
+        RegisterPowerPlayer("Call");
         isCallPowerActive = true;
         CreateWhale();
         Debug.Log("UseCallPower");
-        ChangeWhalesState();
         FunctionTimer.Create(DisableUseCallPower, 5f);
+        ChangeWhalesState();
     }
 
     public void DisableUseCallPower()

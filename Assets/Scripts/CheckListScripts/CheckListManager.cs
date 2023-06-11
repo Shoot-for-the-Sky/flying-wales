@@ -218,6 +218,7 @@ public class CheckListManager : MonoBehaviour
                 if (task.canCreateMeteors)
                 {
                     gameManagerScript.canCreateMeteors = true;
+                    gameManagerScript.createMeteorEachSec = task.createMeteorEachSec;
                 }
 
                 if (task.canGatherScore)
@@ -236,6 +237,6 @@ public class CheckListManager : MonoBehaviour
 
     private void SetTaskCounterText()
     {
-        taskCounterText.text = taskLevel.ToString() + "/" + checkListLength.ToString();
+        taskCounterText.text = (taskLevel + 1).ToString() + "/" + checkListLength.ToString();
     }
 }
