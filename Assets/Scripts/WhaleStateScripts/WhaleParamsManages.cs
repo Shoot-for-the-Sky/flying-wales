@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
 public class WhaleParamsManages : MonoBehaviour
 {
+    // Game manager
+    private GameManager gameManagerScript;
+
     // Whale
     [SerializeField] private GameObject whale;
     [SerializeField] SpriteRenderer whaleBodyRenderer;
+    [SerializeField] GameObject whaleStateManager;
 
     // Canvas
     [SerializeField] private GameObject healthCanvas;
@@ -22,9 +24,10 @@ public class WhaleParamsManages : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject gameManager = GameObject.FindWithTag("GameManager");
+        gameManagerScript = gameManager.GetComponent<GameManager>();
         slider.value = healthPoint;
-        HideSlider();
-        
+        HideSlider();   
     }
 
     // Update is called once per frame
@@ -81,7 +84,7 @@ public class WhaleParamsManages : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "MeteorBody")
+        if (collision.gameObject.tag == "MeteorBody" && !gameManagerScript.whalesAttacking)
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             HitByEnemy(enemy.hitPoints);

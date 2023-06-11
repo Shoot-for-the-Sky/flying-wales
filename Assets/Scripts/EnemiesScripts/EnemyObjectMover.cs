@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyObjectMover : MonoBehaviour
 {
     // Game Manager
     GameManager gameManagerScript;
-
-    // Meteor parent game object
-    [SerializeField] protected GameObject meteor;
 
     // Speed
     [SerializeField] protected float minSpeed;
@@ -17,13 +12,7 @@ public class EnemyObjectMover : MonoBehaviour
     // Rotation
     [SerializeField] public float minRotationSpeed;
     [SerializeField] public float maxRotationSpeed;
-    [SerializeField] private float rotationSpeed;
-
-    // Dead zones
-    [SerializeField] protected float minDeadAxisXZone;
-    [SerializeField] protected float maxDeadAxisXZone;
-    [SerializeField] protected float minDeadAxisYZone;
-    [SerializeField] protected float maxDeadAxisYZone;
+    private float rotationSpeed;
 
     // Directions
     public Direction moveDirection;
@@ -54,19 +43,6 @@ public class EnemyObjectMover : MonoBehaviour
 
         // Rotation
         transform.Rotate(Vector3.forward * rotationSpeed * Time.fixedDeltaTime);
-
-        // Out of game borders
-        if (outOfBorders())
-        {
-            gameManagerScript.RegisterSurvivedEnemy("Meteor");
-            Destroy(meteor);
-        }
-    }
-
-    private bool outOfBorders()
-    {
-        return transform.position.x > maxDeadAxisXZone || transform.position.x < minDeadAxisXZone
-            || transform.position.y > maxDeadAxisYZone || transform.position.y < minDeadAxisYZone;
     }
 
     private Vector3 GetDirection()

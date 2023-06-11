@@ -4,7 +4,7 @@
       {
         "scenario": "intro",
         "level": 0,
-        "text": "Change to track mode (S) for 10 seconds",
+        "text": "Change to track mode (press S) for 10 seconds",
         "state": "track",
         "score": 0,
         "time": 10,
@@ -14,12 +14,14 @@
         "callPowersCount": 0,
         "canCreateMeteors": false,
         "canGatherScore": false,
-        "requiredStateForTime": true
+        "requiredStateForTime": true,
+        "disableShieldPower": true,
+        "disableCallPower": true
       },
       {
         "scenario": "intro",
         "level": 1,
-        "text": "Change to dynamic mode (A) and collect 20 score",
+        "text": "Change to dynamic mode (press A) and collect 20 score",
         "state": "dynamic",
         "score": 20,
         "time": 0,
@@ -29,7 +31,9 @@
         "callPowersCount": 0,
         "canCreateMeteors": false,
         "canGatherScore": true,
-        "requiredStateForTime": false
+        "requiredStateForTime": false,
+        "disableShieldPower": true,
+        "disableCallPower": true
       },
       {
         "scenario": "intro",
@@ -44,12 +48,14 @@
         "callPowersCount": 0,
         "canCreateMeteors": true,
         "canGatherScore": false,
-        "requiredStateForTime": false
+        "requiredStateForTime": false,
+        "disableShieldPower": true,
+        "disableCallPower": true
       },
       {
         "scenario": "intro",
         "level": 3,
-        "text": "Change to attack mode (D)",
+        "text": "Change to attack mode (press D)",
         "state": "attack",
         "score": 0,
         "time": 0,
@@ -59,7 +65,9 @@
         "callPowersCount": 0,
         "canCreateMeteors": false,
         "canGatherScore": false,
-        "requiredStateForTime": false
+        "requiredStateForTime": false,
+        "disableShieldPower": true,
+        "disableCallPower": true
       },
       {
         "scenario": "intro",
@@ -74,12 +82,14 @@
         "callPowersCount": 0,
         "canCreateMeteors": true,
         "canGatherScore": true,
-        "requiredStateForTime": false
+        "requiredStateForTime": false,
+        "disableShieldPower": true,
+        "disableCallPower": true
       },
       {
         "scenario": "intro",
         "level": 5,
-        "text": "Use shield (Q)",
+        "text": "Use shield (press Q)",
         "state": null,
         "score": 0,
         "time": 0,
@@ -89,22 +99,26 @@
         "callPowersCount": 0,
         "canCreateMeteors": false,
         "canGatherScore": false,
-        "requiredStateForTime": false
+        "requiredStateForTime": false,
+        "disableShieldPower": false,
+        "disableCallPower": true
       },
       {
         "scenario": "intro",
         "level": 6,
-        "text": "Survive for 3 minutes",
+        "text": "Call for 2 whales",
         "state": null,
         "score": 0,
-        "time": 180,
+        "time": 0,
         "surviveMeteorsCount": 0,
         "destroyMeteorsCount": 0,
         "shieldPowersCount": 0,
-        "callPowersCount": 0,
+        "callPowersCount": 2,
         "canCreateMeteors": true,
         "canGatherScore": true,
-        "requiredStateForTime": false
+        "requiredStateForTime": false,
+        "disableShieldPower": false,
+        "disableCallPower": false
       },
       {
         "scenario": "intro",
@@ -119,22 +133,26 @@
         "callPowersCount": 0,
         "canCreateMeteors": true,
         "canGatherScore": true,
-        "requiredStateForTime": false
+        "requiredStateForTime": false,
+        "disableShieldPower": false,
+        "disableCallPower": false
       },
       {
         "scenario": "intro",
         "level": 8,
-        "text": "Call for 2 whales",
+        "text": "Survive for 1 minutes",
         "state": null,
         "score": 0,
-        "time": 0,
+        "time": 60,
         "surviveMeteorsCount": 0,
         "destroyMeteorsCount": 0,
         "shieldPowersCount": 0,
-        "callPowersCount": 2,
+        "callPowersCount": 0,
         "canCreateMeteors": true,
         "canGatherScore": true,
-        "requiredStateForTime": false
+        "requiredStateForTime": false,
+        "disableShieldPower": false,
+        "disableCallPower": false
       }
     ]
   }

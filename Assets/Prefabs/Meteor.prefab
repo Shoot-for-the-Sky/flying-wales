@@ -160,8 +160,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7833430220751374516}
   - component: {fileID: 5201095944672605518}
-  - component: {fileID: 7833430220751374519}
   - component: {fileID: 7833430220751374518}
+  - component: {fileID: 7833430220751374519}
   - component: {fileID: 7833430220751374513}
   - component: {fileID: 7833430220751374512}
   m_Layer: 0
@@ -201,6 +201,26 @@ MonoBehaviour:
   meteor: {fileID: 7833430220676884611}
   hitPoints: 35
   healthPoints: 30
+  explosionPrefab: {fileID: 4287718628929942205, guid: 4241100479ef29548a9552601b06be47, type: 3}
+  selfDestroyStep: 5
+--- !u!114 &7833430220751374518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833430220751374517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2e7096d1664334cb0b4400bf5c143f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpeed: 1
+  maxSpeed: 3
+  minRotationSpeed: 5
+  maxRotationSpeed: 20
+  moveDirection: 0
+  rangeRandomDirectionDelta: 0.5
 --- !u!212 &7833430220751374519
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -253,30 +273,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7833430220751374518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7833430220751374517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b2e7096d1664334cb0b4400bf5c143f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meteor: {fileID: 7833430220676884611}
-  minSpeed: 1
-  maxSpeed: 3
-  minRotationSpeed: 5
-  maxRotationSpeed: 20
-  rotationSpeed: 0
-  minDeadAxisXZone: -30
-  maxDeadAxisXZone: 30
-  minDeadAxisYZone: -10
-  maxDeadAxisYZone: 10
-  moveDirection: 0
-  rangeRandomDirectionDelta: 0.5
 --- !u!70 &7833430220751374513
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

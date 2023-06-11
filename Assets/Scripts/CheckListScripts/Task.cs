@@ -16,6 +16,8 @@ public class Task
     public bool canCreateMeteors;
     public bool canGatherScore;
     public bool requiredStateForTime;
+    public bool disableShieldPower;
+    public bool disableCallPower;
 
     // Data
     public int level;
@@ -33,6 +35,8 @@ public class Task
         canGatherScore = check.canGatherScore;
         requiredStateForTime = check.requiredStateForTime;
         time = check.time;
+        disableShieldPower = check.disableShieldPower;
+        disableCallPower = check.disableCallPower;
         wantedState = GetWhaleStateByName(currentCheck.state);
         GameObject gameManager = GameObject.FindWithTag("GameManager");
         gameManagerScript = gameManager.GetComponent<GameManager>();
@@ -187,7 +191,7 @@ public class Task
         bool isCallPowersIfNeeded = false;
         if (currentCheck.callPowersCount != 0)
         {
-            if (gameManagerScript.IsFilledPlayerPowers("Shield", currentCheck.shieldPowersCount))
+            if (gameManagerScript.IsFilledPlayerPowers("Call", currentCheck.shieldPowersCount))
             {
                 isCallPowersIfNeeded = true;
             }

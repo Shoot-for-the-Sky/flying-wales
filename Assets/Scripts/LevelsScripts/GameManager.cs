@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool canGatherScore = false;
     [SerializeField] public bool requiredStateForTime = false;
     public int numberOfSurvivedEnemies = 0;
+    [SerializeField] public int waitTimeBetweenCreateMeteors;
 
     // Save enemies instance when created them
     // For checking when destroy and manipulate
@@ -42,7 +43,9 @@ public class GameManager : MonoBehaviour
 
     // Powers
     public bool isShieldPowerActive = false;
+    public bool isShieldDisableToUse = false;
     public bool isCallPowerActive = false;
+    public bool isCallDisableToUse = false;
     private PowerUIScript shieldPowerUIScript;
     private PowerUIScript callPowerUIScript;
     [SerializeField] private GameObject shieldGameObject;
@@ -72,6 +75,9 @@ public class GameManager : MonoBehaviour
     public Dictionary<string, int> destroyedEnemiesCounter;
     public Dictionary<string, int> survivedEnemiesCounter;
     public Dictionary<string, int> playerPowersCounter;
+
+    // Whale status params
+    public bool whalesAttacking = false;
 
     void OnEnable()
     {
@@ -145,7 +151,7 @@ public class GameManager : MonoBehaviour
                 GameObject meteor = Instantiate(meteorPrefab, Vector3.zero, Quaternion.identity);
                 enemies.Add(meteor);
             }
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(waitTimeBetweenCreateMeteors);
         }
     }
 
@@ -180,6 +186,7 @@ public class GameManager : MonoBehaviour
         {
             Cursor.SetCursor(cursorDynamic, Vector2.zero, CursorMode.ForceSoftware);
             currentWhalesState = WhaleState.Dynamic;
+            whalesAttacking = false;
             ChangeWhalesState();
             ChangeStatesUI(1, 0, 0);
         }
@@ -187,6 +194,7 @@ public class GameManager : MonoBehaviour
         {
             Cursor.SetCursor(cursorTrack, Vector2.zero, CursorMode.ForceSoftware);
             currentWhalesState = WhaleState.Track;
+            whalesAttacking = false;
             ChangeWhalesState();
             ChangeStatesUI(0, 1, 0);
         }
@@ -204,18 +212,18 @@ public class GameManager : MonoBehaviour
                 whale.GetComponent<WhaleStateManager>().LeftMouseButtonClicked();
             }
         }
-        else if (callPowerButton.WasPressedThisFrame() && !isCallPowerActive)
+        else if (callPowerButton.WasPressedThisFrame() && !isCallPowerActive && !isCallDisableToUse)
         {
             UseCallPower();
         }
-        else if (shieldPowerButton.WasPressedThisFrame() && !isShieldPowerActive)
+        else if (shieldPowerButton.WasPressedThisFrame() && !isShieldPowerActive && !isShieldDisableToUse)
         {
             UseShieldPower();
         }
     }
 
     // Change the state of all the current whales
-    private void ChangeWhalesState()
+    public void ChangeWhalesState()
     {
         foreach (GameObject whale in whales)
         {
@@ -340,6 +348,7 @@ public class GameManager : MonoBehaviour
         isCallPowerActive = true;
         CreateWhale();
         Debug.Log("UseCallPower");
+        ChangeWhalesState();
         FunctionTimer.Create(DisableUseCallPower, 5f);
     }
 
@@ -351,6 +360,7 @@ public class GameManager : MonoBehaviour
 
     public void UseShieldPower()
     {
+        RegisterPowerPlayer("Shield");
         isShieldPowerActive = true;
         shieldInstance = Instantiate(shieldGameObject, Vector3.zero, Quaternion.identity);
         Debug.Log("UseShieldPower");

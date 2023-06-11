@@ -27,7 +27,6 @@ public class WhaleStateManager : MonoBehaviour
     [SerializeField] private int maxScore = 6;
     [SerializeField] private float rollRandomScoreTime = 1f;
 
-
     // Start is called before the first frame update
     void Start()
     {

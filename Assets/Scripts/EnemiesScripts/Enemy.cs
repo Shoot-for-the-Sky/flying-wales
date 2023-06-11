@@ -8,6 +8,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float hitPoints;
     [SerializeField] public float healthPoints;
 
+    // Explosion
+    [SerializeField] GameObject explosionPrefab;
+
+    // Destroy params
+    [SerializeField] public float selfDestroyStep;
+    private bool inSelfDestroying = false;
+    private int touchBoundariesCounter = 0;
+    private const int touchBoundariesTimes = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,14 +29,51 @@ public class Enemy : MonoBehaviour
     {
         if (healthPoints <= 0)
         {
-            gameManagerScript.RegisterDestroyedEnemy("Meteor");
+            if (!inSelfDestroying)
+            {
+                gameManagerScript.RegisterDestroyedEnemy("Meteor");
+            }
+            else
+            {
+                gameManagerScript.RegisterSurvivedEnemy("Meteor");
+            }
             Destroy(meteor);
+        }
+        if (inSelfDestroying)
+        {
+            AttackByPlayer(selfDestroyStep);
         }
     }
 
     public void AttackByPlayer(float damage)
     {
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         healthPoints -= damage;
         Debug.Log("Attack By Player - damage: " + damage);
+    }
+
+    private void SelfDestroy()
+    {
+        inSelfDestroying = true;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Shield")
+        {
+            SelfDestroy();
+        }
+        if (collider.gameObject.tag == "LevelBoundaries")
+        {
+
+            if (touchBoundariesCounter >= touchBoundariesTimes)
+            {
+                FunctionTimer.Create(SelfDestroy, 3f);
+            }
+            else
+            {
+                touchBoundariesCounter ++;
+            }
+        }
     }
 }

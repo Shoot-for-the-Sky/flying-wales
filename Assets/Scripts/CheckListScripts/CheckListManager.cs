@@ -12,6 +12,10 @@ public class CheckListManager : MonoBehaviour
     [SerializeField] Text currentCheckText;
     [SerializeField] Text nextCheckText;
     [SerializeField] Text taskCounterText;
+    [SerializeField] SpriteRenderer shieldPowerIcon;
+    [SerializeField] SpriteRenderer callPowerIcon;
+    Color powerIconRegularColor;
+    Color powerIconDisableColor;
 
     // Json file
     public TextAsset jsonFileCheckList;
@@ -70,6 +74,12 @@ public class CheckListManager : MonoBehaviour
 
     void Start()
     {
+        // Power icons colors
+        powerIconRegularColor = new Color(1f, 1f, 1f);
+        powerIconDisableColor = new Color(1f, 1f, 1f, 0.1f);
+
+
+        // Json
         checkListJson = JsonUtility.FromJson<CheckList>(jsonFileCheckList.text);
         checkListLength = checkListJson.checkList.Length;
 
@@ -83,6 +93,56 @@ public class CheckListManager : MonoBehaviour
         StartCoroutine(RunTimer());
         SetLevelTask();
         SetTaskCounterText();
+        DisablePowersIfNeeded();
+    }
+
+    private void DisablePowersIfNeeded()
+    {
+        bool needToDisableShield = false;
+        bool needToDisableCall = false;
+        foreach (Task task in tasks)
+        {
+            if (task.level == taskLevel)
+            {
+                if (task.disableShieldPower)
+                {
+                    needToDisableShield = true;
+                }
+                if (task.disableCallPower)
+                {
+                    needToDisableCall = true;
+                }
+            }
+        }
+
+        // Disable shield
+        if (needToDisableShield)
+        {
+            shieldPowerIcon.color = powerIconDisableColor;
+            gameManagerScript.isShieldDisableToUse = true;
+        }
+
+        // Enable shield
+        else
+        {
+            shieldPowerIcon.color = powerIconRegularColor;
+            gameManagerScript.isShieldDisableToUse = false;
+        }
+
+        // Disable call
+        if (needToDisableCall)
+        {
+            callPowerIcon.color = powerIconDisableColor;
+            gameManagerScript.isCallDisableToUse = true;
+        }
+
+        // Enable call
+        else
+        {
+            callPowerIcon.color = powerIconRegularColor;
+            gameManagerScript.isCallDisableToUse = false;
+        }
+        
     }
 
     private void FixedUpdate()
@@ -98,6 +158,7 @@ public class CheckListManager : MonoBehaviour
             SetCurrentLevelTasks();
             timer = .0f;
             SetLevelTask();
+            DisablePowersIfNeeded();
         }
 
         SetCurrentLevelTasksData();

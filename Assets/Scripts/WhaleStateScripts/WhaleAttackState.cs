@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class WhaleAttackState : WhaleBaseState
 {
+    // Game manager
+    private GameManager gameManagerScript;
+
     // Mouse
     private Camera mainCamera;
     private Vector3 mousePosition;
@@ -15,7 +18,7 @@ public class WhaleAttackState : WhaleBaseState
     private float whaleStepSlice = 10f;
     private int attackTimeCounter = 0;
 
-    bool whaleAttack = false;
+    public bool whaleAttack = false;
 
     // Whale attacking positions
     private float attackStepX;
@@ -24,12 +27,14 @@ public class WhaleAttackState : WhaleBaseState
     private float destinationXDelta = 0f;
     private float destinationYDelta = 0f;
 
-    // Whale attacking speed conts
+    // Whale attacking speed const
     private const float maxAttackSpeed = 22f;
     private const float minAttackSpeed = 18f;
 
     public override void EnterState(WhaleStateManager whale)
     {
+        GameObject gameManager = GameObject.FindWithTag("GameManager");
+        gameManagerScript = gameManager.GetComponent<GameManager>();
         nextStepPosition = Vector3.zero;
         nextPosition = Vector3.zero;
         prevPosition = Vector3.zero;
@@ -41,6 +46,8 @@ public class WhaleAttackState : WhaleBaseState
         whale.whaleRotateSpeed = whaleAttackRotateSpeed;
         whale.whaleSpeed = whaleAttackSpeed;
 
+        gameManagerScript.whalesAttacking = whaleAttack;
+
         if (whaleAttack)
         {
             whaleStepSlice = 1;
@@ -51,6 +58,7 @@ public class WhaleAttackState : WhaleBaseState
             {
                 attackTimeCounter = 0;
                 whaleAttack = false;
+                gameManagerScript.whalesAttacking = false;
             }
         }
         else
@@ -77,7 +85,7 @@ public class WhaleAttackState : WhaleBaseState
 
     public override void OnTriggerEnter2D(WhaleStateManager whale, Collider2D collision)
     {
-        if (collision.gameObject.tag == "MeteorBody")
+        if (collision.gameObject.tag == "MeteorBody" && gameManagerScript.whalesAttacking)
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             enemy.AttackByPlayer(whale.damagePoints);
@@ -89,6 +97,7 @@ public class WhaleAttackState : WhaleBaseState
         if (!whaleAttack)
         {
         whaleAttack = true;
+        gameManagerScript.whalesAttacking = true;
         destinationXDelta = UtilFunctions.GetRandomDoubleInRange(-destinationRangeDelta, destinationRangeDelta);
         destinationYDelta = UtilFunctions.GetRandomDoubleInRange(-destinationRangeDelta, destinationRangeDelta);
         }

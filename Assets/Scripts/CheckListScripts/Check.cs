@@ -42,4 +42,10 @@ public class Check
 
     // Time pass only when in required state
     public bool requiredStateForTime;
+
+    // Disable use of shield powers
+    public bool disableShieldPower;
+
+    // Disable use of call whale powers
+    public bool disableCallPower;
 }

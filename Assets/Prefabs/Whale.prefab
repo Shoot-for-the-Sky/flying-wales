@@ -318,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whale: {fileID: 7598388183887269266}
   whaleBodyRenderer: {fileID: 7598388184048634382}
+  whaleStateManager: {fileID: 7598388183887269266}
   healthCanvas: {fileID: 212776357770888573}
   slider: {fileID: 7142164880748779637}
   healthPoint: 100
@@ -343,6 +344,7 @@ MonoBehaviour:
   minScore: 3
   maxScore: 6
   rollRandomScoreTime: 1
+  whalesAttacking: 0
 --- !u!50 &7598388183887269270
 Rigidbody2D:
   serializedVersion: 4
