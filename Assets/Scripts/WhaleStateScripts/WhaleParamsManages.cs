@@ -38,22 +38,34 @@ public class WhaleParamsManages : MonoBehaviour
 
     private void HideSlider()
     {
-        healthCanvas.SetActive(false);
+        if (healthCanvas != null)
+        {
+            healthCanvas.SetActive(false);
+        }
     }
 
     private void ShowSlider()
     {
-        healthCanvas.SetActive(true);
+        if (healthCanvas != null)
+        {
+            healthCanvas.SetActive(true);
+        }
     }
 
     private void ShowWhaleHitColor()
     {
-        whaleBodyRenderer.material.color = new Color(1f, 0.3f, 0.3f);
+        if (whaleBodyRenderer != null)
+        {
+            whaleBodyRenderer.material.color = new Color(1f, 0.3f, 0.3f);
+        }
     }
 
     private void ShowWhaleOriginColor()
     {
-        whaleBodyRenderer.material.color = new Color(1f, 1f, 1f);
+        if (whaleBodyRenderer != null)
+        {
+            whaleBodyRenderer.material.color = new Color(1f, 1f, 1f);
+        }
     }
 
     public void HitByEnemy(float damage)

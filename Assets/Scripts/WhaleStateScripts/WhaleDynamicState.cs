@@ -111,8 +111,10 @@ public class WhaleDynamicState : WhaleBaseState
         {
             // swap direction of next step position
             stepsCounter = 0;
-            nextStepPosition.x = -nextStepPosition.x;
-            nextStepPosition.y = -nextStepPosition.y;
+            Vector3 middlePoint = new Vector3(0, 0, 0);
+            Vector3 next = UtilFunctions.GetNextStepByDestinationPoint2D(whale.transform.position, middlePoint, 10);
+            nextStepPosition.x = next.x;
+            nextStepPosition.y = next.y;
 
             // swap positions
             Vector3 tempPosition = new Vector3(prevPosition.x, prevPosition.y, prevPosition.y);

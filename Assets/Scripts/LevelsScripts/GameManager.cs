@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
         Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
 
         // Create whales
+        whales = new List<GameObject>();
         CreateWhales();
         currentWhalesState = WhaleState.Dynamic;
         ChangeWhalesState();
@@ -123,7 +124,6 @@ public class GameManager : MonoBehaviour
 
     private void CreateWhales()
     {
-        whales = new List<GameObject>();
         for (int i = 0; i < numberOfWhales; i++)
         {
             CreateWhale();
@@ -152,9 +152,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HandleDeadWhales();
         WhalesControl();
         CheckPowers();
         ScoreText.text = score.ToString();
+    }
+
+    private void HandleDeadWhales()
+    {
+        UtilFunctions.RemoveNullObjectsFromList(whales);
     }
 
     public void CheckPowers()

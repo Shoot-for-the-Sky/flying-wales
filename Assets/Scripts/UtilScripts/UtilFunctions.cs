@@ -68,4 +68,30 @@ public class UtilFunctions : MonoBehaviour
             counter++;
         }
     }
+
+    public static void RemoveNullObjectsFromList(List<GameObject> list)
+    {
+        bool hasDeadIndexes = true;
+        int deadIndex = -1;
+        while (hasDeadIndexes)
+        {
+            for (int index = 0; index < list.Count; index++)
+            {
+                if (list[index] == null)
+                {
+                    deadIndex = index;
+                    break;
+                }
+            }
+            if (deadIndex == -1)
+            {
+                hasDeadIndexes = false;
+            }
+            else
+            {
+                list.RemoveAt(deadIndex);
+                deadIndex = -1;
+            }
+        }
+    }
 }
