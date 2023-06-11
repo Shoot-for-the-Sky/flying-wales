@@ -85,7 +85,7 @@ public class CheckListManager : MonoBehaviour
 
         // Tasks
         for (int taskIndex = 0; taskIndex < checkListLength; taskIndex++)
-        {        
+        {
             Task task = new Task(checkListJson.checkList[taskIndex]);
             tasks.Add(task);
         }
@@ -142,7 +142,6 @@ public class CheckListManager : MonoBehaviour
             callPowerIcon.color = powerIconRegularColor;
             gameManagerScript.isCallDisableToUse = false;
         }
-        
     }
 
     private void FixedUpdate()
@@ -199,7 +198,8 @@ public class CheckListManager : MonoBehaviour
         return true;
     }
 
-    private void SetLevelTask() {
+    private void SetLevelTask()
+    {
         // set level to new UI
         string text = "";
         bool activeTimerNeeded = false;
