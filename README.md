@@ -17,8 +17,8 @@ The game concept is to make a single-player game of protecting the flying whales
 ## [1.0.0 Patch](https://shoot-for-the-sky.itch.io/flying-wales-100)
 
 * Add world background prefab
-* Add Adding basic whales
-* Add Missles
+* Add basic whales
+* Add Missiles
 
 ## [1.6.1 Patch](https://shoot-for-the-sky.itch.io/flying-whales-161)
 
