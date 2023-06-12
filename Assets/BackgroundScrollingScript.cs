@@ -31,7 +31,7 @@ public class BackgroundScrollingScript : MonoBehaviour
             {
                 if (textureOffset < 0)
                 {
-                    textureOffset += offsetStep * 2;
+                    textureOffset += offsetStep;
                 }
                 else
                 {

@@ -12,6 +12,8 @@ public class Check
 
     // Checklist task text
     public string text;
+    //Checklist task title
+    public string title;
 
     // Required state
     public string state;

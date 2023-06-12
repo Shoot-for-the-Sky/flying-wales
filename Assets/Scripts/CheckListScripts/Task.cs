@@ -23,6 +23,7 @@ public class Task
     // Data
     public int level;
     public string text;
+    public string title;
     private Check currentCheck;
     WhaleState wantedState;
 
@@ -32,6 +33,7 @@ public class Task
         currentCheck = check;
         level = currentCheck.level;
         text = currentCheck.text;
+        title = currentCheck.title;
         canCreateMeteors = check.canCreateMeteors;
         createMeteorEachSec = check.createMeteorEachSec;
         canGatherScore = check.canGatherScore;

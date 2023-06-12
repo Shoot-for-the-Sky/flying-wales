@@ -10,6 +10,7 @@ public class CheckListManager : MonoBehaviour
 
     // User interface
     [SerializeField] Text currentCheckText;
+    [SerializeField] Text currentCheckTitle;
     [SerializeField] Text nextCheckText;
     [SerializeField] Text taskCounterText;
     [SerializeField] SpriteRenderer shieldPowerIcon;
@@ -201,13 +202,15 @@ public class CheckListManager : MonoBehaviour
     private void SetLevelTask()
     {
         // set level to new UI
+        string title = "";
         string text = "";
         bool activeTimerNeeded = false;
         foreach (Task task in tasks)
         {
             if (task.level == taskLevel)
             {
-                text += task.text + "\n";
+                title = task.title;
+                text = task.text;
                 // Need timer in task
                 if (task.time != 0)
                 {
@@ -233,6 +236,7 @@ public class CheckListManager : MonoBehaviour
         }
         activeTimer = activeTimerNeeded;
         currentCheckText.text = text;
+        currentCheckTitle.text = title;
     }
 
     private void SetTaskCounterText()

@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2100925370685900688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2100925370685900694}
+  - component: {fileID: 2100925370685900695}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2100925370685900694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100925370685900688}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1808938, y: 0.5355426, z: -1.0483}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2100925370685900695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100925370685900688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c40eba4563c30499d850750f25fc8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meteorPrefab: {fileID: 7833430220676884611, guid: 5f7dcbe9438ebfb40ac07e43651fb5fd, type: 3}
+  canCreateMeteors: 0
+  createMeteorEachSec: 10
+  canGatherScore: 0
+  requiredStateForTime: 0
+  numberOfSurvivedEnemies: 0
+  score: 0
+  whalePrefab: {fileID: 7598388183887269266, guid: bc7b8260156439f4380121a762d47d13, type: 3}
+  numberOfWhales: 3
+  currentWhalesState: 0
+  whaleSpeed: 1
+  whaleRotateSpeed: 5
+  dynamicStateButton:
+    m_Name: Dynamic State Button
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: aede8340-88f1-4217-bc7f-a5b232181020
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 2baa978d-9d7c-44a0-8da2-f65e5df3a9ee
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dynamic State Button
+      m_Flags: 0
+    m_Flags: 0
+  trackStateButton:
+    m_Name: Track State Button
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 88f1e4e6-ab7d-4501-b28a-eb37b036ea49
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 0bff6459-f28b-4fee-bcf4-9eeb423b73e7
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Track State Button
+      m_Flags: 0
+    m_Flags: 0
+  attackStateButton:
+    m_Name: Attack State Button
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 2ab3a3c7-ae9e-4a8b-872c-7e8f5ec195ad
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 684f8422-f68d-4194-9580-7bcd2a0e2808
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Attack State Button
+      m_Flags: 0
+    m_Flags: 0
+  leftMouseButton:
+    m_Name: Left Mouse Button
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 5c81a2ae-77bd-4e08-8106-665447afe252
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5aa5f508-4c11-499c-b22e-771f9407b044
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Mouse Button
+      m_Flags: 0
+    m_Flags: 0
+  callPowerButton:
+    m_Name: Call Power Button
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 4246430f-8e5b-4f1d-a9da-d647e11fe708
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 870929c9-427a-4e15-95e1-38e6b1bdf1d4
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Call Power Button
+      m_Flags: 0
+    m_Flags: 0
+  shieldPowerButton:
+    m_Name: Shield Power Button
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: d9b2c265-0b6f-4239-ac93-533d7d9191c1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 75401c9a-0820-443d-92f6-f5258e2900db
+      m_Path: <Keyboard>/q
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Shield Power Button
+      m_Flags: 0
+    m_Flags: 0
+  isWhaleStateControllerDisabled: 0
+  isShieldPowerActive: 0
+  isShieldDisableToUse: 0
+  isCallPowerActive: 0
+  isCallDisableToUse: 0
+  shieldGameObject: {fileID: 7728747573619999652, guid: 3f1e4cb83137f2f40a5af7ab99bc009e, type: 3}
+  ShieldPowerTimeToAppear: 3
+  ShieldPowerTimeToReActive: 15
+  CallPowerTimeToReActive: 10
+  ScoreText: {fileID: 0}
+  scoreCollectorPrefab: {fileID: 3755222904350589828, guid: e7ad3e77af57e204c8fc2b64128b97c0, type: 3}
+  dynamicSprites:
+  - {fileID: 21300000, guid: cf5613fd2f5b97d45987f459b47ad621, type: 3}
+  - {fileID: 21300000, guid: 40c7a59cdff63c34b9806842b7ec6682, type: 3}
+  dynamicSpriteRenderer: {fileID: 0}
+  trackSprites:
+  - {fileID: 21300000, guid: b75742f9040fe2b41bed10b1bb577952, type: 3}
+  - {fileID: 21300000, guid: 8509f7537b77fad47b1e154818a16c9a, type: 3}
+  trackSpriteRenderer: {fileID: 0}
+  attackSprites:
+  - {fileID: 21300000, guid: 72cfcb717edd26d46a29eb9c53662801, type: 3}
+  - {fileID: 21300000, guid: 4d511ea5ac7dcfd48bc391a3e73ac3ed, type: 3}
+  attackSpriteRenderer: {fileID: 0}
+  gameOverManager: {fileID: 0}
+  CheckListManager: {fileID: 0}
+  cursorArrow: {fileID: 2800000, guid: 453cb9cc2cd41224389f1d3eca3226ba, type: 3}
+  cursorDynamic: {fileID: 2800000, guid: c7ff66fea8f811f4a8eec0bb83587b2e, type: 3}
+  cursorTrack: {fileID: 2800000, guid: 3380e3c13921ba149bbdea86352f1372, type: 3}
+  cursorAttack: {fileID: 2800000, guid: 6c2a14d0c39570640a73428465f69f60, type: 3}
+  whalesAttacking: 0

@@ -50,9 +50,9 @@ public class GameManager : MonoBehaviour
     private PowerUIScript callPowerUIScript;
     [SerializeField] private GameObject shieldGameObject;
     private GameObject shieldInstance;
-    private float ShieldPowerTimeToAppear = 4f;
-    private float ShieldPowerTimeToReActive = 10f;
-    private float CallPowerTimeToReActive = 10f;
+    [SerializeField] private float ShieldPowerTimeToAppear;
+    [SerializeField] private float ShieldPowerTimeToReActive;
+    [SerializeField] private float CallPowerTimeToReActive;
     
 
     private CheckListManager checkListScript;
