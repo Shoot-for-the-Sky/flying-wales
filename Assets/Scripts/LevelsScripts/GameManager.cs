@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject shieldGameObject;
     private GameObject shieldInstance;
 
+    private CheckListManager checkListScript;
+
     // UI
     [SerializeField] protected Text ScoreText;
     [SerializeField] protected GameObject scoreCollectorPrefab;
@@ -61,6 +63,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] protected List<Sprite> attackSprites;
     [SerializeField] protected SpriteRenderer attackSpriteRenderer;
+
+    [SerializeField] protected GameObject gameOverManager;
+    [SerializeField] protected GameObject CheckListManager;
+
+    private bool gameOver = false;
 
     // Cursors
     public Texture2D cursorArrow;
@@ -120,6 +127,8 @@ public class GameManager : MonoBehaviour
 
         GameObject callGameObject = GameObject.FindWithTag("CallPowerIcon");
         callPowerUIScript = callGameObject.GetComponent<PowerUIScript>();
+
+        checkListScript = CheckListManager.GetComponent<CheckListManager>();
     }
 
     private void CreateWhales()
@@ -156,6 +165,25 @@ public class GameManager : MonoBehaviour
         WhalesControl();
         CheckPowers();
         ScoreText.text = score.ToString();
+        //if all whales are dead, game over
+        if(whales.Count == 0 && !gameOver)
+        {
+            gameOver = true;
+            //get the gameovermanager script from GameManager
+            GameOverManager gameOverManagerScript = gameOverManager.GetComponent<GameOverManager>();
+            gameOverManagerScript.showScore(score);
+            gameOverManagerScript.gameOverScreen();
+        }
+        if(checkListScript.IsDoneLevelTasks() && !gameOver)
+        {
+            gameOver = true;
+            //get the gameovermanager script from GameManager
+            GameOverManager gameOverManagerScript = gameOverManager.GetComponent<GameOverManager>();
+            gameOverManagerScript.showScore(score);
+            gameOverManagerScript.winningScreen();
+        }
+        
+
     }
 
     private void HandleDeadWhales()

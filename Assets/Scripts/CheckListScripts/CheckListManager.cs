@@ -126,7 +126,7 @@ public class CheckListManager : MonoBehaviour
         }
     }
 
-    private bool IsDoneLevelTasks()
+    public bool IsDoneLevelTasks()
     {
         foreach (Task task in currentLevelTasks)
         {
