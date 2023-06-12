@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteor: {fileID: 7833430220676884611}
   hitPoints: 35
-  healthPoints: 30
+  healthPoints: 50
   xpPointWhenDestroyedByEnemy: 10
   explosionPrefab: {fileID: 4287718628929942205, guid: 4241100479ef29548a9552601b06be47, type: 3}
   selfDestroyStep: 5

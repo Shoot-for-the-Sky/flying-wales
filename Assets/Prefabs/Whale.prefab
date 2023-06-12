@@ -339,12 +339,11 @@ MonoBehaviour:
   currentWhaleEnumState: 0
   whaleSpeed: 1
   whaleRotateSpeed: 1
-  damagePoints: 15.2
+  damagePoints: 15
   whaleChanceToCollectPoint: 10
   minScore: 3
   maxScore: 6
   rollRandomScoreTime: 1
-  whalesAttacking: 0
 --- !u!50 &7598388183887269270
 Rigidbody2D:
   serializedVersion: 4
