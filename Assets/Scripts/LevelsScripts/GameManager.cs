@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
     private PowerUIScript callPowerUIScript;
     [SerializeField] private GameObject shieldGameObject;
     private GameObject shieldInstance;
+    private float ShieldPowerTimeToAppear = 4f;
+    private float ShieldPowerTimeToReActive = 10f;
+    private float CallPowerTimeToReActive = 10f;
+    
 
     // UI
     [SerializeField] protected Text ScoreText;
@@ -324,23 +328,23 @@ public class GameManager : MonoBehaviour
 
     private GameObject GetRandomAliveWhale()
     {
-        GameObject randomWhale = null;
-        while (randomWhale == null)
-        {
-            int randomWhaleIndex = UtilFunctions.GetRandomIntInRange(0, whales.Count);
-            randomWhale = whales[randomWhaleIndex];
-        }
+        System.Random random = new System.Random();
+        int randomWhaleIndex = random.Next(whales.Count);
+        GameObject randomWhale = whales[randomWhaleIndex];
         return randomWhale;
+    }
+
+    public void GenerateScoreUI(Vector3 scorePosition, int scoreToAdd)
+    {
+        GameObject scoreCollector = Instantiate(scoreCollectorPrefab, scorePosition, Quaternion.identity);
+        ScoreCollectorScript scoreCollectorScript = scoreCollector.GetComponent<ScoreCollectorScript>();
+        scoreCollectorScript.score = scoreToAdd;
     }
 
     public void RandomWhaleTakeScore(int scoreToAdd)
     {
         GameObject randomWhale = GetRandomAliveWhale();
-        Vector2 randomWhalePosition = new Vector2(randomWhale.transform.position.x, randomWhale.transform.position.y);
-        string scoreText = "+" + scoreToAdd.ToString();
-        GameObject scoreCollector = Instantiate(scoreCollectorPrefab, randomWhale.transform.position, Quaternion.identity);
-        ScoreCollectorScript scoreCollectorScript = scoreCollector.GetComponent<ScoreCollectorScript>();
-        scoreCollectorScript.score = scoreToAdd;
+        GenerateScoreUI(randomWhale.transform.position, scoreToAdd);
     }
 
     public void UseCallPower()
@@ -349,7 +353,7 @@ public class GameManager : MonoBehaviour
         isCallPowerActive = true;
         CreateWhale();
         Debug.Log("UseCallPower");
-        FunctionTimer.Create(DisableUseCallPower, 5f);
+        FunctionTimer.Create(DisableUseCallPower, CallPowerTimeToReActive);
         ChangeWhalesState();
     }
 
@@ -365,12 +369,17 @@ public class GameManager : MonoBehaviour
         isShieldPowerActive = true;
         shieldInstance = Instantiate(shieldGameObject, Vector3.zero, Quaternion.identity);
         Debug.Log("UseShieldPower");
-        FunctionTimer.Create(DisableUseShieldPower, 5f);
+        FunctionTimer.Create(DisableUseShieldPower, ShieldPowerTimeToAppear);
+        FunctionTimer.Create(SetUseShieldActive, ShieldPowerTimeToReActive);
+    }
+
+    public void SetUseShieldActive()
+    {
+        isShieldPowerActive = false;
     }
 
     public void DisableUseShieldPower()
     {
-        isShieldPowerActive = false;
         if (shieldInstance != null)
         {
             Destroy(shieldInstance);

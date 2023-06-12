@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected GameObject meteor;
     [SerializeField] public float hitPoints;
     [SerializeField] public float healthPoints;
+    [SerializeField] public int xpPointWhenDestroyedByEnemy;
 
     // Explosion
     [SerializeField] GameObject explosionPrefab;
@@ -31,6 +32,8 @@ public class Enemy : MonoBehaviour
         {
             if (!inSelfDestroying)
             {
+                gameManagerScript.GenerateScoreUI(transform.position, xpPointWhenDestroyedByEnemy);
+                gameManagerScript.AddScore(xpPointWhenDestroyedByEnemy);
                 gameManagerScript.RegisterDestroyedEnemy("Meteor");
             }
             else
