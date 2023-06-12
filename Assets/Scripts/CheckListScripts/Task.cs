@@ -14,7 +14,9 @@ public class Task
     public WhaleState currentState;
     public int currentScore;
     public bool canCreateMeteors;
+    public bool canCreateAliens;
     public float createMeteorEachSec;
+    public float createAlienEachSec;
     public bool canGatherScore;
     public bool requiredStateForTime;
     public bool disableShieldPower;
@@ -35,7 +37,9 @@ public class Task
         text = currentCheck.text;
         title = currentCheck.title;
         canCreateMeteors = check.canCreateMeteors;
+        canCreateAliens = check.canCreateAliens;
         createMeteorEachSec = check.createMeteorEachSec;
+        createAlienEachSec = check.createAlienEachSec;
         canGatherScore = check.canGatherScore;
         requiredStateForTime = check.requiredStateForTime;
         time = check.time;
@@ -51,8 +55,16 @@ public class Task
         bool inWantedState = IsWhalesInWantedState();
         bool isCollectedScore = IsCollectedWantedScore();
         bool isPassTime = IsPassWantedTime();
-        bool isSurvive = IsSurviveIfNeeded();
-        bool isDestroy = IsDestroyIfNeeded();
+
+        // survive
+        bool isSurviveMeteors = IsSurviveIfNeededMeteors();
+        bool isSurviveAliens = IsSurviveIfNeededAliens();
+
+        // destroy
+        bool isDestroyMeteors = IsDestroyIfNeededMeteors();
+        bool isDestroyAliens = IsDestroyIfNeededAliens();
+
+        // powers
         bool isShieldPowers = IsShieldPowersIfNeeded();
         bool isCallPowers = IsCallPowersIfNeeded();
         // if (!inWantedState) {
@@ -76,6 +88,8 @@ public class Task
         // if (!isCallPowers) {
         //     Debug.Log("Unfilled: isCallPowers");
         // }
+        bool isSurvive = isSurviveMeteors && isSurviveAliens;
+        bool isDestroy = isDestroyMeteors && isDestroyAliens;
         doneTask = inWantedState && isCollectedScore && isPassTime && isSurvive && isDestroy && isShieldPowers && isCallPowers;
     }
 
@@ -132,7 +146,7 @@ public class Task
         return isPassWantedTime;
     }
 
-    private bool IsSurviveIfNeeded()
+    private bool IsSurviveIfNeededMeteors()
     {
         bool isSurviveIfNeeded = false;
         if (currentCheck.surviveMeteorsCount != 0)
@@ -148,11 +162,29 @@ public class Task
         {
             isSurviveIfNeeded = true;
         }
-        // Debug.Log("isSurviveIfNeeded: " + isSurviveIfNeeded);
         return isSurviveIfNeeded;
     }
 
-    private bool IsDestroyIfNeeded()
+    private bool IsSurviveIfNeededAliens()
+    {
+        bool isSurviveIfNeeded = false;
+        if (currentCheck.surviveAliensCount != 0)
+        {
+            if (gameManagerScript.IsFilledSurvivedEnemies("Alien", currentCheck.surviveAliensCount))
+            {
+                isSurviveIfNeeded = true;
+            }
+        }
+
+        // Survive enemies not required
+        else
+        {
+            isSurviveIfNeeded = true;
+        }
+        return isSurviveIfNeeded;
+    }
+
+    private bool IsDestroyIfNeededMeteors()
     {
         bool isDestroyIfNeeded = false;
         if (currentCheck.destroyMeteorsCount != 0)
@@ -167,7 +199,24 @@ public class Task
         {
             isDestroyIfNeeded = true;
         }
-        // Debug.Log("isDestroyIfNeeded: " + isDestroyIfNeeded);
+        return isDestroyIfNeeded;
+    }
+
+    private bool IsDestroyIfNeededAliens()
+    {
+        bool isDestroyIfNeeded = false;
+        if (currentCheck.destroyAliensCount != 0)
+        {
+            if (gameManagerScript.IsFilledDestroyedEnemies("Alien", currentCheck.destroyAliensCount))
+            {
+                isDestroyIfNeeded = true;
+            }
+        }
+        // Destroy enemies not required
+        else
+        {
+            isDestroyIfNeeded = true;
+        }
         return isDestroyIfNeeded;
     }
 
@@ -186,7 +235,6 @@ public class Task
         {
             isShieldPowersIfNeeded = true;
         }
-        // Debug.Log("isUsedPowersIfNeeded: " + isShieldPowersIfNeeded);
         return isShieldPowersIfNeeded;
     }
 
@@ -205,7 +253,6 @@ public class Task
         {
             isCallPowersIfNeeded = true;
         }
-        // Debug.Log("isUsedPowersIfNeeded: " + isCallPowersIfNeeded);
         return isCallPowersIfNeeded;
     }
 

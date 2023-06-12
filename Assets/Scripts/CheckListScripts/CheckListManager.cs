@@ -11,7 +11,7 @@ public class CheckListManager : MonoBehaviour
     // User interface
     [SerializeField] Text currentCheckText;
     [SerializeField] Text currentCheckTitle;
-    [SerializeField] Text nextCheckText;
+    [SerializeField] Text timeText;
     [SerializeField] Text taskCounterText;
     [SerializeField] SpriteRenderer shieldPowerIcon;
     [SerializeField] SpriteRenderer callPowerIcon;
@@ -47,12 +47,12 @@ public class CheckListManager : MonoBehaviour
                 if (inRequiredStateForTimer())
                 {
                     timer += 0.10f;
-                    nextCheckText.text = "Task Time: " + timer.ToString(timerStringFormat);
+                    timeText.text = "Task Time: " + timer.ToString(timerStringFormat);
                 }
             }
             else
             {
-                nextCheckText.text = "";
+                timeText.text = "";
             }
             levelTime = timer;
         }
@@ -217,11 +217,18 @@ public class CheckListManager : MonoBehaviour
                     activeTimerNeeded = true;
                 }
 
-                // Need to create enemies in task
+                // Need to create meteors in task
                 if (task.canCreateMeteors)
                 {
                     gameManagerScript.canCreateMeteors = true;
                     gameManagerScript.createMeteorEachSec = task.createMeteorEachSec;
+                }
+
+                // Need to create aliens in tasks
+                if (task.canCreateAliens)
+                {
+                    gameManagerScript.canCreateAliens = true;
+                    gameManagerScript.createAlienEachSec = task.createAlienEachSec;
                 }
 
                 if (task.canGatherScore)

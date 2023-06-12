@@ -16,6 +16,7 @@ TagManager:
   - CallPowerIcon
   - FinalScore
   - Shield
+  - AlienBody
   layers:
   - Default
   - TransparentFX

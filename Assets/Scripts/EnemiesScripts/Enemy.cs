@@ -4,10 +4,13 @@ public class Enemy : MonoBehaviour
 {
     // Game Manager
     GameManager gameManagerScript;
-    [SerializeField] protected GameObject meteor;
+
+    // Enemy
+    [SerializeField] protected GameObject enemyObject;
     [SerializeField] public float hitPoints;
     [SerializeField] public float healthPoints;
     [SerializeField] public int xpPointWhenDestroyedByEnemy;
+    [SerializeField] public string enemyName;
 
     // Explosion
     [SerializeField] GameObject explosionPrefab;
@@ -34,13 +37,13 @@ public class Enemy : MonoBehaviour
             {
                 gameManagerScript.GenerateScoreUI(transform.position, xpPointWhenDestroyedByEnemy);
                 gameManagerScript.AddScore(xpPointWhenDestroyedByEnemy);
-                gameManagerScript.RegisterDestroyedEnemy("Meteor");
+                gameManagerScript.RegisterDestroyedEnemy(enemyName);
             }
             else
             {
-                gameManagerScript.RegisterSurvivedEnemy("Meteor");
+                gameManagerScript.RegisterSurvivedEnemy(enemyName);
             }
-            Destroy(meteor);
+            Destroy(enemyObject);
         }
         if (inSelfDestroying)
         {

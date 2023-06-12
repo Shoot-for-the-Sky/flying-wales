@@ -3,6 +3,7 @@ using UnityEngine;
 public class WarningIconOnScreen : MonoBehaviour
 {
     [SerializeField] private GameObject trackObject;
+    [SerializeField] private string trackObjectName;
     [SerializeField] private float defaultY = 4.0f;
     [SerializeField] private float defaultX = 8.0f;
     private Direction trackObjectDirection;
@@ -56,7 +57,7 @@ public class WarningIconOnScreen : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("MeteorBody"))
+        if (other.CompareTag(trackObjectName))
         {
             Destroy(gameObject);
         }

@@ -47,9 +47,11 @@ MonoBehaviour:
   meteorPrefab: {fileID: 7833430220676884611, guid: 5f7dcbe9438ebfb40ac07e43651fb5fd, type: 3}
   canCreateMeteors: 0
   createMeteorEachSec: 10
+  alienPrefab: {fileID: 6991494545407449543, guid: 3face7ab6b61b844895e5602426d6400, type: 3}
+  canCreateAliens: 0
+  createAlienEachSec: 0.5
   canGatherScore: 0
   requiredStateForTime: 0
-  numberOfSurvivedEnemies: 0
   score: 0
   whalePrefab: {fileID: 7598388183887269266, guid: bc7b8260156439f4380121a762d47d13, type: 3}
   numberOfWhales: 3
@@ -181,7 +183,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 72cfcb717edd26d46a29eb9c53662801, type: 3}
   - {fileID: 21300000, guid: 4d511ea5ac7dcfd48bc391a3e73ac3ed, type: 3}
   attackSpriteRenderer: {fileID: 0}
-  gameOverManager: {fileID: 0}
+  gameOverManager: {fileID: 779818542948744564, guid: c608984e5a62dd2368cd499711c2e182, type: 3}
   CheckListManager: {fileID: 0}
   cursorArrow: {fileID: 2800000, guid: 453cb9cc2cd41224389f1d3eca3226ba, type: 3}
   cursorDynamic: {fileID: 2800000, guid: c7ff66fea8f811f4a8eec0bb83587b2e, type: 3}

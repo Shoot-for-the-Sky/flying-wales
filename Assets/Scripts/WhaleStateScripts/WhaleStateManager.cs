@@ -22,7 +22,7 @@ public class WhaleStateManager : MonoBehaviour
     [SerializeField] public float damagePoints;
 
     // Whale score
-    [SerializeField] private int whaleChanceToCollectPoint = 10;
+    [SerializeField] private int whaleChanceToCollectPoint = 30;
     [SerializeField] private int minScore = 3;
     [SerializeField] private int maxScore = 6;
     [SerializeField] private float rollRandomScoreTime = 1f;

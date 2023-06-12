@@ -8,16 +8,19 @@ using System;
 public class GameManager : MonoBehaviour
 {
     // Enemies
+    // Meteor
     [SerializeField] protected GameObject meteorPrefab;
     [SerializeField] public bool canCreateMeteors = false;
-    [SerializeField] public float createMeteorEachSec = 10;
+    [SerializeField] public float createMeteorEachSec = 10f;
+
+    // Alien
+    [SerializeField] protected GameObject alienPrefab;
+    [SerializeField] public bool canCreateAliens = false;
+    [SerializeField] public float createAlienEachSec = 0.5f;
+
+    // Task general data
     [SerializeField] public bool canGatherScore = false;
     [SerializeField] public bool requiredStateForTime = false;
-    public int numberOfSurvivedEnemies = 0;
-
-    // Save enemies instance when created them
-    // For checking when destroy and manipulate
-    private List<GameObject> enemies;
 
     // Values
     public int score;
@@ -53,9 +56,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float ShieldPowerTimeToAppear;
     [SerializeField] private float ShieldPowerTimeToReActive;
     [SerializeField] private float CallPowerTimeToReActive;
-    
-
-    private CheckListManager checkListScript;
 
     // UI
     [SerializeField] protected Text ScoreText;
@@ -71,10 +71,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] protected List<Sprite> attackSprites;
     [SerializeField] protected SpriteRenderer attackSpriteRenderer;
 
+    // Game over
     [SerializeField] protected GameObject gameOverManager;
-    [SerializeField] protected GameObject CheckListManager;
-
     private bool gameOver = false;
+    
+
+    // CheckList
+    [SerializeField] protected GameObject CheckListManager;
+    private CheckListManager checkListScript;
+
 
     // Cursors
     public Texture2D cursorArrow;
@@ -124,12 +129,12 @@ public class GameManager : MonoBehaviour
         ChangeStatesUI(1, 0, 0);
 
         StartCoroutine(SpawnMeteorCoroutine());
+        StartCoroutine(SpawnAlienCoroutine());
 
         // Registers
         destroyedEnemiesCounter = new Dictionary<string, int>();
         survivedEnemiesCounter = new Dictionary<string, int>();
         playerPowersCounter = new Dictionary<string, int>();
-        enemies = new List<GameObject>();
 
         // Powers
         GameObject shieldGameObject = GameObject.FindWithTag("ShieldPowerIcon");
@@ -155,14 +160,25 @@ public class GameManager : MonoBehaviour
         whales.Add(whale);
     }
 
+    private IEnumerator SpawnAlienCoroutine()
+    {
+        while (true)
+        {
+            if (canCreateAliens)
+            {
+                Instantiate(alienPrefab, Vector3.zero, Quaternion.identity);
+            }
+            yield return new WaitForSeconds(createAlienEachSec);
+        }
+    }
+
     private IEnumerator SpawnMeteorCoroutine()
     {
         while (true)
         {
             if (canCreateMeteors)
             {
-                GameObject meteor = Instantiate(meteorPrefab, Vector3.zero, Quaternion.identity);
-                enemies.Add(meteor);
+                Instantiate(meteorPrefab, Vector3.zero, Quaternion.identity);
             }
             yield return new WaitForSeconds(createMeteorEachSec);
         }

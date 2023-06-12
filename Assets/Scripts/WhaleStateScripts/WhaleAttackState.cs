@@ -85,7 +85,9 @@ public class WhaleAttackState : WhaleBaseState
 
     public override void OnTriggerEnter2D(WhaleStateManager whale, Collider2D collision)
     {
-        if (collision.gameObject.tag == "MeteorBody" && gameManagerScript.whalesAttacking)
+        bool validEnemyTagName = collision.gameObject.tag == "MeteorBody" || collision.gameObject.tag == "AlienBody";
+
+        if (validEnemyTagName && gameManagerScript.whalesAttacking)
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             enemy.AttackByPlayer(whale.damagePoints);

@@ -82,11 +82,13 @@ public class WhaleParamsManages : MonoBehaviour
         FunctionTimer.Create(HideSlider, healthSliderShowTime);
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.tag == "MeteorBody" && !gameManagerScript.whalesAttacking)
+        bool validEnemyTagName = collider.gameObject.tag == "MeteorBody" || collider.gameObject.tag == "AlienBody";
+        
+        if (validEnemyTagName && !gameManagerScript.whalesAttacking)
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            Enemy enemy = collider.gameObject.GetComponent<Enemy>();
             HitByEnemy(enemy.hitPoints);
         }
     }
