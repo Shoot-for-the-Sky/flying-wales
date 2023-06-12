@@ -4,6 +4,8 @@ The game concept is to make a single-player game of protecting the flying whales
 
 ![First Art](/images/first_art-01-01.png)
 
+## See the [Teaser Trailer](https://www.youtube.com/watch?v=Jfe2Gn9S7oQ)
+
 ## See the [Formal Elements File](formal-elements.md)
 
 ## See the [Dramatic Elements File](dramatic-elements.md)
