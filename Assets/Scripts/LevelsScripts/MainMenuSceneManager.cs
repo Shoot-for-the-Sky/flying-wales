@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class MainMenuSceneManager : MonoBehaviour
 {
-    // Arrow
-    public Texture2D cursorArrow;
-
     private bool intro_locked = false;
     private int intro_score;
     private bool sky_locked = true;
@@ -20,7 +17,11 @@ public class MainMenuSceneManager : MonoBehaviour
 
     private int forest_score;
 
+    private bool forest_locked = true;
+
     private int ocean_score;
+
+    private bool ocean_locked = true;
     [SerializeField] protected GameObject progressManager;
 
     private ProgressManager progressManagerScript;
@@ -36,25 +37,37 @@ public class MainMenuSceneManager : MonoBehaviour
 
     [SerializeField] GameObject levelsCanvas;
 
+
+    //Levels buttons
     [SerializeField] GameObject skyButton;
 
     [SerializeField] GameObject spaceButton;
 
+    [SerializeField] GameObject forestButton;
+
+    [SerializeField] GameObject oceanButton;
+
+
+    //Locked sprites
     [SerializeField] Sprite locked_sky;
 
     [SerializeField] Sprite locked_space;
 
+    [SerializeField] Sprite locked_forest;
+    [SerializeField] Sprite locked_ocean;
+
+    
+
+
     void Start()
     {
-        // Set default cursor
-        Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
-
         progressManagerScript = progressManager.GetComponent<ProgressManager>();
         // progressManagerScript.readProgress();
         Debug.Log("Start of MainMenuScene");
         readHighestScore();
         readUnlockedLevels();
         setLockedSprites();
+        AudioManager.Instance.playBgm("MainMenuTheme");
 
     }
     
@@ -63,6 +76,8 @@ public class MainMenuSceneManager : MonoBehaviour
         intro_locked = progressManagerScript.getLockedLevels("IntroLevelScene");
         sky_locked = progressManagerScript.getLockedLevels("SkyLevelScene");
         space_locked = progressManagerScript.getLockedLevels("SpaceLevelScene");
+        forest_locked = progressManagerScript.getLockedLevels("ForestLevelScene");
+        ocean_locked = progressManagerScript.getLockedLevels("OceanLevelScene");
 
     }
 
@@ -132,14 +147,26 @@ public class MainMenuSceneManager : MonoBehaviour
         {
             spaceButton.GetComponent<Image>().sprite = locked_space;
         }
+        if(forest_locked)
+        {
+            forestButton.GetComponent<Image>().sprite = locked_forest;
+        }
+        if(ocean_locked)
+        {
+            
+            oceanButton.GetComponent<Image>().sprite = locked_ocean;
+        }
         
 
     
     }
     public void PlayLevel(string sceneName)
     {   
+        
         if(!progressManagerScript.getLockedLevels(sceneName))
-        {
+        {   
+            Debug.Log("Loading level: "+sceneName);
+            AudioManager.Instance.playSfx("GameStart");
             SceneManager.LoadScene(sceneName);
         }
         else

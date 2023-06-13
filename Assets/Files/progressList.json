@@ -10,7 +10,7 @@
         {
             "scenario:": 1,
             "scenarioName": "SkyLevelScene",
-            "isLocked": true,
+            "isLocked": false,
             "highscore": 0
         },
         {

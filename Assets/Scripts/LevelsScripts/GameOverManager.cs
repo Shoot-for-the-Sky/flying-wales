@@ -30,6 +30,7 @@ public class GameOverManager : MonoBehaviour
     
     public void gameOverScreen(int score)
     {
+        AudioManager.Instance.playBgm("GameOver");
         Debug.Log("Game Over screen called");
         explanationText.text = losingMessage;
         gameOverText.text = "Game Over!";
@@ -40,6 +41,7 @@ public class GameOverManager : MonoBehaviour
 
     public void winningScreen(int score)
     {
+        AudioManager.Instance.playBgm("LevelDone");
         Debug.Log("Winning screen called");
         gameOverText.text = "You Win!";
         explanationText.text = winningMessage;
@@ -51,6 +53,7 @@ public class GameOverManager : MonoBehaviour
 
     public void LoadMenu()
     {
+        AudioManager.Instance.playSfx("Click");
         Debug.Log("Load Menu");
         Time.timeScale = 1f;
         gameOverUI.SetActive(false);
@@ -59,6 +62,7 @@ public class GameOverManager : MonoBehaviour
 
     public void Retry()
     {
+        AudioManager.Instance.playSfx("Click");
         Debug.Log("Retry");
         Time.timeScale = 1f;
         gameOverUI.SetActive(false);

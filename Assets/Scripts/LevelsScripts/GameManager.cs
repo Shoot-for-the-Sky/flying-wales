@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -144,6 +145,10 @@ public class GameManager : MonoBehaviour
         callPowerUIScript = callGameObject.GetComponent<PowerUIScript>();
 
         checkListScript = CheckListManager.GetComponent<CheckListManager>();
+
+        
+        AudioManager.Instance.playBgm(SceneManager.GetActiveScene().name+"Theme");
+
     }
 
     private void CreateWhales()
@@ -263,10 +268,12 @@ public class GameManager : MonoBehaviour
         }
         else if (callPowerButton.WasPressedThisFrame() && !isCallPowerActive && !isCallDisableToUse)
         {
+            AudioManager.Instance.playSfx("WhaleSummon");
             UseCallPower();
         }
         else if (shieldPowerButton.WasPressedThisFrame() && !isShieldPowerActive && !isShieldDisableToUse)
         {
+            AudioManager.Instance.playSfx("ShieldActive");
             UseShieldPower();
         }
     }

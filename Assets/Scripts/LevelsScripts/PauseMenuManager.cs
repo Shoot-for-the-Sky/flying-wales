@@ -35,6 +35,8 @@ public class PauseMenuManager : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
+        AudioManager.Instance.playSfx("Click");
+        AudioManager.Instance.bgmSrc.UnPause();
     }
 
     void PauseGame()
@@ -42,16 +44,20 @@ public class PauseMenuManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
+        AudioManager.Instance.playSfx("Click");
+        AudioManager.Instance.bgmSrc.Pause();
     }
 
     public void QuitGame()
     {
+        AudioManager.Instance.playSfx("Click");
         Debug.Log("Quit Game");
         LoadMenu();
     }
 
     public void LoadMenu()
     {
+        AudioManager.Instance.playSfx("Click");
         Debug.Log("Load Menu");
         Time.timeScale = 1f;
         gameIsPaused = false;
