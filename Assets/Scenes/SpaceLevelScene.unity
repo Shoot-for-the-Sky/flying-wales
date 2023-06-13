@@ -684,6 +684,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 95333750}
     - target: {fileID: 2100925370685900695, guid: 13ec1396479a16849b632082c341c244, type: 3}
+      propertyPath: numberOfWhales
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100925370685900695, guid: 13ec1396479a16849b632082c341c244, type: 3}
       propertyPath: gameOverManager
       value: 
       objectReference: {fileID: 816955655}

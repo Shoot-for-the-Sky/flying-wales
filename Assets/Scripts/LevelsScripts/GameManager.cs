@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
 
     private void CreateWhale()
     {
-        GameObject whale = Instantiate(whalePrefab);
+        GameObject whale = Instantiate(whalePrefab, Vector3.zero, Quaternion.identity);
         Debug.Log("currentWhalesState: " + currentWhalesState);
         whale.GetComponent<WhaleStateManager>().ChangeStateByName(currentWhalesState);
         whales.Add(whale);
