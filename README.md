@@ -31,7 +31,7 @@ The game concept is to make a single-player game of protecting the flying whales
 * Add main menu scene
 * Add util functions scripts
 
-## [2.6.3](https://shoot-for-the-sky.itch.io/flying-whales-263)
+## [2.6.3 Patch](https://shoot-for-the-sky.itch.io/flying-whales-263)
 
 * Improve checklist system
 * Improve enemy movement
