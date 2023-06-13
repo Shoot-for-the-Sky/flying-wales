@@ -393,6 +393,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 779818542948744569, guid: c608984e5a62dd2368cd499711c2e182, type: 3}
+      propertyPath: gameOverUI
+      value: 
+      objectReference: {fileID: 816955656}
+    - target: {fileID: 779818542948744569, guid: c608984e5a62dd2368cd499711c2e182, type: 3}
       propertyPath: progressManager
       value: 
       objectReference: {fileID: 0}
@@ -401,6 +405,11 @@ PrefabInstance:
 --- !u!1 &816955655 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 779818542948744564, guid: c608984e5a62dd2368cd499711c2e182, type: 3}
+  m_PrefabInstance: {fileID: 816955654}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &816955656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 779818541952987663, guid: c608984e5a62dd2368cd499711c2e182, type: 3}
   m_PrefabInstance: {fileID: 816955654}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &840306545 stripped
