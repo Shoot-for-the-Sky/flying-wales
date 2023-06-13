@@ -69,3 +69,10 @@
 * Add main sounds
 * Improve balance of enemies damage and health point
 * Improve balance of whale powers
+
+
+## [2.5.0 Patch](https://github.com/flying-whales/flying-whales/releases/tag/2.5.0)
+
+* Fix OpenGL text problem
+* Fix audio manager
+* Fix UI bugs
