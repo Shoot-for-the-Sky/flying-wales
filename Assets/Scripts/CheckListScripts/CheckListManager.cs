@@ -223,12 +223,20 @@ public class CheckListManager : MonoBehaviour
                     gameManagerScript.canCreateMeteors = true;
                     gameManagerScript.createMeteorEachSec = task.createMeteorEachSec;
                 }
+                else
+                {
+                    gameManagerScript.canCreateMeteors = false;
+                }
 
                 // Need to create aliens in tasks
                 if (task.canCreateAliens)
                 {
                     gameManagerScript.canCreateAliens = true;
                     gameManagerScript.createAlienEachSec = task.createAlienEachSec;
+                }
+                else
+                {
+                    gameManagerScript.canCreateAliens = false;
                 }
 
                 if (task.canGatherScore)

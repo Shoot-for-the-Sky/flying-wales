@@ -157,6 +157,8 @@ public class GameManager : MonoBehaviour
     private void CreateWhale()
     {
         GameObject whale = Instantiate(whalePrefab);
+        Debug.Log("currentWhalesState: " + currentWhalesState);
+        whale.GetComponent<WhaleStateManager>().ChangeStateByName(currentWhalesState);
         whales.Add(whale);
     }
 
@@ -191,25 +193,24 @@ public class GameManager : MonoBehaviour
         WhalesControl();
         CheckPowers();
         ScoreText.text = score.ToString();
-        //if all whales are dead, game over
-        if(whales.Count == 0 && !gameOver)
+
+        // If all whales are dead, game over
+        if (whales.Count == 0 && !gameOver)
         {
             gameOver = true;
-            //get the gameovermanager script from GameManager
+            // Get the game over manager script from GameManager
             GameOverManager gameOverManagerScript = gameOverManager.GetComponent<GameOverManager>();
             gameOverManagerScript.showScore(score);
             gameOverManagerScript.gameOverScreen(score);
         }
-        if(checkListScript.IsDoneLevelTasks() && !gameOver)
+        if (checkListScript.IsDoneLevelTasks() && !gameOver)
         {
             gameOver = true;
-            //get the gameovermanager script from GameManager
+            // Get the game over manager script from GameManager
             GameOverManager gameOverManagerScript = gameOverManager.GetComponent<GameOverManager>();
             gameOverManagerScript.showScore(score);
             gameOverManagerScript.winningScreen(score);
         }
-        
-
     }
 
     private void HandleDeadWhales()
@@ -275,7 +276,10 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject whale in whales)
         {
-            whale.GetComponent<WhaleStateManager>().ChangeStateByName(currentWhalesState);
+            if (whale != null)
+            {
+                whale.GetComponent<WhaleStateManager>().ChangeStateByName(currentWhalesState);
+            }
         }
     }
 
@@ -393,18 +397,19 @@ public class GameManager : MonoBehaviour
 
     public void UseCallPower()
     {
+        WhaleState tempCurrentWhalesState = currentWhalesState;
         RegisterPowerPlayer("Call");
         isCallPowerActive = true;
         CreateWhale();
+        currentWhalesState = tempCurrentWhalesState;
+        ChangeWhalesState();
         Debug.Log("UseCallPower");
         FunctionTimer.Create(DisableUseCallPower, CallPowerTimeToReActive);
-        ChangeWhalesState();
     }
 
     public void DisableUseCallPower()
     {
         isCallPowerActive = false;
-        Debug.Log("DisableUseCallPower");
     }
 
     public void UseShieldPower()
@@ -412,7 +417,6 @@ public class GameManager : MonoBehaviour
         RegisterPowerPlayer("Shield");
         isShieldPowerActive = true;
         shieldInstance = Instantiate(shieldGameObject, Vector3.zero, Quaternion.identity);
-        Debug.Log("UseShieldPower");
         FunctionTimer.Create(DisableUseShieldPower, ShieldPowerTimeToAppear);
         FunctionTimer.Create(SetUseShieldActive, ShieldPowerTimeToReActive);
     }
@@ -428,6 +432,5 @@ public class GameManager : MonoBehaviour
         {
             Destroy(shieldInstance);
         }
-        Debug.Log("DisableUseShieldPower");
     }
 }
