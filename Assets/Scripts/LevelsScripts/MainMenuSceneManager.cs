@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class MainMenuSceneManager : MonoBehaviour
 {
+    // Arrow
+    public Texture2D cursorArrow;
+
     private bool intro_locked = false;
     private int intro_score;
     private bool sky_locked = true;
@@ -41,11 +44,11 @@ public class MainMenuSceneManager : MonoBehaviour
 
     [SerializeField] Sprite locked_space;
 
-    
-
-
     void Start()
     {
+        // Set default cursor
+        Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
+
         progressManagerScript = progressManager.GetComponent<ProgressManager>();
         // progressManagerScript.readProgress();
         Debug.Log("Start of MainMenuScene");

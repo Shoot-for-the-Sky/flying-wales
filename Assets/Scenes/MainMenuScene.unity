@@ -721,6 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45fc8b2a35d2124b9184a018275a0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorArrow: {fileID: 2800000, guid: 453cb9cc2cd41224389f1d3eca3226ba, type: 3}
   progressManager: {fileID: 403655313}
   introScoreText: {fileID: 348588305}
   skyScoreText: {fileID: 366315745}
