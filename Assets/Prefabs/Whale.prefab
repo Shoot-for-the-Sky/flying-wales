@@ -340,7 +340,7 @@ MonoBehaviour:
   whaleSpeed: 1
   whaleRotateSpeed: 1
   damagePoints: 15
-  whaleChanceToCollectPoint: 10
+  whaleChanceToCollectPoint: 30
   minScore: 3
   maxScore: 6
   rollRandomScoreTime: 1

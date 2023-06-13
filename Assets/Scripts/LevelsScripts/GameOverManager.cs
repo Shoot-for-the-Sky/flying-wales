@@ -16,8 +16,6 @@ public class GameOverManager : MonoBehaviour
 
     [SerializeField] protected string losingMessage;
 
-    [SerializeField] protected GameObject progressManager;
-
     private ProgressManager progressManagerScript;
 
     // Start is called before the first frame update
@@ -26,6 +24,7 @@ public class GameOverManager : MonoBehaviour
 
     void Start()
     {
+        GameObject progressManager = GameObject.FindWithTag("ProgressManager");
         progressManagerScript = progressManager.GetComponent<ProgressManager>();
     }
     

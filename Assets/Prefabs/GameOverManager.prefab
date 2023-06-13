@@ -664,6 +664,7 @@ MonoBehaviour:
   winningMessage: You have completed all the tasks! You can progress to the next
     level!
   losingMessage: 'The last whale has died! You have reached a final score of:'
+  progressManager: {fileID: 6421116723885893376, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
 --- !u!1 &779818543219215590
 GameObject:
   m_ObjectHideFlags: 0

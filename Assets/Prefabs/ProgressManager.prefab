@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6421116723885893379}
   m_Layer: 0
   m_Name: ProgressManager
-  m_TagString: Untagged
+  m_TagString: ProgressManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
