@@ -16,25 +16,36 @@ public class GameOverManager : MonoBehaviour
 
     [SerializeField] protected string losingMessage;
 
+    [SerializeField] protected GameObject progressManager;
+
+    private ProgressManager progressManagerScript;
+
     // Start is called before the first frame update
 
     // Update is called once per frame
 
+    void Start()
+    {
+        progressManagerScript = progressManager.GetComponent<ProgressManager>();
+    }
     
-    public void gameOverScreen()
+    public void gameOverScreen(int score)
     {
         Debug.Log("Game Over screen called");
         explanationText.text = losingMessage;
         gameOverText.text = "Game Over!";
+        progressManagerScript.setHighScore(score, SceneManager.GetActiveScene().name);
         gameOverUI.SetActive(true);
         Time.timeScale = 0f;
     }
 
-    public void winningScreen()
+    public void winningScreen(int score)
     {
         Debug.Log("Winning screen called");
         gameOverText.text = "You Win!";
         explanationText.text = winningMessage;
+        progressManagerScript.setUnlock(SceneManager.GetActiveScene().name);
+        progressManagerScript.setHighScore(score, SceneManager.GetActiveScene().name);
         gameOverUI.SetActive(true);
         Time.timeScale = 0f;
     }

@@ -1,0 +1,35 @@
+{
+    "progressList": 
+    [
+        {
+            "scenario:": 0,
+            "scenarioName": "IntroLevelScene",
+            "isLocked": false,
+            "highscore": 0
+        },
+        {
+            "scenario:": 1,
+            "scenarioName": "SkyLevelScene",
+            "isLocked": true,
+            "highscore": 0
+        },
+        {
+            "scenario:": 2,
+            "scenarioName": "SpaceLevelScene",
+            "isLocked": true,
+            "highscore": 0
+        },
+        {
+            "scenario:": 3,
+            "scenarioName": "ForestLevelScene",
+            "isLocked": true,
+            "highscore": 0
+        },
+        {
+            "scenario:": 4,
+            "scenarioName": "OceanLevelScene",
+            "isLocked": true,
+            "highscore": 0
+        }
+    ]
+}

@@ -134,6 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &141249458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6421116723885893376, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+  m_PrefabInstance: {fileID: 844610224}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &211332787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -298,6 +303,63 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6490737090878516993, guid: ab0148c88189f474da6d9d50b8358aaa, type: 3}
   m_PrefabInstance: {fileID: 6490737090644549744}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &844610224
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6421116723885893376, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_Name
+      value: ProgressManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421116723885893378, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421116723885893378, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421116723885893378, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421116723885893378, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421116723885893378, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421116723885893378, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421116723885893378, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421116723885893378, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421116723885893378, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421116723885893378, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421116723885893378, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1372c42bb7255303bb111a4adce6e8cb, type: 3}
 --- !u!212 &966260996 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6490737090803128692, guid: ab0148c88189f474da6d9d50b8358aaa, type: 3}
@@ -557,6 +619,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 622544375968661435, guid: 4db21a8e56ff02b47960e2d5870f12d3, type: 3}
+      propertyPath: progressManager
+      value: 
+      objectReference: {fileID: 141249458}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4db21a8e56ff02b47960e2d5870f12d3, type: 3}
 --- !u!1001 &2100925369999990226
@@ -704,6 +770,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6681501894225016220, guid: 248c3b62565dfe84f8066ed2f5443543, type: 3}
+      propertyPath: timeText
+      value: 
+      objectReference: {fileID: 1724227040}
     - target: {fileID: 6681501894225016220, guid: 248c3b62565dfe84f8066ed2f5443543, type: 3}
       propertyPath: callPowerIcon
       value: 

@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
             //get the gameovermanager script from GameManager
             GameOverManager gameOverManagerScript = gameOverManager.GetComponent<GameOverManager>();
             gameOverManagerScript.showScore(score);
-            gameOverManagerScript.gameOverScreen();
+            gameOverManagerScript.gameOverScreen(score);
         }
         if(checkListScript.IsDoneLevelTasks() && !gameOver)
         {
@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
             //get the gameovermanager script from GameManager
             GameOverManager gameOverManagerScript = gameOverManager.GetComponent<GameOverManager>();
             gameOverManagerScript.showScore(score);
-            gameOverManagerScript.winningScreen();
+            gameOverManagerScript.winningScreen(score);
         }
         
 
