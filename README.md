@@ -1,37 +1,41 @@
 # Flying Whales
 
-The game concept is to make a single-player game of protecting the flying whales in the night sky from missle and other harmful, the main goal is to protect the whale and make them surive until they find their home.
+> The concept is to make a single-player game of protecting the flying whales in the night sky from meteors, aliens and other harmful, the main goal is to help the whales to save their planet.
 
-![First Art](/images/first_art-01-01.png)
+![Art](images/first_art-02.jpg)
 
-## See the [Official Trailer](https://www.youtube.com/watch?v=Jfe2Gn9S7oQ)
+## Links
 
-## See the [Formal Elements File](formal-elements.md)
+- Play the game [Online](https://shoot-for-the-sky.itch.io/flying-whales)
 
-## See the [Dramatic Elements File](dramatic-elements.md)
+- See the [Official Trailer](https://www.youtube.com/watch?v=Jfe2Gn9S7oQ)
 
-## See the [Dynamic Elements File](dynamic.md)
+- See the [Formal Elements](formal-elements.md)
 
-## Explore the game's lore through a text based game built-in twine [The Story of the Flying Whales](https://shoot-for-the-sky.github.io/flying-whales/The_story_of_the_flying_whales.html)
+- See the [Dramatic Elements](dramatic-elements.md)
 
-## [1.0.0 Patch](https://shoot-for-the-sky.itch.io/flying-wales-100)
+- See the [Dynamic Elements](dynamic.md)
+
+- Explore the game's lore through a text based game built-in twine [The Story of the Flying Whales](https://shoot-for-the-sky.github.io/flying-whales/The_story_of_the_flying_whales.html)
+
+## [1.0.0 Patch](https://github.com/flying-whales/flying-whales/releases/tag/1.0.0)
 
 * Add world background prefab
 * Add basic whales
 * Add Missiles
 
-## [1.6.1 Patch](https://shoot-for-the-sky.itch.io/flying-whales-161)
+## [1.6.1 Patch](https://github.com/flying-whales/flying-whales/releases/tag/1.6.1)
 
 * Add whale state system
 * Add basic ui in game showing whales states
-* Add whales movment animation
+* Add whales movement animation
 * Improve whales controlling and behaviours
 * Add checklist state system
 * Add basic ui in game showing checklist
 * Add main menu scene
 * Add util functions scripts
 
-## [2.6.3 Patch](https://shoot-for-the-sky.itch.io/flying-whales-263)
+## [2.6.3 Patch](https://github.com/flying-whales/flying-whales/releases/tag/2.6.3)
 
 * Improve checklist system
 * Improve enemy movement
@@ -42,3 +46,26 @@ The game concept is to make a single-player game of protecting the flying whales
 * Done intro level
 * Improve background
 * Improve in-game UI
+
+## [2.4.1 Patch](https://github.com/flying-whales/flying-whales/releases/tag/2.4.1)
+
+* Create function timer utils
+* Add whale life bar
+* Implement all scenario levels
+* Create alien enemies
+* Improve in-game UI
+* Add end game screen
+* Add pause game screen
+* Fix event system
+* Fix main menu lock scenario screen
+* Add high score of scenario feature
+* Improve balance of whale powers
+
+## [2.4.9 Patch](https://github.com/flying-whales/flying-whales/releases/tag/2.4.9)
+
+* Add process manager
+* Fix UI bugs
+* Fix cursor bugs
+* Add main sounds
+* Improve balance of enemies damage and health point
+* Improve balance of whale powers
