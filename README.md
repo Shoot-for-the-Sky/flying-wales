@@ -18,6 +18,11 @@
 
 - Explore the game's lore through a text based game built-in twine [The Story of the Flying Whales](https://shoot-for-the-sky.github.io/flying-whales/The_story_of_the_flying_whales.html)
 
+## Gameplay Screenshot:
+
+![Screenshot](images/Screenshots/1.png)
+
+
 ## [1.0.0 Patch](https://github.com/flying-whales/flying-whales/releases/tag/1.0.0)
 
 * Add world background prefab
