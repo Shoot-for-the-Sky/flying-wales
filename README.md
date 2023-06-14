@@ -115,3 +115,9 @@ W- Whale summon. The whales call for help and summon an additional whale. Use th
 ## [2.5.2 Patch](https://github.com/flying-whales/flying-whales/releases/tag/2.5.2)
 
 - UI resolution fix
+
+## [2.5.4 Patch](https://github.com/flying-whales/flying-whales/releases/tag/2.5.4)
+
+* Fix scenario's control
+* Fix forest level
+* Add heal feature in dynamic mode
