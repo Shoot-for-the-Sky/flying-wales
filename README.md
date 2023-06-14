@@ -30,7 +30,9 @@ A - Dynamic mode. In this mode the whales will randomly gather points, and slowl
 
 S - Track mode. In this mode the whales are commanded to follow your cursor. Use this mode to reposition the whales and to avoid danger.
 
-D- Attack mode. In this mode the whales are stationary until you press left click with your mouse, thats when they will dash to that location. Each whale you have deals damage individually, so when your pack grows larger not only its easier to survive but you also deal more damage.  Tip- When attacking enemies don't aim at them, aim behind them, That way when the dash is complete the whales are further away from the danger.
+D- Attack mode. In this mode the whales are stationary until you press left click with your mouse, thats when they will dash to that location. Each whale you have deals damage individually, so when your pack grows larger not only its easier to survive but you also deal more damage.  
+
+Tip- When attacking enemies don't aim at them, aim behind them, That way when the dash is complete the whales are further away from the danger.
 
 Shield and Whale summon skills when available:
 
