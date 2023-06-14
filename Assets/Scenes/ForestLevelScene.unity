@@ -685,7 +685,7 @@ PrefabInstance:
       objectReference: {fileID: 95333750}
     - target: {fileID: 2100925370685900695, guid: 13ec1396479a16849b632082c341c244, type: 3}
       propertyPath: numberOfWhales
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2100925370685900695, guid: 13ec1396479a16849b632082c341c244, type: 3}
       propertyPath: gameOverManager
@@ -808,7 +808,7 @@ PrefabInstance:
     - target: {fileID: 6681501894225016220, guid: 248c3b62565dfe84f8066ed2f5443543, type: 3}
       propertyPath: jsonFileCheckList
       value: 
-      objectReference: {fileID: 4900000, guid: 4fb049a3ac9956848984e2299df1936d, type: 3}
+      objectReference: {fileID: 4900000, guid: 4527b36a018b196418413af8ceab09f4, type: 3}
     - target: {fileID: 6681501894225016221, guid: 248c3b62565dfe84f8066ed2f5443543, type: 3}
       propertyPath: m_RootOrder
       value: 5
