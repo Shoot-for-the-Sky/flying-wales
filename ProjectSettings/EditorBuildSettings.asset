@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpaceLevelScene.unity
     guid: 708b61f7f2689c049bfd0d157c17fe82
+  - enabled: 1
+    path: Assets/Scenes/ForestLevelScene.unity
+    guid: 0064b499086a7f04e95ff3c53e8066f0
   m_configObjects: {}

@@ -16,14 +16,16 @@ public class WhaleParamsManages : MonoBehaviour
     public Slider slider;
 
     // Params
-    [SerializeField] public float healthPoint = 100f;
-    [SerializeField] private float healthSliderShowTime = 3f;
-    [SerializeField] private float hitColorShowTime = 0.2f;
+    [SerializeField] public float healthPoint;
+    [SerializeField] private float healthSliderShowTime;
+    [SerializeField] private float hitColorShowTime;
+    private float maxHealthPoint;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        maxHealthPoint = healthPoint;
         GameObject gameManager = GameObject.FindWithTag("GameManager");
         gameManagerScript = gameManager.GetComponent<GameManager>();
         slider.value = healthPoint;
@@ -68,6 +70,17 @@ public class WhaleParamsManages : MonoBehaviour
         if (whaleBodyRenderer != null)
         {
             whaleBodyRenderer.material.color = new Color(1f, 1f, 1f);
+        }
+    }
+
+    public void HealLife(float healWhalePoint)
+    {
+        if (healthPoint < maxHealthPoint)
+        {
+            ShowSlider();
+            healthPoint += healWhalePoint;
+            slider.value = healthPoint;
+            FunctionTimer.Create(HideSlider, healthSliderShowTime);
         }
     }
 

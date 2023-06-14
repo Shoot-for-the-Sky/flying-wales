@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] protected int numberOfWhales = 3;
     private List<GameObject> whales;
     public WhaleState currentWhalesState;
+    private const float healPointDelta = 3f;
 
     // Whales speed params
     [SerializeField] public float whaleSpeed = 1f;
@@ -399,6 +400,7 @@ public class GameManager : MonoBehaviour
     public void RandomWhaleTakeScore(int scoreToAdd)
     {
         GameObject randomWhale = GetRandomAliveWhale();
+        randomWhale.GetComponent<WhaleParamsManages>().HealLife(scoreToAdd * healPointDelta);
         GenerateScoreUI(randomWhale.transform.position, scoreToAdd);
     }
 
