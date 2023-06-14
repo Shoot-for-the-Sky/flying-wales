@@ -86,3 +86,8 @@
 * Fix OpenGL text problem
 * Fix audio manager
 * Fix UI bugs
+
+
+## [2.5.2 Patch](https://github.com/flying-whales/flying-whales/releases/tag/2.5.2)
+
+* UI resolution fix
