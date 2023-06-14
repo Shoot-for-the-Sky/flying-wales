@@ -42,9 +42,17 @@ W- Whale summon. The whales call for help and summon an additional whale. Use th
 
 ## Gameplay Screenshot
 
+### Sky
+
 ![Screenshot1](images/Screenshots/1.png)
 
+### Space
+
 ![Screenshot2](images/Screenshots/2.png)
+
+### Forest
+
+![Screenshot3](images/Screenshots/4.png)
 
 ## [1.0.0 Patch](https://github.com/flying-whales/flying-whales/releases/tag/1.0.0)
 
