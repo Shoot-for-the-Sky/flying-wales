@@ -86,7 +86,7 @@ public class MainMenuSceneManager : MonoBehaviour
         intro_score = progressManagerScript.getHighScore("IntroLevelScene");
         sky_score = progressManagerScript.getHighScore("SkyLevelScene");
         space_score = progressManagerScript.getHighScore("SpaceLevelScene");
-        forest_score = progressManagerScript.getHighScore("SpaceLevelScene");
+        forest_score = progressManagerScript.getHighScore("ForestLevelScene");
         ocean_score = progressManagerScript.getHighScore("OceanLevelScene");
 
 
